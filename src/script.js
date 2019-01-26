@@ -59,7 +59,7 @@ function start() {
   selectQuiz.style.display = 'none'
   btnStart.style.display = 'none'
   quiz.className = 'card-panel'
-  btnNext.className = 'btn waves-effect waves-light scale-transition scale-in'
+  btnNext.className = 'btn waves-effect waves-light'
   btnGiveUp.className = 'btn right waves-effect waves-light modal-trigger red'
   pagination.className = 'pagination center'
 
@@ -74,7 +74,7 @@ function stop() {
   selectQuiz.style.display = 'block'
   btnStart.style.display = 'block'
   quiz.className = 'hide'
-  btnNext.className = 'btn waves-effect waves-light scale-transition scale-out'
+  btnNext.className = 'hide'
   btnGiveUp.className = 'hide'
   btnShowAnswers.className = 'hide'
   btnFinish.className = 'hide'
@@ -113,7 +113,7 @@ function next() {
 
     if (currentQuestion === answers[selectedType].length) {
       currentAnswers.forEach(answer => { answer.disabled = true })
-      btnNext.className = 'btn waves-effect waves-light scale-transition scale-out'
+      btnNext.className = 'btn waves-effect waves-light hide'
       btnGiveUp.className = 'hide'
       btnShowAnswers.className = 'btn waves-effect waves-light right'
       btnShowAnswers.onclick = () => {
@@ -124,7 +124,7 @@ function next() {
         showAnswers.innerHTML = html
         M.Modal.getInstance(document.querySelector('#modal3')).open()
       }
-      btnFinish.className = 'btn right waves-effect waves-light green'
+      btnFinish.className = 'btn waves-effect waves-light green'
       const pointsPercentage = points / answers[selectedType].length * 100
       winPoints.innerHTML = `${points} de ${answers[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>`
       star.className = `material-icons ${pointsPercentage < 50 ? 'red-text' : 'green-text'}`
