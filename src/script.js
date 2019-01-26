@@ -49,11 +49,11 @@ const btnNext = document.querySelector('#btnNext'),
 
 let points = 0,
   currentQuestion = 0,
+  matches = [],
   selectedType = -1
 
 function render() {
-  let html = `<h6>${currentQuestion + 1}° ${questions[selectedType][currentQuestion]}</h6>`,
-    htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
+  let html = `<h6>${currentQuestion + 1}° ${questions[selectedType][currentQuestion]}</h6>`
 
   const answersQuestion = [answers[selectedType][currentQuestion], fakeAnswers[selectedType][currentQuestion][0], fakeAnswers[selectedType][currentQuestion][1], fakeAnswers[selectedType][currentQuestion][2]],
     answersRandom = []
@@ -77,12 +77,7 @@ function render() {
       `
   }
 
-  for (let i = 0; i < questions[selectedType].length; i++)
-    htmlPagination += `<li class="${currentQuestion === i ? 'active teal c-mp' : 'disabled'}"><a>${i + 1}</a></li>`
-
-  htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
-
-  pagination.innerHTML = htmlPagination
+  createPagination()
   quiz.innerHTML = html
 }
 
@@ -113,6 +108,7 @@ function stop() {
   points = 0
   currentQuestion = 0
   selectedType = -1
+  matches = []
 }
 
 function next() {
@@ -129,9 +125,18 @@ function next() {
       displayLength: 2050
     })
   else {
-    currentAnswers.forEach(item => { if (item.checked && item.getAttribute('data-text') === answers[selectedType][currentQuestion]) points += 1 })
+    currentAnswers.forEach(item => {
+      if (item.checked && item.getAttribute('data-text') === answers[selectedType][currentQuestion]) {
+        matches.push(1)
+        points += 1
+      }
+    })
 
-    if (currentQuestion === answers[selectedType].length - 1) {
+    if (matches[currentQuestion] === undefined) matches.push(0)
+
+    currentQuestion += 1
+
+    if (currentQuestion === answers[selectedType].length) {
       currentAnswers.forEach(answer => { answer.disabled = true })
       btnNext.className = 'btn waves-effect waves-light scale-transition scale-out'
       btnGiveUp.className = 'hide'
@@ -139,11 +144,20 @@ function next() {
       const pointsPercentage = points / answers[selectedType].length * 100
       winPoints.innerHTML = `${points} de ${answers[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage}%</span>`
       M.Modal.getInstance(document.querySelector('#modal2')).open()
-    } else {
-      currentQuestion += 1
-      render()
-    }
+      createPagination()
+    } else render()
   }
+}
+
+function createPagination() {
+  htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
+
+  for (let i = 0; i < questions[selectedType].length; i++)
+    htmlPagination += `<li class="${currentQuestion === i ? 'active teal c-df no-border' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+
+  htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
+
+  pagination.innerHTML = htmlPagination
 }
 
 btnStart.onclick = start

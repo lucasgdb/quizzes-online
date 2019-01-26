@@ -13,4 +13,6 @@ html, body { overflow-x: hidden }
 
 .material-icons { position: relative }
 
-.c-mp { cursor: pointer }
+.c-df { cursor: default }
+.no-border { border-radius: 0 !important }
+.brw { border-right: 1px solid white }
