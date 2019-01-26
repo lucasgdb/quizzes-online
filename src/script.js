@@ -136,7 +136,8 @@ function next() {
       btnNext.className = 'btn waves-effect waves-light scale-transition scale-out'
       btnGiveUp.className = 'hide'
       btnFinish.className = 'btn right waves-effect waves-light scale-transition green scale-in'
-      winPoints.innerText = `${points} de ${answers[selectedType].length} e obteve um desempenho de ${points / answers[selectedType].length * 100}%`
+      const pointsPercentage = points / answers[selectedType].length * 100
+      winPoints.innerHTML = `${points} de ${answers[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage}%</span>`
       M.Modal.getInstance(document.querySelector('#modal2')).open()
     } else {
       currentQuestion += 1
