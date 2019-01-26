@@ -10,7 +10,7 @@
     <style>
       .d-block { display: block }
     </style>
-    <link rel="icon" href="./images/logo.png">
+    <link rel="icon" href="images/logo.png">
 
     <meta name="title" content="Quiz OnLine">
 		<meta name="description" content="O Quiz OnLine são vários tipos de perguntas com 4 respostas, será que você consegue acertar?" />
@@ -54,17 +54,17 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="hide-on-med-and-down">
-          <li><a href="./" class="tooltipped" data-position="bottom" data-tooltip="Início">Início</a></li>
-          <li><a href="https://github.com/LucasNaja/quiz" class="tooltipped" data-position="bottom" data-tooltip="GitHub">GitHub</a></li>
-          <li><a href="./sobre.html" class="tooltipped teal darken-2" data-position="bottom" data-tooltip="Sobre"> Sobre</a></li>
+          <li><a href="/">Início</a></li>
+          <li><a href="https://github.com/LucasNaja/quiz">GitHub</a></li>
+          <li><a href="sobre.html" class="teal darken-2"> Sobre</a></li>
         </ul>
       </div>
     </nav>
 
     <ul id="slide-out" class="sidenav">
-      <li><a href="./" class="btn waves-effect waves-light">Início</a></li>
+      <li><a href="/" class="btn waves-effect waves-light">Início</a></li>
       <li><a href="https://github.com/LucasNaja/quiz" class="btn waves-effect waves-light">GitHub</a></li>
-      <li><a href="./sobre.html" class="btn waves-effect waves-light teal darken-2">Sobre</a></li>
+      <li><a href="sobre.html" class="btn waves-effect waves-light teal darken-2">Sobre</a></li>
     </ul>
 
     <section class="container">
@@ -76,14 +76,14 @@
 
         <div id="card" class="card">
           <div class="card-image">
-            <img class="materialboxed" width="350" src="./images/lucas_bittencourt.jpg">
+            <img class="materialboxed" width="350" src="images/lucas_bittencourt.jpg">
           </div>
 
           <div class="card-stacked">
             <div class="card-content">
               <p>Lucas Bittencourt, 19, cursando Análise e Desenvolvimento de Sistemas na Fatec de Guaratinguetá e
                 amando Desenvolvimeto Web. Amo aprender coisas novas, distribuições Linux e programar. Um futuro
-                Desenvolvedor Full-Stack <img src="./images/heart.png" alt="Heart" style="position:relative;top:4px"></p>
+                Desenvolvedor Full-Stack <img src="images/heart.png" alt="Heart" style="position:relative;top:4px"></p>
             </div>
 
             <div class="card-action">
@@ -105,14 +105,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script>
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
-      M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
-        enterDelay: 500
-      });
       M.Materialbox.init(document.querySelectorAll('.materialboxed'));
-    </script>
-    <script>
-      if (innerWidth >= 1024)
-        document.querySelector('#card').className = 'card horizontal'
+      if (innerWidth >= 1024) document.querySelector('#card').className = 'card horizontal'
     </script>
   </body>
 

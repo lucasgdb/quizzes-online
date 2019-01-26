@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link rel="stylesheet" href="./src/style.css">
-    <link rel="icon" href="./images/logo.png">
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="icon" href="images/logo.png">
 
 		<meta name="title" content="Quiz OnLine">
 		<meta name="description" content="O Quiz OnLine são vários tipos de perguntas com 4 respostas, será que você consegue acertar?" />
@@ -52,58 +52,45 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="hide-on-med-and-down">
-          <li><a href="./" class="tooltipped teal darken-2" data-position="bottom" data-tooltip="Início">Início</a></li>
-          <li><a href="https://github.com/LucasNaja/quiz" class="tooltipped" data-position="bottom" data-tooltip="GitHub">GitHub</a></li>
-          <li><a href="./sobre.html" class="tooltipped" data-position="bottom" data-tooltip="Sobre">Sobre</a></li>
+          <li><a href="" class="teal darken-2">Início</a></li>
+          <li><a href="https://github.com/LucasNaja/quiz">GitHub</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
         </ul>
       </div>
     </nav>
 
     <ul id="slide-out" class="sidenav">
-      <li><a href="./" class="btn waves-effect waves-light teal darken-2">Início</a></li>
+      <li><a href="" class="btn waves-effect waves-light teal darken-2">Início</a></li>
       <li><a href="https://github.com/LucasNaja/quiz" class="btn waves-effect waves-light">GitHub</a></li>
-      <li><a href="./sobre.html" class="btn waves-effect waves-light">Sobre</a></li>
+      <li><a href="sobre.html" class="btn waves-effect waves-light">Sobre</a></li>
     </ul>
 
     <section class="container">
-      <section id="selectQuiz" class="card-panel hoverable">
+      <section id="selectQuiz" class="card-panel">
         <i class="material-icons small">list</i>
         <h6 class="flow-text" style="display:inline;top:-8px;position:relative">Selecione o tipo de Quiz abaixo:</h6>
         <p>
           <label>
             <input class="with-gap" name="selectQuiz" type="radio" checked />
-            <span>Animais</span><i class="material-icons icons">pets</i>
+            <span>Animais</span><i class="material-icons icons c-pt">pets</i>
           </label>
         </p>
 
         <p>
           <label>
             <input class="with-gap" name="selectQuiz" type="radio" />
-            <span>Países</span><i class="material-icons icons">local_airport</i>
-          </label>
-        </p>
-
-        <p>
-          <label>
-            <input class="with-gap" name="selectQuiz" type="radio" />
-            <span>Pessoas</span><i class="material-icons icons">group</i>
-          </label>
-        </p>
-
-        <p>
-          <label>
-            <input class="with-gap" name="selectQuiz" type="radio" />
-            <span>Comidas</span><i class="material-icons icons">fastfood</i>
+            <span>Planeta Terra</span><i class="material-icons icons c-pt">public</i>
           </label>
         </p>
       </section>
 
       <section id="quiz" class="hide"> </section>
 
-      <button id="btnStart" class="btn waves-effect waves-light tooltipped" data-position="bottom" data-tooltip="Iniciar Quiz">Iniciar</button>
-      <button id="btnNext" class="hide tooltipped" data-position="bottom" data-tooltip="Próximo">Próximo</button>
-      <button id="giveUp" class="hide tooltipped" data-target="modal1" data-position="bottom" data-tooltip="Desistir">Desistir</button>
-      <button id="finish" class="tooltipped scale-transition scale-out" data-position="bottom" data-tooltip="Finalizar">Finalizar</button>
+      <button id="btnStart" class="btn waves-effect waves-light">Iniciar</button>
+      <button id="btnNext" class="scale-transition scale-out">Próximo</button>
+      <button id="giveUp" class="hide" data-target="modal1">Desistir</button>
+      <button id="finish" class="hide">Finalizar</button>
+      <button id="showAnswers" class="hide" style="margin-right:5px">Respostas</button>
 
       <ul id="pagination" class="scale-transition scale-out"> </ul>
     </section>
@@ -116,30 +103,41 @@
 
       <div class="divider"></div>
       <div class="modal-footer">
-        <button class="btn modal-close waves-effect waves-dark tooltipped" data-position="bottom" data-tooltip="Cancelar">Cancelar</button>
-        <button class="btn modal-close waves-effect waves-dark red tooltipped" data-position="bottom" data-tooltip="Desistir" onclick="stop()">Desistir</button>
+        <button class="btn modal-close waves-effect waves-dark">Cancelar</button>
+        <button class="btn modal-close waves-effect waves-dark red" onclick="stop()">Desistir</button>
       </div>
     </div>
 
     <div id="modal2" class="modal">
       <div class="modal-content">
-        <h4><i class="material-icons" style="top:2px">star</i> Quiz finalizado</h4>
-        <p>Seu resultado final foi: <span id="points"></span></p>
+        <h4><i class="material-icons" id="star" style="top:2px">star</i> Quiz finalizado</h4>
+        <p>Você acertou <span id="points"></span></p>
       </div>
 
       <div class="divider"></div>
       <div class="modal-footer">
-        <button class="btn modal-close waves-effect waves-dark tooltipped" data-position="bottom" data-tooltip="Fechar">Fechar</button>
+        <button class="btn modal-close waves-effect waves-dark">Fechar</button>
+      </div>
+    </div>
+
+    <div id="modal3" class="modal">
+      <div id="answers" class="modal-content">
+        
+      </div>
+
+      <div class="divider"></div>
+      <div class="modal-footer">
+        <button class="btn modal-close waves-effect waves-dark">Fechar</button>
       </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script>
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
-      M.Tooltip.init(document.querySelectorAll('.tooltipped'), { enterDelay: 500 });
       M.Modal.init(document.querySelectorAll('.modal'))
     </script>
-    <script src="./src/script.js"></script>
+    <script src="src/questions.js"></script>
+    <script src="src/script.js"></script>
   </body>
 
 </html>
