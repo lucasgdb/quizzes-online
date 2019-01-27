@@ -4,7 +4,7 @@ const questions = [
       'Qual dos felinos a seguir tem maior o porte?',
       'Qual dos felinos a seguir costuma caçar à noite?',
       'Qual dos felinos a seguir tem menor porte?',
-      'O leão macho é o mais lento dentre todos os grandes felinos. Verdadeiro ou falso?',
+      'O leão macho é o mais lento dentre todos os grandes felinos.',
       'Qual dos felinos á seguir possui melhor habilidade de escalar árvores?',
       'Qual dos felinos á seguir tem maior o costume e habilidade para caçar pássaros?',
       'Quantas raças de gatos domésticos existem aproximadamente?'
@@ -20,6 +20,30 @@ const questions = [
       'O que é hidrosfera?',
       'O que é atmosfera?',
       'O que é biosfera?'
+    ],
+    [
+      'Qual corpo celeste é conhecido por "Planeta Vermelho"?',
+      'Qual é o maior planeta do sitema solar?',
+      'Em qual galáxia nosso sistema solar está localizado?',
+      'Quantas estrelas existem em nosso sistema solar?',
+      'Qual o planeta mais frio do nosso sistema solar?',
+      'Qual destes planetas não possui anéis?',
+      'Vênus e _______ são os dois planetas que não têm uma lua',
+      'Qual o planeta mais quente do sistema solar?'
+    ],
+    [
+      'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas',
+      '40% de 75 é 28',
+      'Todos os lados de um triângulo escaleno têm o mesmo comprimento',
+      'Quando se divide 1.000 por 0, o resultado é 0',
+      'Se f(x) = 5, então (x + 3x) - (2x + x) é igual ao valor de x',
+      '7% é igual a 0.07',
+      'Zero é um número inteiro e também um número natural',
+      'De acordo com a Trigonometria, seno(θ) dividido por cosseno(θ) é igual a secante(θ)',
+      '40 - 6 x 4 = 136',
+      'Não há número 0 em numeral romano',
+      '1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si',
+      'É possível que você não marque um número inteiro neste quiz'
     ]
   ],
   answers = [
@@ -44,6 +68,30 @@ const questions = [
       'É o conjunto de água de todo o planeta',
       'É a camada gasosa que envolve a Terra',
       'É o conjunto de sistemas vivos do planeta'
+    ],
+    [
+      'Marte',
+      'Júpiter',
+      'Via Láctea',
+      '1',
+      'Urano',
+      'Vênus',
+      'Mercúrio',
+      'Vênus'
+    ],
+    [
+      'Verdadeiro',
+      'Falso',
+      'Falso',
+      'Falso',
+      'Verdadeiro',
+      'Verdadeiro',
+      'Falso',
+      'Falso',
+      'Falso',
+      'Verdadeiro',
+      'Verdadeiro',
+      'Falso'
     ]
   ],
   fakeAnswers = [
@@ -108,7 +156,8 @@ const questions = [
       ],
       [
         'Redonda',
-        'Quadrada',
+        'Oval',
+        'Plana',
         'A Terra não tem forma'
       ],
       [
@@ -142,5 +191,63 @@ const questions = [
         'É o conjunto de água de todo o planeta',
         'É a camada gasosa que envolve a Terra'
       ]
+    ],
+    [
+      [
+        'Vênus',
+        'Mercúrio',
+        'Saturno'
+      ],
+      [
+        'Urano',
+        'Saturno',
+        'Netuno'
+      ],
+      [
+        'Andrômeda',
+        'Galáxia do Sombreiro',
+        'Triângulo'
+      ],
+      [
+        '2',
+        '5',
+        '10',
+        '20',
+        'Mais de 10.000'
+      ],
+      [
+        'Netuno',
+        'Júpiter',
+        'Saturno'
+      ],
+      [
+        'Urano',
+        'Netuno',
+        'Saturno'
+      ],
+      [
+        'Netuno',
+        'Saturno',
+        'Marte'
+      ],
+      [
+        'Mercúrio',
+        'Júpiter',
+        'Terra'
+      ]
+    ],
+    [
+      [ 'Falso'],
+      [ 'Verdadeiro' ],
+      [ 'Verdadeiro' ],
+      [ 'Verdadeiro' ],
+      [ 'Falso' ],
+      [ 'Falso' ],
+      [ 'Verdadeiro' ],
+      [ 'Verdadeiro' ],
+      [ 'Verdadeiro' ],
+      [ 'Falso' ],
+      [ 'Falso' ],
+      [ 'Verdadeiro' ]
     ]
   ]

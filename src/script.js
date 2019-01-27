@@ -19,7 +19,7 @@ M.Sidenav.init(document.querySelectorAll('.sidenav'));
 M.Modal.init(document.querySelectorAll('.modal'))
 
 function render() {
-  let html = `<h6>${currentQuestion + 1}° ${questions[selectedType][currentQuestion]}</h6>`
+  let html = `<h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
 
   const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
     answersRandom = []
@@ -122,7 +122,10 @@ function next() {
       btnShowAnswers.onclick = () => {
         let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas</h4>'
         for (let i = 0; i < answers[selectedType].length; i++)
-          html += `<p>${i + 1}. ${answers[selectedType][i]} <i class="material-icons icons ${matches[i] === 0 ? 'red-text' : 'green-text'}">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
+          html += `
+            <p style="margin:0">${i + 1}. ${questions[selectedType][i]}</p>
+            <p style="margin:0 0 10px 0">R: ${answers[selectedType][i]} <i class="material-icons icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin-left:0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>
+          `
 
         showAnswers.innerHTML = html
         M.Modal.getInstance(document.querySelector('#modal3')).open()
