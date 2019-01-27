@@ -1,61 +1,85 @@
 const questions = [
-    [
-      'Qual é a única espécie de felino que os exemplares raramente são encontrados sozinhos?',
-      'Qual dos felinos a seguir tem maior o porte?',
-      'Qual dos felinos a seguir costuma caçar à noite?',
-      'Qual dos felinos a seguir tem menor porte?',
-      'O leão macho é o mais lento dentre todos os grandes felinos.',
-      'Qual dos felinos á seguir possui melhor habilidade de escalar árvores?',
-      'Qual dos felinos á seguir tem maior o costume e habilidade para caçar pássaros?',
-      'Quantas raças de gatos domésticos existem aproximadamente?'
-    ],
-    [
-      'Quantos movimentos o planeta Terra executa?',
-      'Qual é a principal consequência do movimento de rotação?',
-      'Qual a principal consequência do movimento de translação?',
-      'Qual a forma real da Terra?',
-      'Quanto tempo a Terra demora para executar o movimento de rotação?',
-      'Quanto tempo a Terra demora para executar o movimento de translação?',
-      'O que é litosfera?',
-      'O que é hidrosfera?',
-      'O que é atmosfera?',
-      'O que é biosfera?'
-    ],
-    [
-      'Qual corpo celeste é conhecido por "Planeta Vermelho"?',
-      'Qual é o maior planeta do sitema solar?',
-      'Em qual galáxia nosso sistema solar está localizado?',
-      'Quantas estrelas existem em nosso sistema solar?',
-      'Qual o planeta mais frio do nosso sistema solar?',
-      'Qual destes planetas não possui anéis?',
-      'Vênus e _______ são os dois planetas que não têm uma lua',
-      'Qual o planeta mais quente do sistema solar?'
-    ],
-    [
-      'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas',
-      '40% de 75 é 28',
-      'Todos os lados de um triângulo escaleno têm o mesmo comprimento',
-      'Quando se divide 1.000 por 0, o resultado é 0',
-      'Se f(x) = 5, então (x + 3x) - (2x + x) é igual ao valor de x',
-      '7% é igual a 0.07',
-      'Zero é um número inteiro e também um número natural',
-      'De acordo com a Trigonometria, seno(θ) dividido por cosseno(θ) é igual a secante(θ)',
-      '40 - 6 x 4 = 136',
-      'Não há número 0 em numeral romano',
-      '1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si',
-      'É possível que você não marque um número inteiro neste quiz'
-    ]
+  [
+    'Complete: Sueline está ___, pois dormiu ___ durante a noite',
+    'Qual conjunto de palavras está correto?',
+    'Na ordem da conversa, qual a colocação correta? João: ___ é separado? Bia: ____ não é junto! João: Mas ___? Bia: O ____ eu não sei',
+    '"Engodar" é o mesmo que:',
+    'Complete: Siga ___ e ___ seus medos',
+    'Qual destas palavras não é sinônimo de "Rubicundo"',
+    'Qual o plural correto de couve-flor, girassol, pudim, giz e lápis?',
+    'Complete corretamente a oração: ___ noiva chegou ___ atrasada, o casamento começou ___ quinze minutos e vai terminar meio-dia e ___'
   ],
+  [
+    'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas',
+    '40% de 75 é 28',
+    'Todos os lados de um triângulo escaleno têm o mesmo comprimento',
+    'Quando se divide 1.000 por 0, o resultado é 0',
+    'Se f(x) = 5, então (x + 3x) - (2x + x) é igual ao valor de x',
+    '7% é igual a 0.07',
+    'Zero é um número inteiro e também um número natural',
+    'De acordo com a Trigonometria, seno(θ) dividido por cosseno(θ) é igual a secante(θ)',
+    '40 - 6 x 4 = 136',
+    'Não há número 0 em numeral romano',
+    '1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si',
+    'É possível que você não marque um número inteiro neste quiz'
+  ],
+  [
+    'Quantos movimentos o planeta Terra executa?',
+    'Qual é a principal consequência do movimento de rotação?',
+    'Qual a principal consequência do movimento de translação?',
+    'Qual a forma real da Terra?',
+    'Quanto tempo a Terra demora para executar o movimento de rotação?',
+    'Quanto tempo a Terra demora para executar o movimento de translação?',
+    'O que é litosfera?',
+    'O que é hidrosfera?',
+    'O que é atmosfera?',
+    'O que é biosfera?'
+  ],
+  [
+    'Qual corpo celeste é conhecido por "Planeta Vermelho"?',
+    'Qual é o maior planeta do sitema solar?',
+    'Em qual galáxia nosso sistema solar está localizado?',
+    'Quantas estrelas existem em nosso sistema solar?',
+    'Qual o planeta mais frio do nosso sistema solar?',
+    'Qual destes planetas não possui anéis?',
+    'Vênus e ___ são os dois planetas que não têm uma lua',
+    'Qual o planeta mais quente do sistema solar?'
+  ],
+  [
+    'Qual é a única espécie de felino que os exemplares raramente são encontrados sozinhos?',
+    'Qual dos felinos a seguir tem maior o porte?',
+    'Qual dos felinos a seguir costuma caçar à noite?',
+    'Qual dos felinos a seguir tem menor porte?',
+    'O leão macho é o mais lento dentre todos os grandes felinos.',
+    'Qual dos felinos á seguir possui melhor habilidade de escalar árvores?',
+    'Qual dos felinos á seguir tem maior o costume e habilidade para caçar pássaros?',
+    'Quantas raças de gatos domésticos existem aproximadamente?'
+  ]
+],
   answers = [
     [
-      'Leão',
-      'Tigre',
-      'Leão',
-      'Gato do Deserto',
+      'Mal-humorada, mal',
+      'Jejum, jeito, gesto, jenipapo',
+      'Por que, porque, por quê e porquê',
+      'Iludir',
+      'Em frente e enfrente',
+      'Brilhante',
+      'Couve-flores, girassóis, pudins, gizes e lápis',
+      'A, meio, há e meia'
+    ],
+    [
       'Verdadeiro',
-      'Leoparto',
-      'Caracal',
-      '80'
+      'Falso',
+      'Falso',
+      'Falso',
+      'Verdadeiro',
+      'Verdadeiro',
+      'Falso',
+      'Falso',
+      'Falso',
+      'Verdadeiro',
+      'Verdadeiro',
+      'Falso'
     ],
     [
       '14 Movimentos',
@@ -80,62 +104,79 @@ const questions = [
       'Vênus'
     ],
     [
+      'Leão',
+      'Tigre',
+      'Leão',
+      'Gato do Deserto',
       'Verdadeiro',
-      'Falso',
-      'Falso',
-      'Falso',
-      'Verdadeiro',
-      'Verdadeiro',
-      'Falso',
-      'Falso',
-      'Falso',
-      'Verdadeiro',
-      'Verdadeiro',
-      'Falso'
+      'Leoparto',
+      'Caracal',
+      '80'
     ]
   ],
   fakeAnswers = [
     [
       [
-        'Guepardo',
-        'Tigre',
-        'Gato',
-        'Lince'
+        'Mau humorada, mau',
+        'Má-humorada, mal',
+        'Mal humorada, mau',
+        'Má humorada, mau'
       ],
       [
-        'Guepardo',
-        'Leopardo',
-        'Caracal',
-        'Onça'
+        'Jejum, geito, jesto e genipapo',
+        'Gejum, jeito, gesto e jenipapo',
+        'Gejum, geito, jesto e jenipapo',
+        'Jejum, geito, jeito e genipapo'
       ],
       [
-        'Gato',
-        'Tigre',
-        'Puma',
-        'Leopardo'
+        'Porque, por quê, por que e porquê',
+        'Por que, porque, porquê e por quê',
+        'Por quê, porquê, porque e por que',
+        'Porquê, por que, por quê e porque'
       ],
       [
-        'Lince',
-        'Caracal',
-        'Gato Pescador'
+        'Encostar',
+        'Inverter',
+        'Engordar',
+        'Respirar'
       ],
       [
-        'Falso'
+        'Enfrente e enfrente',
+        'Em frente e em frenta',
+        'Enfrente e em frenta',
+        'Em frente e enfretas'
       ],
       [
-        'Tigre',
-        'Gato',
-        'Puma'
+        'Corado',
+        'Avermelhado',
+        'Grená'
       ],
       [
-        'Lince',
-        'Gato Doméstico'
+        'Couves-flor, girassóis, pudim, giz e lápises',
+        'Couve-flores, girassols, pudim, giz e lápises',
+        'Couves-flor, girassols, pudins, gizes e lápis',
+        'Couves-flores, girassóis, pudim, giz e lápises'
       ],
       [
-        '46',
-        '60',
-        '100'
+        'À, meia, a e meio',
+        'À, meia, a e meio',
+        'A, meio, há e meia',
+        'À, meia, a e meio'
       ]
+    ],
+    [
+      ['Falso'],
+      ['Verdadeiro'],
+      ['Verdadeiro'],
+      ['Verdadeiro'],
+      ['Falso'],
+      ['Falso'],
+      ['Verdadeiro'],
+      ['Verdadeiro'],
+      ['Verdadeiro'],
+      ['Falso'],
+      ['Falso'],
+      ['Verdadeiro']
     ],
     [
       [
@@ -237,17 +278,45 @@ const questions = [
       ]
     ],
     [
-      [ 'Falso'],
-      [ 'Verdadeiro' ],
-      [ 'Verdadeiro' ],
-      [ 'Verdadeiro' ],
-      [ 'Falso' ],
-      [ 'Falso' ],
-      [ 'Verdadeiro' ],
-      [ 'Verdadeiro' ],
-      [ 'Verdadeiro' ],
-      [ 'Falso' ],
-      [ 'Falso' ],
-      [ 'Verdadeiro' ]
+      [
+        'Guepardo',
+        'Tigre',
+        'Gato',
+        'Lince'
+      ],
+      [
+        'Guepardo',
+        'Leopardo',
+        'Caracal',
+        'Onça'
+      ],
+      [
+        'Gato',
+        'Tigre',
+        'Puma',
+        'Leopardo'
+      ],
+      [
+        'Lince',
+        'Caracal',
+        'Gato Pescador'
+      ],
+      [
+        'Falso'
+      ],
+      [
+        'Tigre',
+        'Gato',
+        'Puma'
+      ],
+      [
+        'Lince',
+        'Gato Doméstico'
+      ],
+      [
+        '46',
+        '60',
+        '100'
+      ]
     ]
   ]

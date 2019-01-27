@@ -5,15 +5,14 @@ html, body { overflow-x: hidden }
   transform: translateX(-50%)
 }
 
-.icons {
-  margin-top: -7px;
-  margin-left: 5px
+.material-icons {
+  -webkit-user-select: none;
+  position: relative
 }
-
-.material-icons { position: relative }
 
 .c-df { cursor: default }
 .c-pt { cursor: pointer }
 .no-border { border-radius: 0 !important }
 .brw { border-right: 1px solid white }
 .d-block { display: block }
+.us-none { -webkit-user-select: none }

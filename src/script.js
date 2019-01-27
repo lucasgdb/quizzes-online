@@ -51,7 +51,7 @@ function createPagination() {
   htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
   for (let i = 0; i < questions[selectedType].length; i++)
-    htmlPagination += `<li class="${currentQuestion === i ? 'active teal c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active teal c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
 
   htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
 
@@ -68,7 +68,12 @@ function start() {
 
   const types = document.querySelectorAll('[name=selectQuiz]')
 
-  types.forEach((item, index) => { if (item.checked) selectedType = index })
+  types.forEach((item, index) => {
+    if (item.checked) {
+      selectedType = index
+      document.title = `Quiz - ${item.getAttribute('data-text')}`
+    }
+  })
 
   render()
 }
@@ -82,6 +87,7 @@ function stop() {
   btnShowAnswers.className = 'hide'
   btnFinish.className = 'hide'
   pagination.className = 'hide'
+  document.title = 'Quiz - Início'
 
   points = 0
   currentQuestion = 0
@@ -124,7 +130,7 @@ function next() {
         for (let i = 0; i < answers[selectedType].length; i++)
           html += `
             <p style="margin:0">${i + 1}. ${questions[selectedType][i]}</p>
-            <p style="margin:0 0 10px 0">R: ${answers[selectedType][i]} <i class="material-icons icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin-left:0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>
+            <p style="margin:0 0 10px 0">R: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>
           `
 
         showAnswers.innerHTML = html
