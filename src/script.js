@@ -15,6 +15,9 @@ let points = 0,
   matches = [],
   selectedType = -1
 
+M.Sidenav.init(document.querySelectorAll('.sidenav'));
+M.Modal.init(document.querySelectorAll('.modal'))
+
 function render() {
   let html = `<h6>${currentQuestion + 1}° ${questions[selectedType][currentQuestion]}</h6>`
 
