@@ -1,27 +1,27 @@
 const questions = [
   [
-    'Complete: Sueline está ___, pois dormiu ___ durante a noite',
+    'Complete: Sueline está ___, pois dormiu ___ durante a noite.',
     'Qual conjunto de palavras está correto?',
-    'Na ordem da conversa, qual a colocação correta? João: ___ é separado? Bia: ____ não é junto! João: Mas ___? Bia: O ____ eu não sei',
-    '"Engodar" é o mesmo que:',
-    'Complete: Siga ___ e ___ seus medos',
-    'Qual destas palavras não é sinônimo de "Rubicundo"',
+    'Na ordem da conversa, qual a colocação correta? João: ___ é separado? Bia: ____ não é junto! João: Mas ___? Bia: O ____ eu não sei.',
+    '"Engodar" é o sinônimo de:',
+    'Complete: Siga ___ e ___ seus medos.',
+    'Qual destas palavras não é sinônimo de "Rubicundo".',
     'Qual o plural correto de couve-flor, girassol, pudim, giz e lápis?',
-    'Complete corretamente a oração: ___ noiva chegou ___ atrasada, o casamento começou ___ quinze minutos e vai terminar meio-dia e ___'
+    'Complete corretamente a oração: ___ noiva chegou ___ atrasada, o casamento começou ___ quinze minutos e vai terminar meio-dia e ___.'
   ],
   [
-    'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas',
-    '40% de 75 é 28',
-    'Todos os lados de um triângulo escaleno têm o mesmo comprimento',
-    'Quando se divide 1.000 por 0, o resultado é 0',
-    'Se f(x) = 5, então (x + 3x) - (2x + x) é igual ao valor de x',
-    '7% é igual a 0.07',
-    'Zero é um número inteiro e também um número natural',
-    'De acordo com a Trigonometria, seno(θ) dividido por cosseno(θ) é igual a secante(θ)',
-    '40 - 6 x 4 = 136',
-    'Não há número 0 em numeral romano',
-    '1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si',
-    'É possível que você não marque um número inteiro neste quiz'
+    'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas.',
+    '40% de 75 é 28.',
+    'Todos os lados de um triângulo escaleno têm o mesmo comprimento.',
+    'Quando se divide 1.000 por 0, o resultado é 0.',
+    'Se f(X) = 5, então (X + 3X) - (2X + X) é igual ao valor de X.',
+    '7% é igual a 0,07.',
+    'Zero é um número inteiro e também um número natural.',
+    'De acordo com a Trigonometria, seno(θ) dividido por cosseno(θ) é igual a secante(θ).',
+    '40 - 6 * 4 = 136.',
+    'Não há número 0 em numeral romano.',
+    '1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si.',
+    'É possível que você não marque um número inteiro neste quiz.'
   ],
   [
     'Quantos movimentos o planeta Terra executa?',
@@ -42,7 +42,7 @@ const questions = [
     'Quantas estrelas existem em nosso sistema solar?',
     'Qual o planeta mais frio do nosso sistema solar?',
     'Qual destes planetas não possui anéis?',
-    'Vênus e ___ são os dois planetas que não têm uma lua',
+    'Vênus e ___ são os dois planetas que não têm uma lua.',
     'Qual o planeta mais quente do sistema solar?'
   ],
   [
@@ -50,7 +50,7 @@ const questions = [
     'Qual dos felinos a seguir tem maior o porte?',
     'Qual dos felinos a seguir costuma caçar à noite?',
     'Qual dos felinos a seguir tem menor porte?',
-    'O leão macho é o mais lento dentre todos os grandes felinos.',
+    'O Leão macho é o mais lento dentre todos os grandes felinos.',
     'Qual dos felinos á seguir possui melhor habilidade de escalar árvores?',
     'Qual dos felinos á seguir tem maior o costume e habilidade para caçar pássaros?',
     'Quantas raças de gatos domésticos existem aproximadamente?'
@@ -109,7 +109,7 @@ const questions = [
       'Leão',
       'Gato do Deserto',
       'Verdadeiro',
-      'Leoparto',
+      'Leopardo',
       'Caracal',
       '80'
     ]
@@ -144,7 +144,7 @@ const questions = [
         'Enfrente e enfrente',
         'Em frente e em frenta',
         'Enfrente e em frenta',
-        'Em frente e enfretas'
+        'Em frente e em frente'
       ],
       [
         'Corado',
@@ -160,7 +160,6 @@ const questions = [
       [
         'À, meia, a e meio',
         'À, meia, a e meio',
-        'A, meio, há e meia',
         'À, meia, a e meio'
       ]
     ],

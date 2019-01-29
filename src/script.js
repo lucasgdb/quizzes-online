@@ -1,25 +1,42 @@
-const btnNext = document.querySelector('#btnNext'),
-  btnStart = document.querySelector('#btnStart'),
+const btnNext = document.querySelector('#next'),
+  btnStart = document.querySelector('#start'),
   btnGiveUp = document.querySelector('#giveUp'),
   btnShowAnswers = document.querySelector('#showAnswers'),
   btnFinish = document.querySelector('#finish'),
+  btnSave = document.querySelector('#save'),
+  btnRanking = document.querySelector('#rank'),
   selectQuiz = document.querySelector('#selectQuiz'),
   quiz = document.querySelector('#quiz'),
   pagination = document.querySelector('#pagination'),
   winPoints = document.querySelector('#points'),
   star = document.querySelector('#star'),
-  showAnswers = document.querySelector('#answers')
+  showAnswers = document.querySelector('#answers'),
+  quisSave = document.querySelector('#quizSave'),
+  hitsSave = document.querySelector('#hitsSave'),
+  timeSave = document.querySelector('#timeSave'),
+  textName = document.querySelector('#name'),
+  types = document.querySelectorAll('[name=selectQuiz]'),
+  modal5 = document.querySelector('#modal5')
 
 let points = 0,
   currentQuestion = 0,
   matches = [],
-  selectedType = -1
+  selectedType = -1,
+  time = 0,
+  timeInterval
 
-M.Sidenav.init(document.querySelectorAll('.sidenav'));
+M.Sidenav.init(document.querySelectorAll('.sidenav'))
 M.Modal.init(document.querySelectorAll('.modal'))
 
+modal5.onkeydown = e => {
+  if (e.which === 13) {
+    save()
+    renderSavedItems()
+  }
+}
+
 function render() {
-  let html = `<h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
+  let html = `<p id="time" style="position:absolute;right:5px;top:0">${timeProgress(time)}</p><h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
 
   const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
     answersRandom = []
@@ -37,7 +54,7 @@ function render() {
         <p>
           <label>
             <input class="with-gap" name="question${currentQuestion}" data-text="${answersQuestion[rndNumber]}" type="radio" />
-            <span>${alphabet[i]}. ${answersQuestion[rndNumber]}</span>
+            <span>${alphabet[i]}) ${answersQuestion[rndNumber]}</span>
           </label>
         </p>
       `
@@ -51,22 +68,44 @@ function createPagination() {
   htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
   for (let i = 0; i < questions[selectedType].length; i++)
-    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active teal c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active teal c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}" ${i === questions[selectedType].length - 1 ? 'style="margin-bottom:3px"' : ''}><a>${i + 1}</a></li>`
 
   htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
 
   pagination.innerHTML = htmlPagination
 }
 
+function timeProgress(time) {
+  const hour = parseInt(time / 3600)
+  time -= hour * 3600
+
+  const minutes = parseInt(time / 60)
+  time -= minutes * 60
+
+  if (hour === 1) {
+    M.Modal.getInstance(document.querySelector('#modal6')).open()
+    stop()
+    return
+  }
+
+  return `${minutes}m ${time}s`
+}
+
+function reTimeProgress(time = String) {
+  const str = time.split(' '),
+   seconds = parseInt(str[0].replace('m', '')) * 60 + parseInt(str[1].replace('s', ''))
+
+  return seconds
+}
+
 function start() {
-  selectQuiz.style.display = 'none'
-  btnStart.style.display = 'none'
+  selectQuiz.className = 'hide'
+  btnStart.className = 'hide'
   quiz.className = 'card-panel'
   btnNext.className = 'btn waves-effect waves-light'
   btnGiveUp.className = 'btn right waves-effect waves-light modal-trigger red'
   pagination.className = 'pagination center'
-
-  const types = document.querySelectorAll('[name=selectQuiz]')
+  btnRanking.className = 'hide'
 
   types.forEach((item, index) => {
     if (item.checked) {
@@ -76,23 +115,28 @@ function start() {
   })
 
   render()
+  timeInterval = setInterval(() => { document.querySelector('#time').innerHTML = timeProgress(++time) }, 1000)
 }
 
 function stop() {
-  selectQuiz.style.display = 'block'
-  btnStart.style.display = 'block'
+  selectQuiz.className = 'card-panel'
+  btnStart.className = 'btn waves-effect waves-light'
   quiz.className = 'hide'
   btnNext.className = 'hide'
   btnGiveUp.className = 'hide'
   btnShowAnswers.className = 'hide'
   btnFinish.className = 'hide'
   pagination.className = 'hide'
+  btnRanking.className = 'btn waves-effect waves-light right modal-trigger'
+  btnSave.className = 'hide'
   document.title = 'Quiz - Início'
 
   points = 0
   currentQuestion = 0
   selectedType = -1
   matches = []
+  clearInterval(timeInterval)
+  time = 0
 }
 
 function next() {
@@ -103,11 +147,7 @@ function next() {
   currentAnswers.forEach(item => { if (!item.checked) sumWithoutResponse++ })
 
   if (sumWithoutResponse === currentAnswers.length)
-    M.toast({
-      html: 'Você deve selecionar uma resposta!',
-      classes: 'red accent-4',
-      displayLength: 2050
-    })
+    M.toast({ html: 'Você deve selecionar uma resposta!', classes: 'red accent-4', displayLength: 2050 })
   else {
     currentAnswers.forEach(item => {
       if (item.checked && item.getAttribute('data-text') === answers[selectedType][currentQuestion]) {
@@ -121,10 +161,12 @@ function next() {
     currentQuestion += 1
 
     if (currentQuestion === answers[selectedType].length) {
+      clearInterval(timeInterval)
       currentAnswers.forEach(answer => { answer.disabled = true })
       btnNext.className = 'btn waves-effect waves-light hide'
       btnGiveUp.className = 'hide'
-      btnShowAnswers.className = 'btn waves-effect waves-light right'
+      btnShowAnswers.className = 'btn waves-effect waves-light right modal-trigger'
+      btnSave.className = 'btn waves-effect waves-light modal-trigger green'
       btnShowAnswers.onclick = () => {
         let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas</h4>'
         for (let i = 0; i < answers[selectedType].length; i++)
@@ -134,17 +176,118 @@ function next() {
           `
 
         showAnswers.innerHTML = html
-        M.Modal.getInstance(document.querySelector('#modal3')).open()
       }
       btnFinish.className = 'btn waves-effect waves-light green'
+      quisSave.innerHTML = types[selectedType].getAttribute('data-text')
+      hitsSave.innerHTML = `${matches.filter(item => item === 1).length}/${questions[selectedType].length}`
+      timeSave.innerHTML = timeProgress(time)
       const pointsPercentage = points / answers[selectedType].length * 100
-      winPoints.innerHTML = `${points} de ${answers[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>`
+      winPoints.innerHTML = `${points} de ${questions[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>`
       star.className = `material-icons ${pointsPercentage < 50 ? 'red-text' : 'green-text'}`
       M.Modal.getInstance(document.querySelector('#modal2')).open()
       createPagination()
     } else render()
   }
 }
+
+function arraySort(array) {
+  const newArray = []
+  let bestArray = -1, indexBestArray = -1, bestTime = 3600
+
+  while (array.length > 0) {
+   for (let i = 0; i < array.length; i++)
+      if (array[i][2] > bestArray) {
+        indexBestArray = i
+        bestTime = reTimeProgress(array[i][4])
+        bestArray = array[i][2]
+      } else if (array[i][2] === bestArray && reTimeProgress(array[i][4]) < bestTime) {
+        indexBestArray = i
+        bestTime = reTimeProgress(array[i][4])
+      }
+    
+    bestArray = -1
+    bestTime = 3600
+
+    newArray.push(array[indexBestArray])
+    array.splice(indexBestArray, 1)
+  }
+
+  return newArray
+}
+
+function save() {
+  if (textName.value.trim() !== '' && textName.value.length > 2) {
+    const allSaved = localStorage.getItem('registeredItems')
+
+    if (allSaved === null)
+      localStorage.setItem('registeredItems', `{"items": [[${selectedType}, "${textName.value}", ${matches.filter(item => item === 1).length}, ${questions[selectedType].length}, "${timeProgress(time)}"]]}`)
+    else {
+      let newArray = JSON.parse(allSaved).items
+
+      newArray.push([selectedType, textName.value, matches.filter(item => item === 1).length, questions[selectedType].length, timeProgress(time)])
+
+      newArray = arraySort(newArray)
+
+      localStorage.setItem('registeredItems', `{"items": ${JSON.stringify(newArray)}}`)
+    }
+
+    M.Modal.getInstance(modal5).close()
+    btnSave.className = 'hide'
+    textName.value = ''
+    textName.select()
+  } else {
+    M.toast({ html: 'Por favor, escolha um nome válido!', classes: 'red accent-4', displayLength: 2050 })
+    textName.select()
+  }
+}
+
+function renderSavedItems() {
+  if (M.Tabs.getInstance(document.querySelector('#tabs')) !== undefined)
+   M.Tabs.getInstance(document.querySelector('#tabs')).destroy()
+  let html = '', htmlParent = '', htmlItem, newItems
+  const items = localStorage.getItem('registeredItems'),
+    defaultHtmlItem = '<table class="responsive-table highlight"><thead><tr><th>Nome</th><th>Acertos</th><th>Tempo</th></tr></thead><tbody>'
+
+  if (items !== null)
+    newItems = JSON.parse(items).items
+
+  for (let i = 0; i < types.length; i++) {
+    html += `<li class="tab"><a ${i === 0 ? 'class="active"' : ''} href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+
+    htmlItem = defaultHtmlItem
+
+    if (items !== null)
+      for (let j = 0; j < newItems.length; j++)
+        if (i === newItems[j][0]) {
+          htmlItem += `
+            <tr>
+              <td>${newItems[j][1]}</td>
+              <td>${newItems[j][2]}/${newItems[j][3]}</td>
+              <td>${newItems[j][4]}</td>
+            </tr>
+          `
+          newItems.splice(j, 1)
+          j--
+        }
+
+    htmlItem += '</tbody></table>'
+
+    htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
+    htmlItem = defaultHtmlItem
+  }
+
+  document.querySelector('#tabs').innerHTML = html
+
+  document.querySelector('#tabItems').innerHTML = htmlParent
+
+  M.Tabs.init(document.querySelectorAll('.tabs'))
+}
+
+renderSavedItems()
+
+const modalHits = M.Modal.getInstance(document.querySelector('#modal2'))
+
+btnRanking.onclick = () => { setTimeout(() => { M.Tabs.getInstance(document.querySelector('#tabs')).updateTabIndicator() }, 300) }
 
 btnStart.onclick = start
 btnNext.onclick = next
