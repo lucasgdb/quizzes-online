@@ -99,8 +99,8 @@
 
         <p>
           <label>
-            <input class="with-gap" name="selectQuiz" type="radio" data-text="Animais" />
-            <span>Animais<i class="material-icons c-pt right" style="margin-left:5px">pets</i></span>
+            <input class="with-gap" name="selectQuiz" type="radio" data-text="Felinos" />
+            <span>Felinos<i class="material-icons c-pt right" style="margin-left:5px">pets</i></span>
           </label>
         </p>
       </section>
@@ -116,7 +116,7 @@
       <button id="showAnswers" title="Ver respostas" class="hide" data-target="modal3">Respostas<i class="material-icons right">question_answer</i></button>
     </section>
 
-    <ul id="pagination" style="-webkit-user-select:none;white-space:nowrap;overflow-x:auto;overflow-y:hidden"> </ul>
+    <ul id="pagination"> </ul>
 
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -126,7 +126,7 @@
 
       <div class="divider"></div>
       <div class="modal-footer">
-        <button title="Cancelar" class="btn modal-close waves-effect waves-light green">Cancelar</button>
+        <button title="Cancelar" class="btn modal-close waves-effect waves-light">Cancelar</button>
         <button title="Desistir do Quiz" class="btn modal-close waves-effect waves-light red" onclick="stop()">Desistir<i class="material-icons right">sentiment_very_dissatisfied</i></button>
       </div>
     </div>
@@ -179,7 +179,7 @@
 
       <div class="divider"></div>
       <div class="modal-footer">
-        <button title="Cancelar" class="modal-close waves-effect waves-light btn red">Cancelar</button>
+        <button title="Cancelar" class="modal-close waves-effect waves-light btn">Cancelar</button>
         <button id="btnSave" title="Salvar resultado" class="waves-effect waves-light btn green" onclick="save();renderSavedItems()">Salvar<i class="material-icons right">save</i></button>
       </div>
     </div>

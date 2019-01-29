@@ -68,7 +68,7 @@ function createPagination() {
   htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
   for (let i = 0; i < questions[selectedType].length; i++)
-    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active teal c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}" ${i === questions[selectedType].length - 1 ? 'style="margin-bottom:3px"' : ''}><a>${i + 1}</a></li>`
+    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active teal c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
 
   htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
 
@@ -281,6 +281,11 @@ function renderSavedItems() {
   document.querySelector('#tabItems').innerHTML = htmlParent
 
   M.Tabs.init(document.querySelectorAll('.tabs'))
+}
+
+function clearSavedItems() {
+  localStorage.clear()
+  renderSavedItems()
 }
 
 renderSavedItems()
