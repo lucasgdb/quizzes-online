@@ -25,10 +25,8 @@ let points = 0,
   time = 0,
   timeInterval
 
-if (localStorage.getItem('clearUpdate1') === null) {
+if (localStorage.getItem('clearUpdate1') === null)
   clearSavedItems()
-  localStorage.setItem('clearUpdate1', true)
-}
 
 document.addEventListener('DOMContentLoaded', function() {
   M.Sidenav.init(document.querySelectorAll('.sidenav'))
@@ -225,9 +223,6 @@ function arraySort(array) {
 
 function save() {
   if (textName.value.trim() !== '' && textName.value.length > 2) {
-    if (localStorage.getItem('clearUpdate1') === null)
-      localStorage.setItem('clearUpdate1', true)
-
     const allSaved = localStorage.getItem('registeredItems')
 
     if (allSaved === null)
@@ -255,6 +250,9 @@ function save() {
 function renderSavedItems() {
   if (M.Tabs.getInstance(document.querySelector('#tabs')) !== undefined)
    M.Tabs.getInstance(document.querySelector('#tabs')).destroy()
+
+  if (localStorage.getItem('clearUpdate1') === null)
+    localStorage.setItem('clearUpdate1', true)
 
   let html = '', htmlParent = '', htmlItem, newItems
   const items = localStorage.getItem('registeredItems'),
