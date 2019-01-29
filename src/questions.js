@@ -24,6 +24,15 @@ const questions = [
     'É possível que você não marque um número inteiro neste quiz.'
   ],
   [
+    'Qual o nome do deus do vinho na Mitologia Grega?',
+    'Segundo a Mitologia Grega, o que a deusa Ártemis era de Apolo?',
+    'Qual o nome dado pelos romanos, a deusa grega Afrodite?',
+    'Quais dos deuses abaixo não fazem parte da Mitologia Grega?',
+    'Onde viviam os deuses gregos?',
+    'Conforme o mito grego, quem era, respectivamente, a deusa da caça, a deusa do amor, e a deusa da sabedoria?',
+    'Qual o nome do deus grego da guerra?'
+  ],
+  [
     'Quantos movimentos o planeta Terra executa?',
     'Qual é a principal consequência do movimento de rotação?',
     'Qual a principal consequência do movimento de translação?',
@@ -80,6 +89,15 @@ const questions = [
       'Verdadeiro',
       'Verdadeiro',
       'Falso'
+    ],
+    [
+      'Dionísio',
+      'Irmã',
+      'Vênus',
+      'Thor e Hórus',
+      'Olimpo',
+      'Ártemis, Afrodite e Atena',
+      'Ares'
     ],
     [
       '14 Movimentos',
@@ -176,6 +194,51 @@ const questions = [
       ['Falso'],
       ['Falso'],
       ['Verdadeiro']
+    ],
+    [
+      [
+        'Apolo',
+        'Areas',
+        'Hércules',
+        'Zeus'
+      ],
+      [
+        'Prima',
+        'Mãe',
+        'Tia',
+        'Serva'
+      ],
+      [
+        'Era',
+        'Íris',
+        'Deméter',
+        'Pandora'
+      ],
+      [
+        'Ares e Hermes',
+        'Atena e Apolo',
+        'Baco e Hades',
+        'Afrodite e Hefesto'
+      ],
+      [
+        'Arcádia',
+        'Atlântida',
+        'Campos Elísios',
+        'Palácio de Cristal'
+      ],
+      [
+        'Era, Minerva e Ceres',
+        'Diana, Era e Juno',
+        'Perséfone, Minerva e Gaia',
+        'Íris, Pandora e Juno'
+      ],
+      [
+        'Zeus',
+        'Quírion',
+        'Ésquilo',
+        'Poseidon',
+        'Kratos'
+      ]
     ],
     [
       [

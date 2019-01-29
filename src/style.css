@@ -15,6 +15,12 @@ html, body {
   overflow-y: hidden
 }
 
+#time {
+  position: absolute;
+  right: 5px;
+  top: 0
+}
+
 .material-icons {
   -webkit-user-select: none;
   position: relative
@@ -25,7 +31,7 @@ html, body {
   color: #63bdb5;
   -webkit-user-select: none
 }
-.tabs .tab a:focus { background-color: transparent}
+.tabs .tab a:focus { background-color: transparent }
 .tabs .tab a:hover { color: darkcyan }
 
 .tabs .tab a:focus.active {
@@ -67,10 +73,8 @@ html, body {
     background-color: rgb(146, 146, 146)
   }
 
-  ::-webkit-scrollbar-thumb:hover { background-color: grey}
-  ::-webkit-scrollbar-thumb:active { background-color: #666}
+  ::-webkit-scrollbar-thumb:hover { background-color: grey }
+  ::-webkit-scrollbar-thumb:active { background-color: #666 }
 
-  ::-webkit-scrollbar-track {
-    background-color: rgb(237, 237, 237)
-  }
+  ::-webkit-scrollbar-track { background-color: rgb(237, 237, 237) }
 }

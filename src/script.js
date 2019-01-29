@@ -25,8 +25,16 @@ let points = 0,
   time = 0,
   timeInterval
 
-M.Sidenav.init(document.querySelectorAll('.sidenav'))
-M.Modal.init(document.querySelectorAll('.modal'))
+if (localStorage.getItem('clearUpdate1') === null) {
+  clearSavedItems()
+  localStorage.setItem('clearUpdate1', true)
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  M.Sidenav.init(document.querySelectorAll('.sidenav'))
+  M.Modal.init(document.querySelectorAll('.modal'))
+  M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), { hoverEnabled: false })
+})
 
 modal5.onkeydown = e => {
   if (e.which === 13) {
@@ -36,7 +44,7 @@ modal5.onkeydown = e => {
 }
 
 function render() {
-  let html = `<p id="time" style="position:absolute;right:5px;top:0">${timeProgress(time)}</p><h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
+  let html = `<p id="time" style="margin:5px 0 0 0">${timeProgress(time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i></p><h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
 
   const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
     answersRandom = []
@@ -115,7 +123,7 @@ function start() {
   })
 
   render()
-  timeInterval = setInterval(() => { document.querySelector('#time').innerHTML = timeProgress(++time) }, 1000)
+  timeInterval = setInterval(() => { document.querySelector('#time').innerHTML = `${timeProgress(++time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i>` }, 1000)
 }
 
 function stop() {
@@ -129,7 +137,7 @@ function stop() {
   pagination.className = 'hide'
   btnRanking.className = 'btn waves-effect waves-light right modal-trigger'
   btnSave.className = 'hide'
-  document.title = 'Quiz - Início'
+  document.title = 'Quizzes - Início'
 
   points = 0
   currentQuestion = 0
@@ -177,7 +185,7 @@ function next() {
 
         showAnswers.innerHTML = html
       }
-      btnFinish.className = 'btn waves-effect waves-light green'
+      btnFinish.className = 'btn waves-effect waves-light'
       quisSave.innerHTML = types[selectedType].getAttribute('data-text')
       hitsSave.innerHTML = `${matches.filter(item => item === 1).length}/${questions[selectedType].length}`
       timeSave.innerHTML = timeProgress(time)
@@ -217,14 +225,17 @@ function arraySort(array) {
 
 function save() {
   if (textName.value.trim() !== '' && textName.value.length > 2) {
+    if (localStorage.getItem('clearUpdate1') === null)
+      localStorage.setItem('clearUpdate1', true)
+
     const allSaved = localStorage.getItem('registeredItems')
 
     if (allSaved === null)
-      localStorage.setItem('registeredItems', `{"items": [[${selectedType}, "${textName.value}", ${matches.filter(item => item === 1).length}, ${questions[selectedType].length}, "${timeProgress(time)}"]]}`)
+      localStorage.setItem('registeredItems', `{"items": [["${types[selectedType].getAttribute('data-text')}", "${textName.value}", ${matches.filter(item => item === 1).length}, ${questions[selectedType].length}, "${timeProgress(time)}"]]}`)
     else {
       let newArray = JSON.parse(allSaved).items
 
-      newArray.push([selectedType, textName.value, matches.filter(item => item === 1).length, questions[selectedType].length, timeProgress(time)])
+      newArray.push([types[selectedType].getAttribute('data-text'), textName.value, matches.filter(item => item === 1).length, questions[selectedType].length, timeProgress(time)])
 
       newArray = arraySort(newArray)
 
@@ -244,6 +255,7 @@ function save() {
 function renderSavedItems() {
   if (M.Tabs.getInstance(document.querySelector('#tabs')) !== undefined)
    M.Tabs.getInstance(document.querySelector('#tabs')).destroy()
+
   let html = '', htmlParent = '', htmlItem, newItems
   const items = localStorage.getItem('registeredItems'),
     defaultHtmlItem = '<table class="responsive-table highlight"><thead><tr><th>Nome</th><th>Acertos</th><th>Tempo</th></tr></thead><tbody>'
@@ -258,7 +270,7 @@ function renderSavedItems() {
 
     if (items !== null)
       for (let j = 0; j < newItems.length; j++)
-        if (i === newItems[j][0]) {
+        if (types[i].getAttribute('data-text') === newItems[j][0]) {
           htmlItem += `
             <tr>
               <td>${newItems[j][1]}</td>
@@ -289,8 +301,6 @@ function clearSavedItems() {
 }
 
 renderSavedItems()
-
-const modalHits = M.Modal.getInstance(document.querySelector('#modal2'))
 
 btnRanking.onclick = () => { setTimeout(() => { M.Tabs.getInstance(document.querySelector('#tabs')).updateTabIndicator() }, 300) }
 
