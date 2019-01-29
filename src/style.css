@@ -50,17 +50,26 @@ html, body {
 
 @media (max-width: 767px) {
   .modal { width: 100% }
-  * { cursor: default !important }
+  .container { width: 100% }
+  #next, #finish, #start { margin-left: 10px !important }
+  #giveUp, #save, #showAnswers, #rank { margin-right: 10px }
+  #rank {
+    float: unset !important;
+    display: block;
+    margin: 10px 0 0 10px
+  }
 }
 
 @media (max-width: 447px) {
   #save { float: right }
   #showAnswers {
     float: unset !important;
-    margin: 10px 0;
+    margin: 10px 0 0 10px !important;
     display: block
   }
 }
+
+@media (max-width: 1023px) { * { cursor: default !important } }
 
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
