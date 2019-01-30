@@ -4,7 +4,6 @@ const btnNext = document.querySelector('#next'),
   btnShowAnswers = document.querySelector('#showAnswers'),
   btnFinish = document.querySelector('#finish'),
   btnSave = document.querySelector('#save'),
-  btnRanking = document.querySelector('#rank'),
   selectQuiz = document.querySelector('#selectQuiz'),
   quiz = document.querySelector('#quiz'),
   pagination = document.querySelector('#pagination'),
@@ -20,7 +19,8 @@ const btnNext = document.querySelector('#next'),
   switcherTheme = document.querySelector('#darktheme'),
   root = document.querySelector(':root'),
   metaThemeColor = document.querySelector('meta[name=theme-color]'),
-  metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]')
+  metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
+  icon = document.querySelector('link[rel=icon]')
 
 let points = 0,
   currentQuestion = 0,
@@ -106,7 +106,6 @@ function start() {
   btnNext.className = 'btn waves-effect waves-light'
   btnGiveUp.className = 'btn right waves-effect waves-light modal-trigger red'
   pagination.className = 'pagination center'
-  btnRanking.className = 'hide'
 
   types.forEach((item, index) => {
     if (item.checked) {
@@ -128,7 +127,6 @@ function stop() {
   btnShowAnswers.className = 'hide'
   btnFinish.className = 'hide'
   pagination.className = 'hide'
-  btnRanking.className = 'btn waves-effect waves-light right modal-trigger'
   btnSave.className = 'hide'
   document.title = 'Quizzes - Início'
 
@@ -298,6 +296,7 @@ function darkTheme() {
   localStorage.setItem('darktheme', 'true')
   metaThemeColor.setAttribute('content', '#2962ff')
   metaMSThemeColor.setAttribute('content', '#2962ff')
+  icon.setAttribute('href', 'images/logo_dark.png')
   root.style.setProperty('--corFundo', '#242b38')
   root.style.setProperty('--corFundo2', '#2a3342')
   root.style.setProperty('--corFundoScroll', '#2a3342')
@@ -314,6 +313,7 @@ function lightTheme() {
   localStorage.removeItem('darktheme')
   metaThemeColor.setAttribute('content', '#009688')
   metaMSThemeColor.setAttribute('content', '#009688')
+  icon.setAttribute('href', 'images/logo_light.png')
   root.style.setProperty('--corFundo', 'white')
   root.style.setProperty('--corFundo2', 'white')
   root.style.setProperty('--corFundoScroll', '#ededed')
@@ -338,7 +338,7 @@ window.addEventListener('DOMContentLoaded', function() {
   M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), { hoverEnabled: false })
 
   renderSavedItems()
-  btnRanking.onclick = () => {
+  document.querySelector('#rank').onclick = () => {
     let tabs
     types.forEach((item, index) => {
       if (item.checked) {

@@ -1,6 +1,7 @@
 const root = document.querySelector(':root'),
   metaThemeColor = document.querySelector('meta[name=theme-color]'),
-  metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]')
+  metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
+  icon = document.querySelector('link[rel=icon]')
 
 M.Sidenav.init(document.querySelectorAll('.sidenav'));
 M.Materialbox.init(document.querySelectorAll('.materialboxed'));
@@ -12,6 +13,7 @@ function darkTheme() {
   localStorage.setItem('darktheme', 'true')
   metaThemeColor.setAttribute('content', '#2962ff')
   metaMSThemeColor.setAttribute('content', '#2962ff')
+  icon.setAttribute('href', '../images/logo_dark.png')
   root.style.setProperty('--corFundo', '#242b38')
   root.style.setProperty('--corFundo2', '#2a3342')
   root.style.setProperty('--corFundoScroll', '#2a3342')
@@ -26,6 +28,7 @@ function lightTheme() {
   localStorage.removeItem('darktheme')
   metaThemeColor.setAttribute('content', '#009688')
   metaMSThemeColor.setAttribute('content', '#009688')
+  icon.setAttribute('href', '../images/logo_light.png')
   root.style.setProperty('--corFundo', 'white')
   root.style.setProperty('--corFundo2', 'white')
   root.style.setProperty('--corFundoScroll', '#ededed')

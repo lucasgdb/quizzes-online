@@ -98,12 +98,7 @@ html, body {
   .modal { width: 100% }
   .container { width: 100% }
   #next, #finish, #start { margin-left: 10px !important }
-  #giveUp, #save, #showAnswers, #rank { margin-right: 10px }
-  #rank {
-    float: unset !important;
-    display: block;
-    margin: 10px 0 0 10px
-  }
+  #giveUp, #save, #showAnswers { margin-right: 10px }
 }
 
 @media (max-width: 447px) {

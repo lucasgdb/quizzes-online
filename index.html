@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="src/style.css">
-    <link rel="icon" href="images/logo.png">
+    <link rel="icon" href="images/logo_light.png">
 
     <meta name="title" content="Quizzes OnLine">
     <meta name="description" content="Quizzes OnLine com várias modalidades de perguntas. Quantas você consegue acertar?" />
@@ -136,16 +136,17 @@
           <a class="btn-floating btn-large waves-effect waves-light" style="-webkit-user-select:none"><i class="material-icons">more_vert</i></a>
           <ul>
             <li><a class="btn-floating modal-trigger waves-effect waves-light red" data-target="modal7" title="Limpar Ranking"><i class="material-icons">clear</i></a></li>
-            <li><a class="btn-floating modal-trigger waves-effect waves-light" data-target="modal8" title="Mudar Tema"><i class="material-icons">invert_colors</i></a></li>
             <li><a class="btn-floating waves-effect waves-light" href="https://github.com/LucasNaja/quizzes" target="_target" rel="noopener noreferrer" title="Repositório no GitHub"><i class="material-icons">code</i></a></li>
+            <li><a class="btn-floating modal-trigger waves-effect waves-light" data-target="modal8" title="Mudar Tema"><i class="material-icons">invert_colors</i></a></li>
+            <li><a id="rank" class="btn-floating modal-trigger waves-effect waves-light" data-target="modal4" title="Ranking Local"><i class="material-icons">format_line_spacing</i></a></li>
           </ul>
         </div>
+       
       </section>
 
       <section id="quiz" class="hide"> </section>
 
       <button id="start" title="Iniciar Quiz" class="btn waves-effect waves-light">Iniciar<i class="material-icons right">chevron_right</i></button>
-      <button id="rank" title="Ranking Local" class="btn waves-effect waves-light right modal-trigger" data-target="modal4">Ranking<i class="material-icons left">format_line_spacing</i></button>
       <button id="next" title="Próxima pergunta" class="hide">Próximo<i class="material-icons right">chevron_right</i></button>
       <button id="giveUp" title="Desistir do Quiz" class="hide" data-target="modal1">Desistir<i class="material-icons right">sentiment_very_dissatisfied</i></button>
       <button id="finish" title="Finalizar Quiz" class="hide"><i class="material-icons left">chevron_left</i>Finalizar</button>
