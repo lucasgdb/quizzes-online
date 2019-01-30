@@ -16,7 +16,9 @@ const btnNext = document.querySelector('#next'),
   timeSave = document.querySelector('#timeSave'),
   textName = document.querySelector('#name'),
   types = document.querySelectorAll('[name=selectQuiz]'),
-  modal5 = document.querySelector('#modal5')
+  modal5 = document.querySelector('#modal5'),
+  switcherTheme = document.querySelector('#darktheme'),
+  root = document.querySelector(':root')
 
 let points = 0,
   currentQuestion = 0,
@@ -65,7 +67,7 @@ function createPagination() {
   htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
   for (let i = 0; i < questions[selectedType].length; i++)
-    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active teal c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active corFundo3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
 
   htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
 
@@ -161,7 +163,7 @@ function next() {
       clearInterval(timeInterval)
       currentAnswers.forEach(answer => { answer.disabled = true })
 
-      btnNext.className = 'btn waves-effect waves-light hide'
+      btnNext.className = 'hide'
       btnGiveUp.className = 'hide'
       btnShowAnswers.className = 'btn waves-effect waves-light right modal-trigger'
       btnSave.className = 'btn waves-effect waves-light modal-trigger green'
@@ -248,7 +250,7 @@ function renderSavedItems() {
 
   let html = '', htmlParent = '', htmlItem, newItems
   const items = localStorage.getItem('registeredItems'),
-    defaultHtmlItem = '<table class="responsive-table highlight"><thead><tr><th>Nome</th><th>Acertos</th><th>Tempo</th></tr></thead><tbody>'
+    defaultHtmlItem = '<table class="responsive-table"><thead><tr><th>Nome</th><th>Acertos</th><th>Tempo</th></tr></thead><tbody>'
 
   if (items !== null)
     newItems = JSON.parse(items).items
@@ -286,9 +288,43 @@ function renderSavedItems() {
 }
 
 function clearSavedItems() {
-  localStorage.clear()
+  localStorage.removeItem('registeredItems')
   renderSavedItems()
 }
+
+function darkTheme() {
+  localStorage.setItem('darktheme', 'true')
+  root.style.setProperty('--corFundo', '#242b38')
+  root.style.setProperty('--corFundo2', '#2a3342')
+  root.style.setProperty('--corFundoScroll', '#2a3342')
+  root.style.setProperty('--corScroll', '#2962ff')
+  root.style.setProperty('--corScrollHover', '#0b4cff')
+  root.style.setProperty('--corSwitcher', '#2962ff')
+  root.style.setProperty('--corSwitcherBall', '#0b4cff')
+  root.style.setProperty('--corFundo3', '#2962ff')
+  root.style.setProperty('--corFundoActive', '#0b4cff')
+  root.style.setProperty('--corTexto', 'white')
+}
+
+function lightTheme() {
+  localStorage.removeItem('darktheme')
+  root.style.setProperty('--corFundo', 'white')
+  root.style.setProperty('--corFundo2', 'white')
+  root.style.setProperty('--corFundoScroll', '#ededed')
+  root.style.setProperty('--corScroll', '#929292')
+  root.style.setProperty('--corScrollHover', 'grey')
+  root.style.setProperty('--corSwitcher', '#9e9e9e')
+  root.style.setProperty('--corSwitcherBall', '#f1f1f1')
+  root.style.setProperty('--corFundo3', '#009688')
+  root.style.setProperty('--corFundoActive', '#007267')
+  root.style.setProperty('--corTexto', 'black')
+}
+
+if (localStorage.getItem('darktheme') === 'true') {
+  darkTheme()
+  switcherTheme.checked = true
+}
+else lightTheme()
 
 window.addEventListener('DOMContentLoaded', function() {
   M.Sidenav.init(document.querySelectorAll('.sidenav'))
@@ -318,6 +354,6 @@ window.onload = () => {
   btnFinish.onclick = stop
 
   document.querySelector('#preloader').className = 'hide'
-  document.querySelector('#nav').className = 'teal'
+  document.querySelector('#nav').className = ''
   document.querySelector('#container').className = 'container'
 }

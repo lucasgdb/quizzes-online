@@ -57,25 +57,25 @@
       </div>
     </div>
 
-    <nav id="nav" class="teal hide">
+    <nav id="nav" class="hide">
       <div class="nav-wrapper">
         <a data-target="slide-out" class="sidenav-trigger right c-pt"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="hide-on-med-and-down">
-          <li><a title="Início" href="./" class="teal darken-2 us-none">Início<i class="material-icons left">home</i></a></li>
+          <li><a title="Início" href="./" class="corFundoActive us-none">Início<i class="material-icons left">home</i></a></li>
           <li><a title="Sobre" href="sobre/" class="us-none">Sobre<i class="material-icons left">info</i></a></li>
         </ul>
       </div>
     </nav>
 
     <ul id="slide-out" class="sidenav">
-      <li><a href="./" class="btn waves-effect waves-light teal darken-2">Início</a></li>
+      <li><a href="./" class="btn waves-effect waves-light corFundoActive">Início</a></li>
       <li><a href="sobre/" class="btn waves-effect waves-light">Sobre</a></li>
     </ul>
 
-    <section id="container" class="container hide">
+    <section id="container" class="hide">
       <section id="selectQuiz" class="card-panel">
-        <h5 style="margin:-15px 0 0 0"><i class="material-icons" style="top:11px;font-size:37px">list</i>Escolha um Quiz.</h5>
+        <h5 style="margin:-15px 0 0 0" class="corTexto"><i class="material-icons" style="top:11px;font-size:37px">list</i>Escolha um Quiz</h5>
         <p>
           <label>
             <input class="with-gap" name="selectQuiz" type="radio" data-text="Português" checked />
@@ -133,10 +133,11 @@
         </p>
 
         <div class="fixed-action-btn">
-          <a class="btn-floating btn-large teal waves-effect waves-light" style="-webkit-user-select:none"><i class="material-icons">more_vert</i></a>
+          <a class="btn-floating btn-large waves-effect waves-light" style="-webkit-user-select:none"><i class="material-icons">more_vert</i></a>
           <ul>
             <li><a class="btn-floating modal-trigger waves-effect waves-light red" data-target="modal7" title="Limpar Ranking"><i class="material-icons">clear</i></a></li>
-            <li><a class="btn-floating waves-effect waves-light teal" href="https://github.com/LucasNaja/quizzes" target="_target" rel="noopener noreferrer" title="Repositório no GitHub"><i class="material-icons">code</i></a></li>
+            <li><a class="btn-floating modal-trigger waves-effect waves-light" data-target="modal8" title="Mudar Tema"><i class="material-icons">invert_colors</i></a></li>
+            <li><a class="btn-floating waves-effect waves-light" href="https://github.com/LucasNaja/quizzes" target="_target" rel="noopener noreferrer" title="Repositório no GitHub"><i class="material-icons">code</i></a></li>
           </ul>
         </div>
       </section>
@@ -239,9 +240,29 @@
         <p>Você tem certeza que deseja limpar o Ranking?</p>
       </div>
 
+      <div class="divider"></div>
       <div class="modal-footer">
         <button title="Cancelar" class="modal-close waves-effect waves-light btn">Cancelar</button>
         <button title="Limpar Ranking" class="modal-close waves-effect waves-light btn red" onclick="clearSavedItems()">Limpar <i class="material-icons right">clear</i></button>
+      </div>
+    </section>
+
+    <section id="modal8" class="modal">
+      <div class="modal-content">
+        <h4><i class="material-icons left" style="top:6px;margin:0 5px 0 0">invert_colors</i>Mudar Tema</h4>
+
+        <div class="switch">
+          <label>
+            <input id="darktheme" type="checkbox" onchange="if (this.checked) darkTheme(); else lightTheme()">
+            <span class="lever"></span>
+            Tema Dark
+          </label>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="modal-footer">
+        <button title="Cancelar" class="modal-close waves-effect waves-light btn">Fechar</button>
       </div>
     </section>
 
