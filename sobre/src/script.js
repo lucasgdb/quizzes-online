@@ -1,4 +1,6 @@
-const root = document.querySelector(':root')
+const root = document.querySelector(':root'),
+  metaThemeColor = document.querySelector('meta[name=theme-color]'),
+  metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]')
 
 M.Sidenav.init(document.querySelectorAll('.sidenav'));
 M.Materialbox.init(document.querySelectorAll('.materialboxed'));
