@@ -21,6 +21,17 @@ html, body {
   top: 0
 }
 
+#preloader {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute
+}
+
+#quiz { position: relative }
+
+#star { top: 2px }
+
 .material-icons {
   -webkit-user-select: none;
   position: relative
@@ -78,7 +89,7 @@ html, body {
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+    border-radius: 2px;
     background-color: rgb(146, 146, 146)
   }
 

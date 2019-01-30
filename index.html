@@ -47,7 +47,17 @@
   </head>
 
   <body>
-    <nav class="teal">
+    <div id="preloader">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left"><div class="circle"></div></div>
+          <div class="gap-patch"><div class="circle"></div></div>
+          <div class="circle-clipper right"><div class="circle"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <nav id="nav" class="teal hide">
       <div class="nav-wrapper">
         <a data-target="slide-out" class="sidenav-trigger right c-pt"><i class="material-icons">menu</i></a>
 
@@ -63,9 +73,9 @@
       <li><a href="sobre/" class="btn waves-effect waves-light">Sobre</a></li>
     </ul>
 
-    <section class="container">
+    <section id="container" class="container hide">
       <section id="selectQuiz" class="card-panel">
-        <h5 style="margin:-15px 0 0 0"><i class="material-icons" style="top:11px;font-size:37px">list</i>Escolha um Quiz:</h5>
+        <h5 style="margin:-15px 0 0 0"><i class="material-icons" style="top:11px;font-size:37px">list</i>Escolha um Quiz.</h5>
         <p>
           <label>
             <input class="with-gap" name="selectQuiz" type="radio" data-text="Português" checked />
@@ -77,6 +87,20 @@
           <label>
             <input class="with-gap" name="selectQuiz" type="radio" data-text="Matemática" />
             <span>Matemática</span>
+          </label>
+        </p>
+
+        <p>
+          <label>
+            <input class="with-gap" name="selectQuiz" type="radio" data-text="Informática" />
+            <span>Informática</span>
+          </label>
+        </p>
+
+        <p>
+          <label>
+            <input class="with-gap" name="selectQuiz" type="radio" data-text="Algoritmos" />
+            <span>Algoritmos</span>
           </label>
         </p>
 
@@ -117,7 +141,7 @@
         </div>
       </section>
 
-      <section id="quiz" style="position:relative" class="hide"> </section>
+      <section id="quiz" class="hide"> </section>
 
       <button id="start" title="Iniciar Quiz" class="btn waves-effect waves-light">Iniciar<i class="material-icons right">chevron_right</i></button>
       <button id="rank" title="Ranking Local" class="btn waves-effect waves-light right modal-trigger" data-target="modal4">Ranking<i class="material-icons left">format_line_spacing</i></button>
@@ -145,7 +169,7 @@
 
     <section id="modal2" class="modal">
       <div class="modal-content">
-        <h4><i class="material-icons" id="star" style="top:2px">star</i> Quiz finalizado</h4>
+        <h4><i class="material-icons" id="star">star</i> Quiz finalizado</h4>
         <p>Você acertou <span id="points"></span></p>
       </div>
 
@@ -210,7 +234,7 @@
 
     <section id="modal7" class="modal">
       <div class="modal-content">
-        <h4><i class="material-icons left red-text" style="top:7px;margin:0 5px 0 0">clear</i>Limpar Ranking</h4>
+        <h4><i class="material-icons left red-text" style="top:6px;margin:0 5px 0 0">clear</i>Limpar Ranking</h4>
 
         <p>Você tem certeza que deseja limpar o Ranking?</p>
       </div>

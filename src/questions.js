@@ -24,6 +24,23 @@ const questions = [
     'É possível que você não marque um número inteiro neste quiz.'
   ],
   [
+    'Dentre as alternativas a seguir, qual não faz parte de um item de hardware?',
+    'Selecione a opção abaixo que não caracteriza uma medida de segurança para seu computador.',
+    'Escolha a alternativa que representa as características do aplicativo TeamViewer.',
+    'São sistemas operacionais:',
+    'Qual a principal função do Sistema Operacional?',
+    'O que um Driver faz?'
+  ],
+  [
+    'Qual a definição de Algoritmo?',
+    'Onde podemos utilizar um Algoritmo?',
+    'O que é um Pseudocódigo?',
+    '"... é uma forma universal de representação, pois se utiliza de figuras geométricas para ilustrar os passos a serem seguidos para a resolução de problemas ..." O texto acima, descreve:',
+    'A palavra "Pseudocódigo" significa:',
+    'A = 10; B = 20; C = A + B; D = C; Dado o Algoritmo, podemos afirmar que:',
+    'A instrução: se ... então  ... fimse é necessária para?'
+  ],
+  [
     'Qual o nome do deus do vinho na Mitologia Grega?',
     'Segundo a Mitologia Grega, o que a deusa Ártemis era de Apolo?',
     'Qual o nome dado pelos romanos, a deusa grega Afrodite?',
@@ -89,6 +106,23 @@ const questions = [
       'Verdadeiro',
       'Verdadeiro',
       'Falso'
+    ],
+    [
+      'Debian',
+      'Utilizar o desfragmentador de discos do Windows',
+      'Estabelece a ligação a qualquer computador ou servidor, permitindo o acesso remoto a distância',
+      'Windows 8, Android e IOS',
+      'Se trata de um programa especial que atua de forma intermediária entre os usuários e os componentes de um computador',
+      'Permite que o sistema operacional e um dispositivo se comuniquem um com o outro'
+    ],
+    [
+      'Algoritmo é uma sequência lógica de instruções que devem ser seguidas para resolução de um problema',
+      'Na área da computação, construção de interfaces, software, hardware e planejamento de redes',
+      'É um código que utiliza a linguagem estruturada e se assemelha, na forma, a um programa escrito na linguagem de programação',
+      'Um fluxograma',
+      'Falso código',
+      'B equivale a A + 10, sendo B + D igual a 50',
+      'Tomar uma decisão no sentido de apresentar ou executar uma instrução mediante o teste de uma condição que pode ser Verdadeira ou Falsa'
     ],
     [
       'Dionísio',
@@ -194,6 +228,82 @@ const questions = [
       ['Falso'],
       ['Falso'],
       ['Verdadeiro']
+    ],
+    [
+      [
+        'Mouse',
+        'Processador',
+        'Chipset',
+        'Headset'
+      ],
+      [
+        'Deixar o Firewall ativado',
+        'Mascarar seu endereçamento IP utilizando uma Proxy',
+        'Colocar senha para que somente você tenha acesso ao sistema',
+        'Instalar e deixar atualizado um anti-vírus e um anti-spyware'
+      ],
+      [
+        'Realiza troca de grandes volumes de dados de um Computador para o outro',
+        'Permite atualizar todos os aplicativos do Computador',
+        'Faz backup automático de arquivos e pastas selecionadas',
+        'Estabelece medidas de segurança para navegação na Internet'
+      ],
+      [
+        'Asus, AMD e Intel',
+        'Word, Excel e Powerpoint',
+        'Mozila Firefox, Internet Explore e Google Chrome',
+        'Tablets, Smatphones e Notebooks'
+      ],
+      [
+        'Corrigir os danos de um Computador',
+        'Estabelecer conexão com a Internet',
+        'Ler os dispositivos de um Computador',
+        'Acessar os arquivos temporários'
+      ],
+      [
+        'Lê CDs e DVDs',
+        'Organiza os arquivos do Sistema Operacional',
+        'Centraliza as informações',
+        'Recupera dados perdidos'
+      ]
+    ],
+    [
+      [
+        'Algoritmo é um programa de computador que segue uma sequência lógica de tarefas e variáveis',
+        'Algoritmo é um problema lógico que para ser solucionado necessita de um programa baseado em tarefas',
+        'Algoritmo é algo que tem ritmo que causa um problema em quem não tem coordenação motora, gerando um problema'
+      ],
+      [
+        'Na área da computadores, construção de interferências, tapwares, harddisks e planejamento de redes de pesca',
+        'Na área da comutação, construção de intercâmbio, malwares, vírus e planejamento de redes de balanço',
+        'Na área da comunicação, aperfeiçoamento de interfaces, softwares livres, raio-x e planejamento de vias'
+      ],
+      [
+        'É uma forma de utilizar linguagem estruturada java e se assemelha, na forma, a um programa escrito na linguagem portugol',
+        'É um código simples em linguagem de baixo nível que se assemelha, na forma, a um programa escrito na linguagem portugol',
+        'É um código que utiliza a linguagem portugol e os comandos de a um programa escrito na linguagem de programação java'
+      ],
+      [
+        'Uma descrição narrativa',
+        'Um diagrama de Chapim',
+        'Um pseudocódigo'
+      ],
+      [
+        'Seu código',
+        'Código de alguém',
+        'Código de baixo nível'
+      ],
+      [
+        'B é maior do que A sendo D maior que a soma de A e B',
+        'D é diferente da soma de de A e B sendo D maior que C',
+        'D - A é igual a 20 sendo 20 a metade da soma de A + B',
+        'D é diferente de C sendo C a metade da soma de A + D'
+      ],
+      [
+        'Tomar uma decisão verdadeira e apresentar ou executar uma instrução falsa se o teste for do tipo inteiro',
+        'Tomar um caminho diferente e apresentar ou executar uma instrução mediante um fluxograma de Chapin',
+        'Tomar uma decisão se e somente se a condição então não fizer parte da relação de variáveis declaradas no escopo do fluxograma'
+      ]
     ],
     [
       [

@@ -25,15 +25,6 @@ let points = 0,
   time = 0,
   timeInterval
 
-if (localStorage.getItem('clearUpdate1') === null)
-  clearSavedItems()
-
-document.addEventListener('DOMContentLoaded', function() {
-  M.Sidenav.init(document.querySelectorAll('.sidenav'))
-  M.Modal.init(document.querySelectorAll('.modal'))
-  M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), { hoverEnabled: false })
-})
-
 modal5.onkeydown = e => {
   if (e.which === 13) {
     save()
@@ -169,10 +160,13 @@ function next() {
     if (currentQuestion === answers[selectedType].length) {
       clearInterval(timeInterval)
       currentAnswers.forEach(answer => { answer.disabled = true })
+
       btnNext.className = 'btn waves-effect waves-light hide'
       btnGiveUp.className = 'hide'
       btnShowAnswers.className = 'btn waves-effect waves-light right modal-trigger'
       btnSave.className = 'btn waves-effect waves-light modal-trigger green'
+      btnFinish.className = 'btn waves-effect waves-light'
+      
       btnShowAnswers.onclick = () => {
         let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas</h4>'
         for (let i = 0; i < answers[selectedType].length; i++)
@@ -183,12 +177,13 @@ function next() {
 
         showAnswers.innerHTML = html
       }
-      btnFinish.className = 'btn waves-effect waves-light'
+
       quisSave.innerHTML = types[selectedType].getAttribute('data-text')
       hitsSave.innerHTML = `${matches.filter(item => item === 1).length}/${questions[selectedType].length}`
       timeSave.innerHTML = timeProgress(time)
       const pointsPercentage = points / answers[selectedType].length * 100
       winPoints.innerHTML = `${points} de ${questions[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>`
+      
       star.className = `material-icons ${pointsPercentage < 50 ? 'red-text' : 'green-text'}`
       M.Modal.getInstance(document.querySelector('#modal2')).open()
       createPagination()
@@ -226,7 +221,7 @@ function save() {
     const allSaved = localStorage.getItem('registeredItems')
 
     if (allSaved === null)
-      localStorage.setItem('registeredItems', `{"items": [["${types[selectedType].getAttribute('data-text')}", "${textName.value}", ${matches.filter(item => item === 1).length}, ${questions[selectedType].length}, "${timeProgress(time)}"]]}`)
+      localStorage.setItem('registeredItems', `{"items":[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${matches.filter(item => item === 1).length}, ${questions[selectedType].length},"${timeProgress(time)}"]]}`)
     else {
       let newArray = JSON.parse(allSaved).items
 
@@ -234,7 +229,7 @@ function save() {
 
       newArray = arraySort(newArray)
 
-      localStorage.setItem('registeredItems', `{"items": ${JSON.stringify(newArray)}}`)
+      localStorage.setItem('registeredItems', `{"items":${JSON.stringify(newArray)}}`)
     }
 
     M.Modal.getInstance(modal5).close()
@@ -251,9 +246,6 @@ function renderSavedItems() {
   if (M.Tabs.getInstance(document.querySelector('#tabs')) !== undefined)
    M.Tabs.getInstance(document.querySelector('#tabs')).destroy()
 
-  if (localStorage.getItem('clearUpdate1') === null)
-    localStorage.setItem('clearUpdate1', true)
-
   let html = '', htmlParent = '', htmlItem, newItems
   const items = localStorage.getItem('registeredItems'),
     defaultHtmlItem = '<table class="responsive-table highlight"><thead><tr><th>Nome</th><th>Acertos</th><th>Tempo</th></tr></thead><tbody>'
@@ -262,7 +254,7 @@ function renderSavedItems() {
     newItems = JSON.parse(items).items
 
   for (let i = 0; i < types.length; i++) {
-    html += `<li class="tab"><a ${i === 0 ? 'class="active"' : ''} href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+    html += `<li class="tab tabs-fixed-width tab-demo"><a href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
 
     htmlItem = defaultHtmlItem
 
@@ -298,10 +290,34 @@ function clearSavedItems() {
   renderSavedItems()
 }
 
-renderSavedItems()
+window.addEventListener('DOMContentLoaded', function() {
+  M.Sidenav.init(document.querySelectorAll('.sidenav'))
+  M.Modal.init(document.querySelectorAll('.modal'))
+  M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), { hoverEnabled: false })
 
-btnRanking.onclick = () => { setTimeout(() => { M.Tabs.getInstance(document.querySelector('#tabs')).updateTabIndicator() }, 300) }
+  renderSavedItems()
+  btnRanking.onclick = () => {
+    let tabs
+    types.forEach((item, index) => {
+      if (item.checked) {
+        tabs = document.querySelectorAll('.tab')[index]
+        tabs.querySelector('a').click()
+      }
+    })
 
-btnStart.onclick = start
-btnNext.onclick = next
-btnFinish.onclick = stop
+    setTimeout(() => {
+      M.Tabs.getInstance(document.querySelector('#tabs')).updateTabIndicator()
+      document.querySelector('#tabs').scrollLeft = tabs.offsetLeft
+    }, 300)
+  }
+})
+
+window.onload = () => {
+  btnStart.onclick = start
+  btnNext.onclick = next
+  btnFinish.onclick = stop
+
+  document.querySelector('#preloader').className = 'hide'
+  document.querySelector('#nav').className = 'teal'
+  document.querySelector('#container').className = 'container'
+}
