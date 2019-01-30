@@ -18,7 +18,9 @@ const btnNext = document.querySelector('#next'),
   types = document.querySelectorAll('[name=selectQuiz]'),
   modal5 = document.querySelector('#modal5'),
   switcherTheme = document.querySelector('#darktheme'),
-  root = document.querySelector(':root')
+  root = document.querySelector(':root'),
+  metaThemeColor = document.querySelector('meta[name=theme-color]'),
+  metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]')
 
 let points = 0,
   currentQuestion = 0,
@@ -294,6 +296,8 @@ function clearSavedItems() {
 
 function darkTheme() {
   localStorage.setItem('darktheme', 'true')
+  metaThemeColor.setAttribute('content', '#2962ff')
+  metaMSThemeColor.setAttribute('content', '#2962ff')
   root.style.setProperty('--corFundo', '#242b38')
   root.style.setProperty('--corFundo2', '#2a3342')
   root.style.setProperty('--corFundoScroll', '#2a3342')
@@ -308,6 +312,8 @@ function darkTheme() {
 
 function lightTheme() {
   localStorage.removeItem('darktheme')
+  metaThemeColor.setAttribute('content', '#009688')
+  metaMSThemeColor.setAttribute('content', '#009688')
   root.style.setProperty('--corFundo', 'white')
   root.style.setProperty('--corFundo2', 'white')
   root.style.setProperty('--corFundoScroll', '#ededed')

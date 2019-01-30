@@ -8,6 +8,8 @@ if (innerWidth >= 1024)
 
 function darkTheme() {
   localStorage.setItem('darktheme', 'true')
+  metaThemeColor.setAttribute('content', '#2962ff')
+  metaMSThemeColor.setAttribute('content', '#2962ff')
   root.style.setProperty('--corFundo', '#242b38')
   root.style.setProperty('--corFundo2', '#2a3342')
   root.style.setProperty('--corFundoScroll', '#2a3342')
@@ -20,6 +22,8 @@ function darkTheme() {
 
 function lightTheme() {
   localStorage.removeItem('darktheme')
+  metaThemeColor.setAttribute('content', '#009688')
+  metaMSThemeColor.setAttribute('content', '#009688')
   root.style.setProperty('--corFundo', 'white')
   root.style.setProperty('--corFundo2', 'white')
   root.style.setProperty('--corFundoScroll', '#ededed')
