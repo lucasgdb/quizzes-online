@@ -1,9 +1,16 @@
-html, body, .card-panel, .modal, .modal-content, .modal-footer, nav, .lever, .lever:after, .btn {
-  transition: background-color .35s !important;
-  -webkit-transition: background-color .35s !important
+html, body {
+  min-width: 320px;
+  overflow-x: hidden;
+  color: var(--colorText);
+  background-color: var(--bgColor)
 }
 
-.modal, .card-panel { transition: color .35s !important }
+html, body, .card-panel, .modal, .modal-content, .modal-footer, nav, .lever, .lever:after, .btn {
+  transition: background-color .3s !important;
+  -webkit-transition: background-color .3s !important
+}
+
+.modal, .card-panel { transition: color .3s !important }
 
 .bgColor3 { background-color: var(--bgColor3) !important }
 
@@ -20,6 +27,10 @@ a.btn:hover { background-color: var(--bgColorActive) !important }
   box-shadow: 0 1px 0 0 var(--bgColor3) !important
 }
 .input-field input[type=text], [type=radio]:checked + span { color: var(--colorText) !important }
+
+[type=radio] + span { color: var(--colorRadio) }
+[type=radio]:disabled + span { color: var(--colorRadioDisabled) }
+[type=radio]:checked:disabled + span { color: var(--colorRadioCheckedDisabled) !important }
 
 [type=radio]:checked + span:after,
 [type=radio].with-gap:checked + span:before,
@@ -38,13 +49,6 @@ a.btn:hover { background-color: var(--bgColorActive) !important }
   color: white;
   position: relative;
   left: 15px
-}
-
-html, body {
-  min-width: 320px;
-  overflow-x: hidden;
-  color: var(--colorText);
-  background-color: var(--bgColor)
 }
 
 #btnStart {
@@ -125,7 +129,7 @@ html, body {
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
     height: 6px;
-    width: 4px
+    width: 6px
   }
 
   ::-webkit-scrollbar-thumb { background-color: var(--colorScroll) }

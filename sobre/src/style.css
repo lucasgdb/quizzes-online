@@ -19,11 +19,12 @@ html, body {
 .btn:hover, .bgColorActive { background-color: var(--bgColorActive) }
 a.btn:hover { background-color: var(--bgColorActive) !important }
 .card-panel, .card-stacked, .sidenav { background-color: var(--bgColor2) }
+.btn-flat, .card-action a { color: var(--bgColor3) !important }
 
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
     height: 6px;
-    width: 4px
+    width: 6px
   }
 
   ::-webkit-scrollbar-thumb { background-color: var(--colorScroll) }

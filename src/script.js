@@ -17,6 +17,7 @@ const btnNext = document.querySelector('#next'),
   types = document.querySelectorAll('[name=selectQuiz]'),
   modal5 = document.querySelector('#modal5'),
   switcherTheme = document.querySelector('#darktheme'),
+  quizTitle = document.querySelector('#quizTitle'),
   root = document.querySelector(':root'),
   metaThemeColor = document.querySelector('meta[name=theme-color]'),
   metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
@@ -44,6 +45,9 @@ function darkTheme() {
   root.style.setProperty('--colorSwitcher', '#2962ff')
   root.style.setProperty('--colorSwitcherBall', '#0b4cff')
   root.style.setProperty('--colorText', 'white')
+  root.style.setProperty('--colorRadio', '#9a9e92')
+  root.style.setProperty('--colorRadioDisabled', '#5a5a5a')
+  root.style.setProperty('--colorRadioCheckedDisabled', '#a0a0a0')
 }
 
 function lightTheme() {
@@ -61,6 +65,9 @@ function lightTheme() {
   root.style.setProperty('--colorSwitcher', '#9e9e9e')
   root.style.setProperty('--colorSwitcherBall', '#f1f1f1')
   root.style.setProperty('--colorText', 'black')
+  root.style.setProperty('--colorRadio', '#737373')
+  root.style.setProperty('--colorRadioDisabled', '#a0a0a0')
+  root.style.setProperty('--colorRadioCheckedDisabled', '#5a5a5a')
 }
 
 if (localStorage.getItem('darktheme') === 'true') {
@@ -107,6 +114,7 @@ function createPagination() {
   htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
 
   pagination.innerHTML = htmlPagination
+  pagination.scrollLeft = pagination.querySelectorAll('li')[currentQuestion < parseInt(questions[selectedType].length / 2 + 1) ? 0 : parseInt(questions[selectedType].length / 2) + 1].offsetLeft
 }
 
 function timeProgress(time) {
@@ -214,9 +222,9 @@ function next() {
       }
 
       quisSave.innerHTML = types[selectedType].getAttribute('data-text')
-      hitsSave.innerHTML = `${matches.filter(item => item === 1).length}/${questions[selectedType].length}`
       timeSave.innerHTML = timeProgress(time)
       const pointsPercentage = points / answers[selectedType].length * 100
+      hitsSave.innerHTML = `${points} de ${questions[selectedType].length} (<span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>)`
       winPoints.innerHTML = `${points} de ${questions[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>`
       
       star.className = `material-icons ${pointsPercentage < 50 ? 'red-text' : 'green-text'}`
@@ -256,11 +264,11 @@ function save() {
     const allSaved = localStorage.getItem('registeredItems')
 
     if (allSaved === null)
-      localStorage.setItem('registeredItems', `{"items":[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${matches.filter(item => item === 1).length}, ${questions[selectedType].length},"${timeProgress(time)}"]]}`)
+      localStorage.setItem('registeredItems', `{"items":[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${points}, ${questions[selectedType].length},"${timeProgress(time)}"]]}`)
     else {
       let newArray = JSON.parse(allSaved).items
 
-      newArray.push([types[selectedType].getAttribute('data-text'), textName.value, matches.filter(item => item === 1).length, questions[selectedType].length, timeProgress(time)])
+      newArray.push([types[selectedType].getAttribute('data-text'), textName.value, points, questions[selectedType].length, timeProgress(time)])
 
       newArray = arraySort(newArray)
 
@@ -356,6 +364,8 @@ window.addEventListener('DOMContentLoaded', function() {
       document.querySelector('#tabs').scrollLeft = tabs.offsetLeft
     }, 300)
   }
+
+  btnSave.onclick = () => { setTimeout(() => { textName.select() }, 50) }
 })
 
 modal5.onkeydown = e => {
