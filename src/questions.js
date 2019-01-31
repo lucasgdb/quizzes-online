@@ -295,7 +295,7 @@ const questions = [
       ],
       [
         'B é maior do que A sendo D maior que a soma de A e B',
-        'D é diferente da soma de de A e B sendo D maior que C',
+        'D é diferente da soma de A e B sendo D maior que C',
         'D - A é igual a 20 sendo 20 a metade da soma de A + B',
         'D é diferente de C sendo C a metade da soma de A + D'
       ],

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link rel="stylesheet" href="src/style.css">
     <link rel="icon" href="images/logo_light.png">
 
@@ -62,14 +62,14 @@
         <a data-target="slide-out" class="sidenav-trigger right c-pt"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="hide-on-med-and-down">
-          <li><a title="Início" href="./" class="corFundoActive us-none">Início<i class="material-icons left">home</i></a></li>
+          <li><a title="Início" href="./" class="bgColorActive us-none">Início<i class="material-icons left">home</i></a></li>
           <li><a title="Sobre" href="sobre/" class="us-none">Sobre<i class="material-icons left">info</i></a></li>
         </ul>
       </div>
     </nav>
 
     <ul id="slide-out" class="sidenav">
-      <li><a href="./" class="btn waves-effect waves-light corFundoActive">Início</a></li>
+      <li><a href="./" class="btn waves-effect waves-light bgColorActive">Início</a></li>
       <li><a href="sobre/" class="btn waves-effect waves-light">Sobre</a></li>
     </ul>
 
@@ -133,7 +133,7 @@
         </p>
 
         <div class="fixed-action-btn">
-          <a class="btn-floating btn-large waves-effect waves-light" style="-webkit-user-select:none"><i class="material-icons">more_vert</i></a>
+          <a id="menu" class="btn-floating btn-large waves-effect waves-light" style="-webkit-user-select:none"><i class="material-icons">more_vert</i></a>
           <ul>
             <li><a class="btn-floating modal-trigger waves-effect waves-light red" data-target="modal7" title="Limpar Ranking"><i class="material-icons">clear</i></a></li>
             <li><a class="btn-floating waves-effect waves-light" href="https://github.com/LucasNaja/quizzes" target="_target" rel="noopener noreferrer" title="Repositório no GitHub"><i class="material-icons">code</i></a></li>
@@ -142,6 +142,14 @@
           </ul>
         </div>
        
+        <div class="tap-target" data-target="menu">
+          <div class="tap-target-content">
+            <h5>Algumas opções</h5>
+            <p>• Veja o Ranking Local</p>
+            <p>• Veja o repositório do projeto no <strong>GitHub</strong></p>
+            <p>• Altere o Tema para <strong>Dark</strong></p>
+          </div>
+        </div>      
       </section>
 
       <section id="quiz" class="hide"> </section>
@@ -192,7 +200,7 @@
 
     <section id="modal4" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <ul id="tabs" class="tabs tabs-fixed-width z-depth-1"> </ul>
+        <ul id="tabs" class="tabs z-depth-1"> </ul>
 
         <div id="tabItems"></div>
       </div>
@@ -206,8 +214,8 @@
       <div class="modal-content">
         <h4><i class="material-icons" style="top:1px">save</i> Salvar</h4>
         <p>Quiz: <span id="quizSave"></span></p>
-        <p>Seus acertos: <span id="hitsSave"></span></p>
-        <p>Seu tempo: <span id="timeSave"></span></p>
+        <p>Acertos: <span id="hitsSave"></span></p>
+        <p>Tempo: <span id="timeSave"></span></p>
 
         <div class="input-field" style="margin:25px 0 0 0">
           <input placeholder="Nome" id="name" type="text" minlength=3 class="validate">
@@ -263,11 +271,11 @@
 
       <div class="divider"></div>
       <div class="modal-footer">
-        <button title="Cancelar" class="modal-close waves-effect waves-light btn">Fechar</button>
+        <button title="Fechar" class="modal-close waves-effect waves-light btn">Fechar</button>
       </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script src="src/questions.js"></script>
     <script src="src/script.js"></script>
   </body>

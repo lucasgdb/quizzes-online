@@ -29,12 +29,45 @@ let points = 0,
   time = 0,
   timeInterval
 
-modal5.onkeydown = e => {
-  if (e.which === 13) {
-    save()
-    renderSavedItems()
-  }
+function darkTheme() {
+  localStorage.setItem('darktheme', 'true')
+  metaThemeColor.setAttribute('content', '#2962ff')
+  metaMSThemeColor.setAttribute('content', '#2962ff')
+  icon.setAttribute('href', 'images/logo_dark.png')
+  root.style.setProperty('--bgColor', '#242b38')
+  root.style.setProperty('--bgColor2', '#2a3342')
+  root.style.setProperty('--bgColor3', '#3666ec')
+  root.style.setProperty('--bgColorActive', '#003bdd')
+  root.style.setProperty('--bgColorScroll', '#2a3342')
+  root.style.setProperty('--colorScroll', '#2962ff')
+  root.style.setProperty('--colorScrollHover', '#0b4cff')
+  root.style.setProperty('--colorSwitcher', '#2962ff')
+  root.style.setProperty('--colorSwitcherBall', '#0b4cff')
+  root.style.setProperty('--colorText', 'white')
 }
+
+function lightTheme() {
+  localStorage.removeItem('darktheme')
+  metaThemeColor.setAttribute('content', '#009688')
+  metaMSThemeColor.setAttribute('content', '#009688')
+  icon.setAttribute('href', 'images/logo_light.png')
+  root.style.setProperty('--bgColor', 'white')
+  root.style.setProperty('--bgColor2', 'white')
+  root.style.setProperty('--bgColor3', '#009688')
+  root.style.setProperty('--bgColorActive', '#007267')
+  root.style.setProperty('--bgColorScroll', '#ededed')
+  root.style.setProperty('--colorScroll', '#929292')
+  root.style.setProperty('--colorScrollHover', 'grey')
+  root.style.setProperty('--colorSwitcher', '#9e9e9e')
+  root.style.setProperty('--colorSwitcherBall', '#f1f1f1')
+  root.style.setProperty('--colorText', 'black')
+}
+
+if (localStorage.getItem('darktheme') === 'true') {
+  darkTheme()
+  switcherTheme.checked = true
+}
+else lightTheme()
 
 function render() {
   let html = `<p id="time" style="margin:5px 0 0 0">${timeProgress(time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i></p><h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
@@ -69,7 +102,7 @@ function createPagination() {
   htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
   for (let i = 0; i < questions[selectedType].length; i++)
-    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active corFundo3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+    htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgColor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
 
   htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
 
@@ -292,51 +325,22 @@ function clearSavedItems() {
   renderSavedItems()
 }
 
-function darkTheme() {
-  localStorage.setItem('darktheme', 'true')
-  metaThemeColor.setAttribute('content', '#2962ff')
-  metaMSThemeColor.setAttribute('content', '#2962ff')
-  icon.setAttribute('href', 'images/logo_dark.png')
-  root.style.setProperty('--corFundo', '#242b38')
-  root.style.setProperty('--corFundo2', '#2a3342')
-  root.style.setProperty('--corFundoScroll', '#2a3342')
-  root.style.setProperty('--corScroll', '#2962ff')
-  root.style.setProperty('--corScrollHover', '#0b4cff')
-  root.style.setProperty('--corSwitcher', '#2962ff')
-  root.style.setProperty('--corSwitcherBall', '#0b4cff')
-  root.style.setProperty('--corFundo3', '#2962ff')
-  root.style.setProperty('--corFundoActive', '#0b4cff')
-  root.style.setProperty('--corTexto', 'white')
-}
-
-function lightTheme() {
-  localStorage.removeItem('darktheme')
-  metaThemeColor.setAttribute('content', '#009688')
-  metaMSThemeColor.setAttribute('content', '#009688')
-  icon.setAttribute('href', 'images/logo_light.png')
-  root.style.setProperty('--corFundo', 'white')
-  root.style.setProperty('--corFundo2', 'white')
-  root.style.setProperty('--corFundoScroll', '#ededed')
-  root.style.setProperty('--corScroll', '#929292')
-  root.style.setProperty('--corScrollHover', 'grey')
-  root.style.setProperty('--corSwitcher', '#9e9e9e')
-  root.style.setProperty('--corSwitcherBall', '#f1f1f1')
-  root.style.setProperty('--corFundo3', '#009688')
-  root.style.setProperty('--corFundoActive', '#007267')
-  root.style.setProperty('--corTexto', 'black')
-}
-
-if (localStorage.getItem('darktheme') === 'true') {
-  darkTheme()
-  switcherTheme.checked = true
-}
-else lightTheme()
-
 window.addEventListener('DOMContentLoaded', function() {
   M.Sidenav.init(document.querySelectorAll('.sidenav'))
   M.Modal.init(document.querySelectorAll('.modal'))
   M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), { hoverEnabled: false })
-
+  
+  if (localStorage.getItem('firstVisit') === null) {
+    localStorage.setItem('firstVisit', 'false')
+    M.TapTarget.init(document.querySelectorAll('.tap-target'), {
+      onClose: () => { M.FloatingActionButton.getInstance(document.querySelector('.fixed-action-btn')).open() }
+    })
+    setTimeout(() => {
+      M.TapTarget.getInstance(document.querySelector('.tap-target')).open()
+      M.TapTarget.getInstance(document.querySelector('.tap-target'))._calculatePositioning()
+    }, 100)
+  }
+  
   renderSavedItems()
   document.querySelector('#rank').onclick = () => {
     let tabs
@@ -353,6 +357,13 @@ window.addEventListener('DOMContentLoaded', function() {
     }, 300)
   }
 })
+
+modal5.onkeydown = e => {
+  if (e.which === 13) {
+    save()
+    renderSavedItems()
+  }
+}
 
 window.onload = () => {
   btnStart.onclick = start
