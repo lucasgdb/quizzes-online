@@ -19,7 +19,10 @@ html, body {
 .btn:hover, .bgColorActive { background-color: var(--bgColorActive) }
 a.btn:hover { background-color: var(--bgColorActive) !important }
 .card-panel, .card-stacked, .sidenav { background-color: var(--bgColor2) }
-.btn-flat, .card-action a { color: var(--bgColor3) !important }
+.btn-flat, .card-action a, p a {
+  font-weight: 600;
+  color: var(--bgColor3) !important
+}
 
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
@@ -27,8 +30,8 @@ a.btn:hover { background-color: var(--bgColorActive) !important }
     width: 6px
   }
 
-  ::-webkit-scrollbar-thumb { background-color: var(--colorScroll) }
+  ::-webkit-scrollbar-thumb { background-color: var(--bgColor3) }
 
-  ::-webkit-scrollbar-thumb:hover { background-color: var(--colorScrollHover) }
+  ::-webkit-scrollbar-thumb:hover { background-color: var(--bgColorActive) }
   ::-webkit-scrollbar-track { background-color: var(--bgColorScroll) }
 }

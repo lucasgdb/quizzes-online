@@ -40,8 +40,6 @@ function darkTheme() {
   root.style.setProperty('--bgColor3', '#3666ec')
   root.style.setProperty('--bgColorActive', '#003bdd')
   root.style.setProperty('--bgColorScroll', '#2a3342')
-  root.style.setProperty('--colorScroll', '#2962ff')
-  root.style.setProperty('--colorScrollHover', '#0b4cff')
   root.style.setProperty('--colorSwitcher', '#2962ff')
   root.style.setProperty('--colorSwitcherBall', '#0b4cff')
   root.style.setProperty('--colorText', 'white')
@@ -55,13 +53,11 @@ function lightTheme() {
   metaThemeColor.setAttribute('content', '#009688')
   metaMSThemeColor.setAttribute('content', '#009688')
   icon.setAttribute('href', 'images/logo_light.png')
-  root.style.setProperty('--bgColor', 'white')
+  root.style.setProperty('--bgColor', '#f3f3f3')
   root.style.setProperty('--bgColor2', 'white')
   root.style.setProperty('--bgColor3', '#009688')
   root.style.setProperty('--bgColorActive', '#007267')
   root.style.setProperty('--bgColorScroll', '#ededed')
-  root.style.setProperty('--colorScroll', '#929292')
-  root.style.setProperty('--colorScrollHover', 'grey')
   root.style.setProperty('--colorSwitcher', '#9e9e9e')
   root.style.setProperty('--colorSwitcherBall', '#f1f1f1')
   root.style.setProperty('--colorText', 'black')
@@ -124,7 +120,7 @@ function timeProgress(time) {
   const minutes = parseInt(time / 60)
   time -= minutes * 60
 
-  if (hour === 1) {
+  if (hour >= 1) {
     M.Modal.getInstance(document.querySelector('#modal6')).open()
     stop()
     return
