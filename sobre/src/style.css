@@ -24,6 +24,8 @@ a.btn:hover { background-color: var(--bgColorActive) !important }
   color: var(--bgColor3) !important
 }
 
+@media (max-width: 1023px) { * { cursor: default !important } }
+
 @media (min-width: 1024px) {
   ::-webkit-scrollbar {
     height: 6px;
