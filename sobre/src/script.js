@@ -1,45 +1,27 @@
 const root = document.querySelector(':root'),
-  metaThemeColor = document.querySelector('meta[name=theme-color]'),
-  metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
-  icon = document.querySelector('link[rel=icon]')
+	metaThemeColor = document.querySelector('meta[name=theme-color]'),
+	metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
+	icon = document.querySelector('link[rel=icon]')
 
-M.Sidenav.init(document.querySelectorAll('.sidenav'));
-M.Materialbox.init(document.querySelectorAll('.materialboxed'));
+M.Sidenav.init(document.querySelectorAll('.sidenav'))
+M.Materialbox.init(document.querySelectorAll('.materialboxed'))
 
 if (innerWidth >= 1024)
-  document.querySelector('#card').className = 'card horizontal'
+	document.querySelector('#card').className = 'card horizontal'
 
 function darkTheme() {
-  localStorage.setItem('darktheme', 'true')
-  metaThemeColor.setAttribute('content', '#2962ff')
-  metaMSThemeColor.setAttribute('content', '#2962ff')
-  icon.setAttribute('href', '../images/logo_dark.png')
-  root.style.setProperty('--bgColor', '#242b38')
-  root.style.setProperty('--bgColor2', '#2a3342')
-  root.style.setProperty('--bgColor3', '#3666ec')
-  root.style.setProperty('--bgColorActive', '#003bdd')
-  root.style.setProperty('--bgColorScroll', '#2a3342')
-  root.style.setProperty('--colorText', 'white')
+	metaThemeColor.setAttribute('content', '#2962ff')
+	metaMSThemeColor.setAttribute('content', '#2962ff')
+	icon.setAttribute('href', '../images/logo_dark.png')
+	document.body.setAttribute('data-theme', 'dark')
 }
 
-function lightTheme() {
-  localStorage.removeItem('darktheme')
-  metaThemeColor.setAttribute('content', '#009688')
-  metaMSThemeColor.setAttribute('content', '#009688')
-  icon.setAttribute('href', '../images/logo_light.png')
-  root.style.setProperty('--bgColor', '#f3f3f3')
-  root.style.setProperty('--bgColor2', 'white')
-  root.style.setProperty('--bgColor3', '#009688')
-  root.style.setProperty('--bgColorActive', '#007267')
-  root.style.setProperty('--bgColorScroll', '#ededed')
-  root.style.setProperty('--colorText', 'black')
+if (localStorage.getItem('darktheme')) {
+	darkTheme()
 }
-if (localStorage.getItem('darktheme') === 'true')
-  darkTheme()
-else lightTheme()
 
 window.onload = () => {
-  document.querySelector('#preloader').className = 'hide'
-  document.querySelector('#nav').className = ''
-  document.querySelector('#container').className = 'container'
+	document.querySelector('#preloader').remove()
+	document.querySelector('#nav').classList.remove('hide')
+	document.querySelector('#container').classList.remove('hide')
 }
