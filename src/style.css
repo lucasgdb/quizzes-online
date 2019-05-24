@@ -271,6 +271,7 @@ a.btn:hover {
 
 @media (max-width: 600px) {
 	#rank {
+		margin-left: 5px;
 		float: unset !important
 	}
 }
