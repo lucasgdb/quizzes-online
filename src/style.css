@@ -257,6 +257,24 @@ a.btn:hover {
 	-webkit-user-select: none
 }
 
+@media (max-width: 447px) {
+	#save {
+		float: right
+	}
+
+	#showAnswers {
+		float: unset !important;
+		margin: 10px 0 0 10px !important;
+		display: block
+	}
+}
+
+@media (max-width: 600px) {
+	#rank {
+		float: unset !important
+	}
+}
+
 @media (max-width: 767px) {
 	.modal {
 		width: 100%
@@ -277,18 +295,6 @@ a.btn:hover {
 	#save,
 	#showAnswers {
 		margin-right: 10px
-	}
-}
-
-@media (max-width: 447px) {
-	#save {
-		float: right
-	}
-
-	#showAnswers {
-		float: unset !important;
-		margin: 10px 0 0 10px !important;
-		display: block
 	}
 }
 
