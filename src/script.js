@@ -39,7 +39,7 @@ for (let i = 0; i < names.length; i++) {
 	radioButtons +=
 		`<p>
 			<label>
-				<input class="with-gap" name="selectQuiz" type="radio" data-text="${names[i]}" ${i == 0 ? 'checked' : ''} />
+				<input class="with-gap" name="selectQuiz" type="radio" data-num="${i}" data-text="${names[i]}" ${i == 0 ? 'checked' : ''} />
 				<span>${names[i]}</span>
 			</label>
 		</p>`
@@ -49,7 +49,7 @@ options.innerHTML = radioButtons
 
 types = document.querySelectorAll('[name=selectQuiz]')
 
-function darkTheme() {
+const darkTheme = () => {
 	localStorage.setItem('darktheme', 'true')
 	metaThemeColor.setAttribute('content', '#2962ff')
 	metaMSThemeColor.setAttribute('content', '#2962ff')
@@ -57,7 +57,7 @@ function darkTheme() {
 	document.body.setAttribute('data-theme', 'dark')
 }
 
-function lightTheme() {
+const lightTheme = () => {
 	localStorage.removeItem('darktheme')
 	metaThemeColor.setAttribute('content', '#009688')
 	metaMSThemeColor.setAttribute('content', '#009688')
@@ -70,7 +70,7 @@ if (localStorage.getItem('darktheme')) {
 	switcherTheme.checked = true
 }
 
-function render() {
+const render = () => {
 	let html = `<p id="time" style="margin:5px 0 0 0">${timeProgress(time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i></p><h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
 
 	const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
@@ -98,7 +98,7 @@ function render() {
 	quiz.innerHTML = html
 }
 
-function createPagination() {
+const createPagination = () => {
 	let htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
 	for (let i = 0; i < questions[selectedType].length; i++)
@@ -110,7 +110,7 @@ function createPagination() {
 	pagination.scrollLeft = pagination.querySelectorAll('li')[currentQuestion < parseInt(questions[selectedType].length / 2 + 1) ? 0 : parseInt(questions[selectedType].length / 2) + 1].offsetLeft
 }
 
-function timeProgress(time) {
+const timeProgress = time => {
 	const hour = parseInt(time / 3600)
 	time -= hour * 3600
 
@@ -126,13 +126,13 @@ function timeProgress(time) {
 	return `${minutes}m ${time}s`
 }
 
-function reTimeProgress(time = String) {
+const reTimeProgress = time => {
 	const str = time.split(' ')
 
 	return parseInt(str[0].replace('m', '')) * 60 + parseInt(str[1].replace('s', ''))
 }
 
-function start() {
+const start = () => {
 	selectQuiz.classList.add('hide')
 	btnStart.classList.add('hide')
 	btnRank.classList.add('hide')
@@ -140,6 +140,7 @@ function start() {
 	btnNext.classList.remove('hide')
 	btnGiveUp.classList.remove('hide')
 	pagination.classList.remove('hide')
+	btnSave.removeAttribute('disabled')
 
 	types.forEach((item, index) => {
 		if (item.checked) {
@@ -154,7 +155,7 @@ function start() {
 	}, 1000)
 }
 
-function stop() {
+const stop = () => {
 	selectQuiz.classList.remove('hide')
 	btnStart.classList.remove('hide')
 	btnRank.classList.remove('hide')
@@ -175,7 +176,7 @@ function stop() {
 	time = 0
 }
 
-function next() {
+const next = () => {
 	const currentAnswers = document.querySelectorAll(`[name=question${currentQuestion}]`)
 
 	let sumWithoutResponse = 0
@@ -237,7 +238,7 @@ function next() {
 	}
 }
 
-function arraySort(array) {
+const arraySort = array => {
 	const newArray = []
 	let bestArray = -1,
 		indexBestArray = -1,
@@ -264,17 +265,16 @@ function arraySort(array) {
 	return newArray
 }
 
-function save() {
+const save = () => {
 	if (textName.value.trim() !== '' && textName.value.length > 2) {
 		const allSaved = localStorage.getItem('registeredItems')
 
 		if (allSaved === null)
-			localStorage.setItem('registeredItems', `{"items":[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${points}, ${questions[selectedType].length},"${timeProgress(time)}"]]}`)
+			localStorage.setItem('registeredItems', `{"items":[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]}`)
 		else {
 			let newArray = JSON.parse(allSaved).items
 
 			newArray.push([types[selectedType].getAttribute('data-text'), textName.value, points, questions[selectedType].length, timeProgress(time)])
-
 			newArray = arraySort(newArray)
 
 			localStorage.setItem('registeredItems', `{"items":${JSON.stringify(newArray)}}`)
@@ -294,7 +294,7 @@ function save() {
 	}
 }
 
-function renderSavedItems() {
+const renderSavedItems = (active = 0) => {
 	if (M.Tabs.getInstance(document.querySelector('#tabs')) !== undefined)
 		M.Tabs.getInstance(document.querySelector('#tabs')).destroy()
 
@@ -302,29 +302,32 @@ function renderSavedItems() {
 		htmlParent = '',
 		htmlItem, newItems
 	const items = localStorage.getItem('registeredItems'),
-		defaultHtmlItem = '<table class="responsive-table"><thead><tr><th>Nome</th><th>Acertos</th><th>Tempo</th></tr></thead><tbody>'
-
-	if (items !== null)
-		newItems = JSON.parse(items).items
+		defaultHtmlItem = '<table class="responsive-table"><thead><tr><th>Posição</th><th class="center-align">Nome</th><th class="center-align">Acertos</th><th class="center-align">Tempo</th><th class="center-align">Remover</th></tr></thead><tbody>'
 
 	for (let i = 0; i < types.length; i++) {
-		html += `<li class="tab tabs-fixed-width tab-demo"><a href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+		html += `<li class="tab tabs-fixed-width tab-demo"><a class="${active == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
 
 		htmlItem = defaultHtmlItem
 
-		if (items !== null)
-			for (let j = 0; j < newItems.length; j++)
+		if (items !== null) {
+			newItems = JSON.parse(items).items
+			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
 					htmlItem +=
 						`<tr>
-							<td>${newItems[j][1]}</td>
-							<td>${newItems[j][2]}/${newItems[j][3]}</td>
-							<td>${newItems[j][4]}</td>
+							<td>${pos}°</td>
+							<td class="center-align">${newItems[j][1]}</td>
+							<td class="center-align">${newItems[j][2]}/${newItems[j][3]}</td>
+							<td class="center-align">${newItems[j][4]}</td>
+							<td class="center-align"><i class="material-icons red-text" style="cursor:pointer" onclick="deleteItem(${num}, ${types[i].getAttribute('data-num')})">close</i></td>
 						</tr>`
 
 					newItems.splice(j, 1)
+					pos += 1
 					j--
 				}
+			}
+		}
 
 		htmlItem += '</tbody></table>'
 
@@ -333,26 +336,32 @@ function renderSavedItems() {
 	}
 
 	document.querySelector('#tabs').innerHTML = html
-
 	document.querySelector('#tabItems').innerHTML = htmlParent
-
 	M.Tabs.init(document.querySelectorAll('.tabs'))
 }
 
-function clearSavedItems() {
+const deleteItem = (item, tabIndex) => {
+	const allSaved = JSON.parse(localStorage.getItem('registeredItems')).items
+
+	allSaved.splice(item, 1)
+	localStorage.setItem('registeredItems', `{"items":${JSON.stringify(allSaved)}}`)
+	renderSavedItems(tabIndex)
+}
+
+const clearSavedItems = () => {
 	localStorage.removeItem('registeredItems')
 	renderSavedItems()
 }
 
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
 	M.Sidenav.init(document.querySelectorAll('.sidenav'))
 	M.Modal.init(document.querySelectorAll('.modal'))
 	M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), {
 		hoverEnabled: false
 	})
 
-	if (localStorage.getItem('firstVisit') === null) {
-		localStorage.setItem('firstVisit', 'false')
+	if (!localStorage.getItem('firstVisit')) {
+		localStorage.setItem('firstVisit', '0')
 		M.TapTarget.init(document.querySelectorAll('.tap-target'), {
 			onClose: () => {
 				M.FloatingActionButton.getInstance(document.querySelector('.fixed-action-btn')).open()
@@ -375,8 +384,9 @@ window.addEventListener('DOMContentLoaded', function () {
 		})
 
 		setTimeout(() => {
-			M.Tabs.getInstance(document.querySelector('#tabs')).updateTabIndicator()
-			document.querySelector('#tabs').scrollLeft = tabs.offsetLeft
+			const tab = document.querySelector('#tabs')
+			M.Tabs.getInstance(tab).updateTabIndicator()
+			tab.scrollLeft = tabs.offsetLeft
 		}, 300)
 	}
 

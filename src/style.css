@@ -170,6 +170,15 @@ a.btn:hover {
 	margin-left: 5px
 }
 
+#save:disabled {
+	background-color: #82C785 !important;
+	color: white !important
+}
+
+i[data-disabled] {
+	color: #f36b73 !important
+}
+
 #pagination {
 	-webkit-user-select: none;
 	white-space: nowrap;
@@ -269,13 +278,6 @@ a.btn:hover {
 	}
 }
 
-@media (max-width: 600px) {
-	#rank {
-		margin-left: 5px;
-		float: unset !important
-	}
-}
-
 @media (max-width: 767px) {
 	.modal {
 		width: 100%
@@ -285,13 +287,17 @@ a.btn:hover {
 		width: 100%
 	}
 
+	#rank {
+		margin-left: 5px;
+		float: unset !important
+	}
+
 	#next,
 	#finish,
 	#start {
 		margin-left: 10px !important
 	}
 
-	#rank,
 	#giveUp,
 	#save,
 	#showAnswers {
