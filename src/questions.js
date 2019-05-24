@@ -1,87 +1,98 @@
-const questions = [
-	[
-		'Complete: Sueline está ___, pois dormiu ___ durante a noite.',
-		'Qual conjunto de palavras está correto?',
-		'Na ordem da conversa, qual a colocação correta? João: ___ é separado? Bia: ____ não é junto! João: Mas ___? Bia: O ____ eu não sei.',
-		'"Engodar" é o sinônimo de:',
-		'Complete: Siga ___ e ___ seus medos.',
-		'Qual destas palavras não é sinônimo de "Rubicundo".',
-		'Qual o plural correto de couve-flor, girassol, pudim, giz e lápis?',
-		'Complete corretamente a oração: ___ noiva chegou ___ atrasada, o casamento começou ___ quinze minutos e vai terminar meio-dia e ___.'
+const
+	names = [
+		'Português',
+		'Matemática',
+		'Informática',
+		'Algoritmos',
+		'Mitologia Grega',
+		'Planeta Terra',
+		'Sistema Solar',
+		'Felinos'
 	],
-	[
-		'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas.',
-		'40% de 75 é 28.',
-		'Todos os lados de um triângulo escaleno têm o mesmo comprimento.',
-		'Quando se divide 1.000 por 0, o resultado é 0.',
-		'Se f(X) = 5, então (X + 3X) - (2X + X) é igual ao valor de X.',
-		'7% é igual a 0,07.',
-		'Zero é um número inteiro e também um número natural.',
-		'De acordo com a Trigonometria, seno(θ) dividido por cosseno(θ) é igual a secante(θ).',
-		'40 - 6 * 4 = 136.',
-		'Não há número 0 em numeral romano.',
-		'1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si.',
-		'É possível que você não marque um número inteiro neste quiz.'
+	questions = [
+		[
+			'Complete: Sueline está ___, pois dormiu ___ durante a noite.',
+			'Qual conjunto de palavras está correto?',
+			'Na ordem da conversa, qual a colocação correta? João: ___ é separado? Bia: ____ não é junto! João: Mas ___? Bia: O ____ eu não sei.',
+			'"Engodar" é o sinônimo de:',
+			'Complete: Siga ___ e ___ seus medos.',
+			'Qual destas palavras não é sinônimo de "Rubicundo".',
+			'Qual o plural correto de couve-flor, girassol, pudim, giz e lápis?',
+			'Complete corretamente a oração: ___ noiva chegou ___ atrasada, o casamento começou ___ quinze minutos e vai terminar meio-dia e ___.'
+		],
+		[
+			'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas.',
+			'40% de 75 é 28.',
+			'Todos os lados de um triângulo escaleno têm o mesmo comprimento.',
+			'Quando se divide 1.000 por 0, o resultado é 0.',
+			'Se f(X) = 5, então (X + 3X) - (2X + X) é igual ao valor de X.',
+			'7% é igual a 0,07.',
+			'Zero é um número inteiro e também um número natural.',
+			'De acordo com a Trigonometria, seno(θ) dividido por cosseno(θ) é igual a secante(θ).',
+			'40 - 6 * 4 = 136.',
+			'Não há número 0 em numeral romano.',
+			'1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si.',
+			'É possível que você não marque um número inteiro neste quiz.'
+		],
+		[
+			'Dentre as alternativas a seguir, qual não faz parte de um item de hardware?',
+			'Selecione a opção abaixo que não caracteriza uma medida de segurança para seu computador.',
+			'Escolha a alternativa que representa as características do aplicativo TeamViewer.',
+			'São sistemas operacionais:',
+			'Qual a principal função do Sistema Operacional?',
+			'O que um Driver faz?'
+		],
+		[
+			'Qual a definição de Algoritmo?',
+			'Onde podemos utilizar um Algoritmo?',
+			'O que é um Pseudocódigo?',
+			'"... é uma forma universal de representação, pois se utiliza de figuras geométricas para ilustrar os passos a serem seguidos para a resolução de problemas ..." O texto acima, descreve:',
+			'A palavra "Pseudocódigo" significa:',
+			'A = 10; B = 20; C = A + B; D = C; Dado o Algoritmo, podemos afirmar que:',
+			'A instrução: se ... então  ... fimse é necessária para?'
+		],
+		[
+			'Qual o nome do deus do vinho na Mitologia Grega?',
+			'Segundo a Mitologia Grega, o que a deusa Ártemis era de Apolo?',
+			'Qual o nome dado pelos romanos, a deusa grega Afrodite?',
+			'Quais dos deuses abaixo não fazem parte da Mitologia Grega?',
+			'Onde viviam os deuses gregos?',
+			'Conforme o mito grego, quem era, respectivamente, a deusa da caça, a deusa do amor, e a deusa da sabedoria?',
+			'Qual o nome do deus grego da guerra?'
+		],
+		[
+			'Quantos movimentos o planeta Terra executa?',
+			'Qual é a principal consequência do movimento de rotação?',
+			'Qual a principal consequência do movimento de translação?',
+			'Qual a forma real da Terra?',
+			'Quanto tempo a Terra demora para executar o movimento de rotação?',
+			'Quanto tempo a Terra demora para executar o movimento de translação?',
+			'O que é litosfera?',
+			'O que é hidrosfera?',
+			'O que é atmosfera?',
+			'O que é biosfera?'
+		],
+		[
+			'Qual corpo celeste é conhecido por "Planeta Vermelho"?',
+			'Qual é o maior planeta do sitema solar?',
+			'Em qual galáxia nosso sistema solar está localizado?',
+			'Quantas estrelas existem em nosso sistema solar?',
+			'Qual o planeta mais frio do nosso sistema solar?',
+			'Qual destes planetas não possui anéis?',
+			'Vênus e ___ são os dois planetas que não têm uma lua.',
+			'Qual o planeta mais quente do sistema solar?'
+		],
+		[
+			'Qual é a única espécie de felino que os exemplares raramente são encontrados sozinhos?',
+			'Qual dos felinos a seguir tem maior o porte?',
+			'Qual dos felinos a seguir costuma caçar à noite?',
+			'Qual dos felinos a seguir tem menor porte?',
+			'O Leão macho é o mais lento dentre todos os grandes felinos.',
+			'Qual dos felinos á seguir possui melhor habilidade de escalar árvores?',
+			'Qual dos felinos á seguir tem maior o costume e habilidade para caçar pássaros?',
+			'Quantas raças de gatos domésticos existem aproximadamente?'
+		]
 	],
-	[
-		'Dentre as alternativas a seguir, qual não faz parte de um item de hardware?',
-		'Selecione a opção abaixo que não caracteriza uma medida de segurança para seu computador.',
-		'Escolha a alternativa que representa as características do aplicativo TeamViewer.',
-		'São sistemas operacionais:',
-		'Qual a principal função do Sistema Operacional?',
-		'O que um Driver faz?'
-	],
-	[
-		'Qual a definição de Algoritmo?',
-		'Onde podemos utilizar um Algoritmo?',
-		'O que é um Pseudocódigo?',
-		'"... é uma forma universal de representação, pois se utiliza de figuras geométricas para ilustrar os passos a serem seguidos para a resolução de problemas ..." O texto acima, descreve:',
-		'A palavra "Pseudocódigo" significa:',
-		'A = 10; B = 20; C = A + B; D = C; Dado o Algoritmo, podemos afirmar que:',
-		'A instrução: se ... então  ... fimse é necessária para?'
-	],
-	[
-		'Qual o nome do deus do vinho na Mitologia Grega?',
-		'Segundo a Mitologia Grega, o que a deusa Ártemis era de Apolo?',
-		'Qual o nome dado pelos romanos, a deusa grega Afrodite?',
-		'Quais dos deuses abaixo não fazem parte da Mitologia Grega?',
-		'Onde viviam os deuses gregos?',
-		'Conforme o mito grego, quem era, respectivamente, a deusa da caça, a deusa do amor, e a deusa da sabedoria?',
-		'Qual o nome do deus grego da guerra?'
-	],
-	[
-		'Quantos movimentos o planeta Terra executa?',
-		'Qual é a principal consequência do movimento de rotação?',
-		'Qual a principal consequência do movimento de translação?',
-		'Qual a forma real da Terra?',
-		'Quanto tempo a Terra demora para executar o movimento de rotação?',
-		'Quanto tempo a Terra demora para executar o movimento de translação?',
-		'O que é litosfera?',
-		'O que é hidrosfera?',
-		'O que é atmosfera?',
-		'O que é biosfera?'
-	],
-	[
-		'Qual corpo celeste é conhecido por "Planeta Vermelho"?',
-		'Qual é o maior planeta do sitema solar?',
-		'Em qual galáxia nosso sistema solar está localizado?',
-		'Quantas estrelas existem em nosso sistema solar?',
-		'Qual o planeta mais frio do nosso sistema solar?',
-		'Qual destes planetas não possui anéis?',
-		'Vênus e ___ são os dois planetas que não têm uma lua.',
-		'Qual o planeta mais quente do sistema solar?'
-	],
-	[
-		'Qual é a única espécie de felino que os exemplares raramente são encontrados sozinhos?',
-		'Qual dos felinos a seguir tem maior o porte?',
-		'Qual dos felinos a seguir costuma caçar à noite?',
-		'Qual dos felinos a seguir tem menor porte?',
-		'O Leão macho é o mais lento dentre todos os grandes felinos.',
-		'Qual dos felinos á seguir possui melhor habilidade de escalar árvores?',
-		'Qual dos felinos á seguir tem maior o costume e habilidade para caçar pássaros?',
-		'Quantas raças de gatos domésticos existem aproximadamente?'
-	]
-],
 	answers = [
 		[
 			'Mal-humorada, mal',

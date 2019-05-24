@@ -1,3 +1,5 @@
+"use strict"
+
 const root = document.querySelector(':root'),
 	metaThemeColor = document.querySelector('meta[name=theme-color]'),
 	metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),

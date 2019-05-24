@@ -1,3 +1,5 @@
+"use strict";
+
 const btnNext = document.querySelector('#next'),
 	btnStart = document.querySelector('#start'),
 	btnRank = document.querySelector('#rank'),
@@ -15,21 +17,37 @@ const btnNext = document.querySelector('#next'),
 	hitsSave = document.querySelector('#hitsSave'),
 	timeSave = document.querySelector('#timeSave'),
 	textName = document.querySelector('#name'),
-	types = document.querySelectorAll('[name=selectQuiz]'),
 	modal5 = document.querySelector('#modal5'),
 	switcherTheme = document.querySelector('#darktheme'),
 	quizTitle = document.querySelector('#quizTitle'),
 	root = document.querySelector(':root'),
 	metaThemeColor = document.querySelector('meta[name=theme-color]'),
 	metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
-	icon = document.querySelector('link[rel=icon]')
+	icon = document.querySelector('link[rel=icon]'),
+	options = document.querySelector('#options')
 
 let points = 0,
 	currentQuestion = 0,
 	matches = [],
 	selectedType = -1,
 	time = 0,
-	timeInterval
+	timeInterval,
+	radioButtons = '',
+	types
+
+for (let i = 0; i < names.length; i++) {
+	radioButtons +=
+		`<p>
+			<label>
+				<input class="with-gap" name="selectQuiz" type="radio" data-text="${names[i]}" ${i == 0 ? 'checked' : ''} />
+				<span>${names[i]}</span>
+			</label>
+		</p>`
+}
+
+options.innerHTML = radioButtons
+
+types = document.querySelectorAll('[name=selectQuiz]')
 
 function darkTheme() {
 	localStorage.setItem('darktheme', 'true')
@@ -81,7 +99,7 @@ function render() {
 }
 
 function createPagination() {
-	htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
+	let htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
 	for (let i = 0; i < questions[selectedType].length; i++)
 		htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgColor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
@@ -298,11 +316,11 @@ function renderSavedItems() {
 			for (let j = 0; j < newItems.length; j++)
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
 					htmlItem +=
-					`<tr>
-						<td>${newItems[j][1]}</td>
-						<td>${newItems[j][2]}/${newItems[j][3]}</td>
-						<td>${newItems[j][4]}</td>
-					</tr>`
+						`<tr>
+							<td>${newItems[j][1]}</td>
+							<td>${newItems[j][2]}/${newItems[j][3]}</td>
+							<td>${newItems[j][4]}</td>
+						</tr>`
 
 					newItems.splice(j, 1)
 					j--
