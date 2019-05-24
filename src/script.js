@@ -281,7 +281,7 @@ function save() {
 		}
 
 		M.Modal.getInstance(modal5).close()
-		btnSave.classList.add('hide')
+		btnSave.setAttribute('disabled', 'true')
 		textName.value = ''
 		textName.select()
 	} else {

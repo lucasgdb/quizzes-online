@@ -1,7 +1,14 @@
 html,
 body {
 	color: var(--colortext);
-	background-color: var(--bgcolor)
+	background-color: var(--bgcolor);
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column
+}
+
+main {
+	flex: 1 0 auto;
 }
 
 * {
@@ -14,6 +21,9 @@ body[data-theme=dark] {
 	--bgcolor3: #3666ec;
 	--bgcoloractive: #003bdd;
 	--bgcolorscroll: #2a3342;
+	--footerbg: #2a3342;
+	--footercopyright: #242b38;
+	--footerlink: #0697bc;
 	--colortext: white
 }
 
@@ -23,6 +33,9 @@ body[data-theme=light] {
 	--bgcolor3: #009688;
 	--bgcoloractive: #007267;
 	--bgcolorscroll: #ededed;
+	--footerbg: #009688;
+	--footercopyright: #007267;
+	--footerlink: white;
 	--colortext: black
 }
 
@@ -68,6 +81,18 @@ a.btn:hover {
 .card-stacked,
 .sidenav {
 	background-color: var(--bgcolor2)
+}
+
+.footer-link {
+	color: var(--footerlink)
+}
+
+footer {
+	background-color: var(--footerbg) !important
+}
+
+.footer-copyright {
+	background-color: var(--footercopyright) !important
 }
 
 .btn-flat,
