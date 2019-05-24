@@ -1,7 +1,7 @@
 html,
 body {
-	color: var(--colorText);
-	background-color: var(--bgColor)
+	color: var(--colortext);
+	background-color: var(--bgcolor)
 }
 
 * {
@@ -9,21 +9,21 @@ body {
 }
 
 body[data-theme=dark] {
-	--bgColor: #242b38;
-	--bgColor2: #2a3342;
-	--bgColor3: #3666ec;
-	--bgColorActive: #003bdd;
-	--bgColorScroll: #2a3342;
-	--colorText: white
+	--bgcolor: #242b38;
+	--bgcolor2: #2a3342;
+	--bgcolor3: #3666ec;
+	--bgcoloractive: #003bdd;
+	--bgcolorscroll: #2a3342;
+	--colortext: white
 }
 
 body[data-theme=light] {
-	--bgColor: #f3f3f3;
-	--bgColor2: white;
-	--bgColor3: #009688;
-	--bgColorActive: #007267;
-	--bgColorScroll: #ededed;
-	--colorText: black
+	--bgcolor: #f3f3f3;
+	--bgcolor2: white;
+	--bgcolor3: #009688;
+	--bgcoloractive: #007267;
+	--bgcolorscroll: #ededed;
+	--colortext: black
 }
 
 #preloader {
@@ -46,35 +46,35 @@ body[data-theme=light] {
 }
 
 .card-action {
-	background-color: var(--bgColor) !important
+	background-color: var(--bgcolor) !important
 }
 
 .btn,
 .btn:focus,
 nav {
-	background-color: var(--bgColor3)
+	background-color: var(--bgcolor3)
 }
 
 .btn:hover,
-.bgColorActive {
-	background-color: var(--bgColorActive)
+.bgcoloractive {
+	background-color: var(--bgcoloractive)
 }
 
 a.btn:hover {
-	background-color: var(--bgColorActive) !important
+	background-color: var(--bgcoloractive) !important
 }
 
 .card-panel,
 .card-stacked,
 .sidenav {
-	background-color: var(--bgColor2)
+	background-color: var(--bgcolor2)
 }
 
 .btn-flat,
 .card-action a,
 p a {
 	font-weight: 600;
-	color: var(--bgColor3) !important
+	color: var(--bgcolor3) !important
 }
 
 @media (max-width: 1023px) {
@@ -90,14 +90,14 @@ p a {
 	}
 
 	::-webkit-scrollbar-thumb {
-		background-color: var(--bgColor3)
+		background-color: var(--bgcolor3)
 	}
 
 	::-webkit-scrollbar-thumb:hover {
-		background-color: var(--bgColorActive)
+		background-color: var(--bgcoloractive)
 	}
 
 	::-webkit-scrollbar-track {
-		background-color: var(--bgColorScroll)
+		background-color: var(--bgcolorscroll)
 	}
 }
