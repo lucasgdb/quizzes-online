@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const root = document.querySelector(':root'),
 	metaThemeColor = document.querySelector('meta[name=theme-color]'),
@@ -25,8 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.onload = () => {
-	document.querySelector('#preloader').remove()
+	const preLoader = document.querySelector('#preloader')
+	
 	document.querySelector('#nav').classList.remove('hide')
 	document.querySelector('#container').classList.remove('hide')
 	document.querySelector('footer').classList.remove('hide')
+	preLoader.classList.add('hide')
+	preLoader.remove()
 }

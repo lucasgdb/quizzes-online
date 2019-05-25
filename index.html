@@ -43,7 +43,7 @@
 	<meta name="robots" content="noydir">
 	<meta name="slurp" content="noydir">
 
-	<title>Quizzes - Início</title>
+	<title>Quizzes OnLine - Início</title>
 </head>
 
 <body data-theme="light">
@@ -109,13 +109,13 @@
 
 		<section id="quiz" class="card-panel hide"> </section>
 
-		<button id="start" title="Iniciar Quiz" class="btn waves-effect waves-light">Iniciar<i class="material-icons right">chevron_right</i></button>
+		<button id="start" title="Iniciar Quiz" class="btn waves-effect waves-light" onclick="start()">Iniciar<i class="material-icons right">chevron_right</i></button>
 		<button id="rank" title="Ranking Local" class="btn waves-effect modal-trigger waves-light right" data-target="modal4"><i class="material-icons left">format_line_spacing</i>Ranking</button>
-		<button id="next" title="Próxima pergunta" class="btn waves-effect waves-light hide">Próximo<i class="material-icons right">chevron_right</i></button>
+		<button id="next" title="Próxima Pergunta" class="btn waves-effect waves-light hide" onclick="next()">Próximo<i class="material-icons right">chevron_right</i></button>
 		<button id="giveUp" title="Desistir do Quiz" class="btn right waves-effect waves-light modal-trigger red hide" data-target="modal1">Desistir<i class="material-icons right">sentiment_very_dissatisfied</i></button>
-		<button id="finish" title="Finalizar Quiz" class="btn waves-effect waves-light hide"><i class="material-icons left">chevron_left</i>Finalizar</button>
-		<button id="save" title="Salvar resultado" class="btn waves-effect waves-light modal-trigger green hide" data-target="modal5">Salvar<i class="material-icons left">save</i></button>
-		<button id="showAnswers" title="Ver respostas" class="btn waves-effect waves-light right modal-trigger hide" data-target="modal3">Respostas<i class="material-icons right">question_answer</i></button>
+		<button id="finish" title="Finalizar Quiz" class="btn waves-effect waves-light hide" onclick="stop()"><i class="material-icons left">chevron_left</i>Voltar</button>
+		<button id="save" title="Salvar Resultado" class="btn waves-effect waves-light modal-trigger green hide" data-target="modal5">Salvar<i class="material-icons left">save</i></button>
+		<button id="showAnswers" title="Ver Respostas" class="btn waves-effect waves-light right modal-trigger hide" data-target="modal3">Respostas<i class="material-icons right">question_answer</i></button>
 	</section>
 
 	<ul class="pagination center" id="pagination"> </ul>

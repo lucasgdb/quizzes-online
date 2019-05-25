@@ -24,7 +24,9 @@ const btnNext = document.querySelector('#next'),
 	metaThemeColor = document.querySelector('meta[name=theme-color]'),
 	metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
 	icon = document.querySelector('link[rel=icon]'),
-	options = document.querySelector('#options')
+	options = document.querySelector('#options'),
+	tabs = document.querySelector('#tabs'),
+	tabItems = document.querySelector('#tabItems')
 
 let points = 0,
 	currentQuestion = 0,
@@ -50,7 +52,7 @@ options.innerHTML = radioButtons
 types = document.querySelectorAll('[name=selectQuiz]')
 
 const darkTheme = () => {
-	localStorage.setItem('darktheme', 'true')
+	localStorage.setItem('darktheme', 1)
 	metaThemeColor.setAttribute('content', '#2962ff')
 	metaMSThemeColor.setAttribute('content', '#2962ff')
 	icon.setAttribute('href', 'images/logo_dark.png')
@@ -71,7 +73,7 @@ if (localStorage.getItem('darktheme')) {
 }
 
 const render = () => {
-	let html = `<p id="time" style="margin:5px 0 0 0">${timeProgress(time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i></p><h6>${currentQuestion + 1}. ${questions[selectedType][currentQuestion]}</h6>`
+	let html = `<p id="time" style="margin:5px 0 0 0">${timeProgress(time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i></p><h6>${currentQuestion + 1}) ${questions[selectedType][currentQuestion]}</h6>`
 
 	const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
 		answersRandom = []
@@ -95,6 +97,15 @@ const render = () => {
 	}
 
 	createPagination()
+
+	if (currentQuestion !== answers[selectedType].length - 1) {
+		btnNext.setAttribute('title', 'Próxima Pergunta')
+		btnNext.innerHTML = 'Próximo<i class="material-icons right">chevron_right</i>'
+	} else {
+		btnNext.setAttribute('title', 'Finalizar')
+		btnNext.innerHTML = 'Finalizar<i class="material-icons right">chevron_right</i>'
+	}
+
 	quiz.innerHTML = html
 }
 
@@ -166,7 +177,7 @@ const stop = () => {
 	btnFinish.classList.add('hide')
 	pagination.classList.add('hide')
 	btnSave.classList.add('hide')
-	document.title = 'Quizzes - Início'
+	document.title = 'Quizzes OnLine - Início'
 
 	points = 0
 	currentQuestion = 0
@@ -219,7 +230,7 @@ const next = () => {
 				let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas corretas</h4>'
 				for (let i = 0; i < answers[selectedType].length; i++)
 					html +=
-					`<p style="margin:0">${i + 1}. ${questions[selectedType][i]}</p>
+					`<p style="margin:0">${i + 1}) ${questions[selectedType][i]}</p>
 					<p style="margin:0 0 10px 0">R: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
 
 				showAnswers.innerHTML = html
@@ -294,24 +305,27 @@ const save = () => {
 	}
 }
 
-const renderSavedItems = (active = 0) => {
-	const tabs = document.querySelector('#tabs')
-	if (M.Tabs.getInstance(tabs) !== undefined)
+
+const renderSavedItems = (index = 0) => {
+	if (M.Tabs.getInstance(tabs) !== undefined) {
 		M.Tabs.getInstance(tabs).destroy()
+	}
 
 	let html = '',
 		htmlParent = '',
 		htmlItem, newItems
+
 	const items = localStorage.getItem('registeredItems'),
 		defaultHtmlItem = '<table class="responsive-table"><thead><tr><th>Posição</th><th class="center-align">Nome</th><th class="center-align">Acertos</th><th class="center-align">Tempo</th><th class="center-align">Remover</th></tr></thead><tbody>'
 
-	for (let i = 0; i < types.length; i++) {
-		html += `<li class="tab tabs-fixed-width tab-demo"><a class="${active == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+	htmlItem = defaultHtmlItem
 
-		htmlItem = defaultHtmlItem
+	if (items !== null) {
+		newItems = JSON.parse(items).items
 
-		if (items !== null) {
-			newItems = JSON.parse(items).items
+		for (let i = 0; i < types.length; i++) {
+			html += `<li class="tab tabs-fixed-width tab-demo"><a class="${index == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+
 			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
 					htmlItem +=
@@ -320,7 +334,7 @@ const renderSavedItems = (active = 0) => {
 							<td class="center-align">${newItems[j][1]}</td>
 							<td class="center-align">${newItems[j][2]}/${newItems[j][3]}</td>
 							<td class="center-align">${newItems[j][4]}</td>
-							<td class="center-align"><i class="material-icons red-text" style="cursor:pointer" onclick="deleteItem(${num}, ${types[i].getAttribute('data-num')})">close</i></td>
+							<td class="center-align"><i class="material-icons red-text" style="cursor:pointer" onclick="deleteItem(${num}, ${parseInt(types[i].getAttribute('data-num'), 10)})">close</i></td>
 						</tr>`
 
 					newItems.splice(j, 1)
@@ -328,25 +342,24 @@ const renderSavedItems = (active = 0) => {
 					j--
 				}
 			}
+
+			htmlItem += '</tbody></table>'
+			htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
+			htmlItem = defaultHtmlItem
 		}
-
-		htmlItem += '</tbody></table>'
-
-		htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
-		htmlItem = defaultHtmlItem
 	}
 
 	tabs.innerHTML = html
-	document.querySelector('#tabItems').innerHTML = htmlParent
+	tabItems.innerHTML = htmlParent
 	M.Tabs.init(document.querySelectorAll('.tabs'))
 }
 
-const deleteItem = (item, tabIndex) => {
+const deleteItem = (item, index) => {
 	const allSaved = JSON.parse(localStorage.getItem('registeredItems')).items
 
 	allSaved.splice(item, 1)
 	localStorage.setItem('registeredItems', `{"items":${JSON.stringify(allSaved)}}`)
-	renderSavedItems(tabIndex)
+	renderSavedItems(index)
 }
 
 const clearSavedItems = () => {
@@ -362,12 +375,13 @@ window.addEventListener('DOMContentLoaded', () => {
 	})
 
 	if (!localStorage.getItem('firstVisit')) {
-		localStorage.setItem('firstVisit', '0')
+		localStorage.setItem('firstVisit', 0)
 		M.TapTarget.init(document.querySelectorAll('.tap-target'), {
 			onClose: () => {
 				M.FloatingActionButton.getInstance(document.querySelector('.fixed-action-btn')).open()
 			}
 		})
+
 		setTimeout(() => {
 			M.TapTarget.getInstance(document.querySelector('.tap-target')).open()
 			M.TapTarget.getInstance(document.querySelector('.tap-target'))._calculatePositioning()
@@ -375,20 +389,18 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	renderSavedItems()
+
 	btnRank.onclick = () => {
-		let tabs
 		types.forEach((item, index) => {
 			if (item.checked) {
-				tabs = document.querySelectorAll('.tab')[index]
-				tabs.querySelector('a').click()
+				M.Tabs.getInstance(tabs).$tabLinks[index].click()
+
+				setTimeout(() => {
+					M.Tabs.getInstance(tabs).updateTabIndicator()
+					tabs.scrollLeft = M.Tabs.getInstance(tabs).$tabLinks[index].offsetLeft
+				}, 300)
 			}
 		})
-
-		setTimeout(() => {
-			const tab = document.querySelector('#tabs')
-			M.Tabs.getInstance(tab).updateTabIndicator()
-			tab.scrollLeft = tabs.offsetLeft
-		}, 300)
 	}
 
 	btnSave.onclick = () => {
@@ -406,11 +418,10 @@ modal5.onkeydown = e => {
 }
 
 window.onload = () => {
-	btnStart.onclick = start
-	btnNext.onclick = next
-	btnFinish.onclick = stop
+	const preLoader = document.querySelector('#preloader')
 
-	document.querySelector('#preloader').remove()
 	document.querySelector('#nav').classList.remove('hide')
 	document.querySelector('#container').classList.remove('hide')
+	preLoader.classList.add('hide')
+	preLoader.remove()
 }

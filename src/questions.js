@@ -22,7 +22,6 @@ const
 		],
 		[
 			'Os ponteiros do relógio formam um ângulo reto ao marcar 3 horas.',
-			'40% de 75 é 28.',
 			'Todos os lados de um triângulo escaleno têm o mesmo comprimento.',
 			'Quando se divide 1.000 por 0, o resultado é 0.',
 			'Se f(X) = 5, então (X + 3X) - (2X + X) é igual ao valor de X.',
@@ -106,7 +105,6 @@ const
 		],
 		[
 			'Verdadeiro',
-			'Falso',
 			'Falso',
 			'Falso',
 			'Verdadeiro',
