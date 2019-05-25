@@ -216,6 +216,23 @@ i[data-disabled] {
 	background-color: var(--bgcolor)
 }
 
+#tabs::-webkit-scrollbar {
+	height: 9px;
+}
+
+#tabs::-webkit-scrollbar-thumb {
+	border-radius: 1.5px;
+	background-color: var(--bgcolor3)
+}
+
+#tabs::-webkit-scrollbar-thumb:hover {
+	background-color: var(--bgcoloractive)
+}
+
+#tabs::-webkit-scrollbar-track {
+	background-color: var(--bgcolorscroll)
+}
+
 .tabs .tab a.active {
 	color: var(--bgcoloractive) !important
 }
@@ -313,7 +330,7 @@ i[data-disabled] {
 
 @media (min-width: 1024px) {
 	::-webkit-scrollbar {
-		height: 6px;
+		height: 8px;
 		width: 6px
 	}
 

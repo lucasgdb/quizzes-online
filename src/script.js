@@ -187,7 +187,7 @@ const next = () => {
 
 	if (sumWithoutResponse === currentAnswers.length)
 		M.toast({
-			html: 'Você deve selecionar uma resposta!',
+			html: 'Você deve selecionar uma alternativa!',
 			classes: 'red accent-4',
 			displayLength: 2050
 		})
@@ -216,7 +216,7 @@ const next = () => {
 			btnFinish.classList.remove('hide')
 
 			btnShowAnswers.onclick = () => {
-				let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas</h4>'
+				let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas corretas</h4>'
 				for (let i = 0; i < answers[selectedType].length; i++)
 					html +=
 					`<p style="margin:0">${i + 1}. ${questions[selectedType][i]}</p>
@@ -295,8 +295,9 @@ const save = () => {
 }
 
 const renderSavedItems = (active = 0) => {
-	if (M.Tabs.getInstance(document.querySelector('#tabs')) !== undefined)
-		M.Tabs.getInstance(document.querySelector('#tabs')).destroy()
+	const tabs = document.querySelector('#tabs')
+	if (M.Tabs.getInstance(tabs) !== undefined)
+		M.Tabs.getInstance(tabs).destroy()
 
 	let html = '',
 		htmlParent = '',
@@ -335,7 +336,7 @@ const renderSavedItems = (active = 0) => {
 		htmlItem = defaultHtmlItem
 	}
 
-	document.querySelector('#tabs').innerHTML = html
+	tabs.innerHTML = html
 	document.querySelector('#tabItems').innerHTML = htmlParent
 	M.Tabs.init(document.querySelectorAll('.tabs'))
 }
