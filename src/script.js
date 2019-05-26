@@ -52,7 +52,7 @@ options.innerHTML = radioButtons
 types = document.querySelectorAll('[name=selectQuiz]')
 
 const darkTheme = () => {
-	localStorage.setItem('darktheme', 1)
+	localStorage.removeItem('lighttheme')
 	metaThemeColor.setAttribute('content', '#2962ff')
 	metaMSThemeColor.setAttribute('content', '#2962ff')
 	icon.setAttribute('href', 'images/logo_dark.png')
@@ -60,16 +60,16 @@ const darkTheme = () => {
 }
 
 const lightTheme = () => {
-	localStorage.removeItem('darktheme')
+	localStorage.setItem('lighttheme', 1)
 	metaThemeColor.setAttribute('content', '#009688')
 	metaMSThemeColor.setAttribute('content', '#009688')
 	icon.setAttribute('href', 'images/logo_light.png')
 	document.body.setAttribute('data-theme', 'light')
 }
 
-if (localStorage.getItem('darktheme')) {
-	darkTheme()
-	switcherTheme.checked = true
+if (localStorage.getItem('lighttheme')) {
+	lightTheme()
+	switcherTheme.checked = false
 }
 
 const render = () => {
@@ -320,12 +320,13 @@ const renderSavedItems = (index = 0) => {
 
 	htmlItem = defaultHtmlItem
 
-	if (items !== null) {
-		newItems = JSON.parse(items).items
 
-		for (let i = 0; i < types.length; i++) {
-			html += `<li class="tab tabs-fixed-width tab-demo"><a class="${index == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
 
+	for (let i = 0; i < types.length; i++) {
+		html += `<li class="tab tabs-fixed-width tab-demo"><a class="${index == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+
+		if (items !== null) {
+			newItems = JSON.parse(items).items
 			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
 					htmlItem +=
@@ -342,11 +343,11 @@ const renderSavedItems = (index = 0) => {
 					j--
 				}
 			}
-
-			htmlItem += '</tbody></table>'
-			htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
-			htmlItem = defaultHtmlItem
 		}
+
+		htmlItem += '</tbody></table>'
+		htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
+		htmlItem = defaultHtmlItem
 	}
 
 	tabs.innerHTML = html

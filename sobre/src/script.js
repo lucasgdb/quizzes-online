@@ -8,15 +8,15 @@ const root = document.querySelector(':root'),
 if (innerWidth >= 1024)
 	document.querySelector('#card').className = 'card horizontal'
 
-function darkTheme() {
-	metaThemeColor.setAttribute('content', '#2962ff')
-	metaMSThemeColor.setAttribute('content', '#2962ff')
-	icon.setAttribute('href', '../images/logo_dark.png')
-	document.body.setAttribute('data-theme', 'dark')
+const lightTheme = () => {
+	metaThemeColor.setAttribute('content', '#009688')
+	metaMSThemeColor.setAttribute('content', '#009688')
+	icon.setAttribute('href', 'images/logo_light.png')
+	document.body.setAttribute('data-theme', 'light')
 }
 
-if (localStorage.getItem('darktheme')) {
-	darkTheme()
+if (localStorage.getItem('lighttheme')) {
+	lightTheme()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.onload = () => {
 	const preLoader = document.querySelector('#preloader')
-	
+
 	document.querySelector('#nav').classList.remove('hide')
 	document.querySelector('#container').classList.remove('hide')
 	document.querySelector('footer').classList.remove('hide')

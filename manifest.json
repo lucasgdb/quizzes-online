@@ -1,6 +1,13 @@
 {
 	"name": "Quizzes Online",
-	"short_name": "Quizzes",
+	"short_name": "Quizzes Online",
+	"start_url": "./?utm_source=web_app_manifest",
+	"description": "O Quizzes Online traz várias perguntas de várias áreas para testar seu conhecimento e você aprender coisas novas.",
+	"lang": "pt-BR",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#2a3342",
+	"theme_color": "#2962ff",
 	"icons": [
 		{
 			"src": "images/logo32x32.png",
@@ -32,9 +39,5 @@
 			"sizes": "512x512",
 			"type": "image/png"
 		}
-	],
-	"start_url": "/index.html",
-	"display": "standalone",
-	"background_color": "#3E4EB8",
-	"theme_color": "#2F3BA2"
+	]
 }
