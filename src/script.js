@@ -177,7 +177,7 @@ const stop = () => {
 	btnFinish.classList.add('hide')
 	pagination.classList.add('hide')
 	btnSave.classList.add('hide')
-	document.title = 'Quizzes OnLine - Início'
+	document.title = 'Quizzes Online - Início'
 
 	points = 0
 	currentQuestion = 0

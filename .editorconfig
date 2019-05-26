@@ -3,10 +3,12 @@ root=true
 [*]
 charset = utf-8
 indent_style = tab
+
+[*.{html,css,js}]
 insert_final_newline = true
 
 [*.{html,css}]
 indent_size = 3
 
-[*.js]
+[*.{js,json}]
 indent_size = 4
