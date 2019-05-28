@@ -11,7 +11,7 @@ if (innerWidth >= 1024)
 const lightTheme = () => {
 	metaThemeColor.setAttribute('content', '#009688')
 	metaMSThemeColor.setAttribute('content', '#009688')
-	icon.setAttribute('href', 'images/logo_light.png')
+	icon.setAttribute('href', '../images/logo_light.png')
 	document.body.setAttribute('data-theme', 'light')
 }
 

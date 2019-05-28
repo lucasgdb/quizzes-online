@@ -217,7 +217,7 @@ i[data-disabled] {
 }
 
 #tabs::-webkit-scrollbar {
-	height: 9px;
+	height: 10px;
 }
 
 #tabs::-webkit-scrollbar-thumb {

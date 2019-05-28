@@ -153,12 +153,12 @@ const start = () => {
 	pagination.classList.remove('hide')
 	btnSave.removeAttribute('disabled')
 
-	types.forEach((item, index) => {
-		if (item.checked) {
-			selectedType = index
-			document.title = `Quiz - ${item.getAttribute('data-text')}`
+	for (let i = 0; i < types.length; i++) {
+		if (types[i].checked) {
+			selectedType = i
+			document.title = `Quiz - ${types[i].getAttribute('data-text')}`
 		}
-	})
+	}
 
 	render()
 	timeInterval = setInterval(() => {
@@ -192,9 +192,9 @@ const next = () => {
 
 	let sumWithoutResponse = 0
 
-	currentAnswers.forEach(item => {
-		if (!item.checked) sumWithoutResponse++
-	})
+	for (let i = 0; i < currentAnswers.length; i++) {
+		if (!currentAnswers[i].checked) sumWithoutResponse++
+	}
 
 	if (sumWithoutResponse === currentAnswers.length)
 		M.toast({
@@ -203,12 +203,12 @@ const next = () => {
 			displayLength: 2050
 		})
 	else {
-		currentAnswers.forEach(item => {
-			if (item.checked && item.getAttribute('data-text') === answers[selectedType][currentQuestion]) {
+		for (let i = 0; i < currentAnswers.length; i++) {
+			if (currentAnswers[i].checked && currentAnswers[i].getAttribute('data-text') === answers[selectedType][currentQuestion]) {
 				matches.push(1)
 				points += 1
 			}
-		})
+		}
 
 		if (matches[currentQuestion] === undefined) matches.push(0)
 
@@ -216,9 +216,9 @@ const next = () => {
 
 		if (currentQuestion === answers[selectedType].length) {
 			clearInterval(timeInterval)
-			currentAnswers.forEach(answer => {
-				answer.disabled = true
-			})
+			for (let i = 0; i < currentAnswers.length; i++) {
+				currentAnswers[i].disabled = true
+			}
 
 			btnNext.classList.add('hide')
 			btnGiveUp.classList.add('hide')
@@ -305,13 +305,12 @@ const save = () => {
 	}
 }
 
-
 const renderSavedItems = (index = 0) => {
 	if (M.Tabs.getInstance(tabs) !== undefined) {
 		M.Tabs.getInstance(tabs).destroy()
 	}
 
-	let html = '',
+	let html = '<p style="margin-left:10px">Não há nenhum jogo salvo! :(</p>',
 		htmlParent = '',
 		htmlItem, newItems
 
@@ -320,12 +319,11 @@ const renderSavedItems = (index = 0) => {
 
 	htmlItem = defaultHtmlItem
 
+	if (items !== null) {
+		html = ''
+		let doesItHave = false
 
-
-	for (let i = 0; i < types.length; i++) {
-		html += `<li class="tab tabs-fixed-width tab-demo"><a class="${index == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
-
-		if (items !== null) {
+		for (let i = 0; i < types.length; i++) {
 			newItems = JSON.parse(items).items
 			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
@@ -340,26 +338,39 @@ const renderSavedItems = (index = 0) => {
 
 					newItems.splice(j, 1)
 					pos += 1
-					j--
+					j -= 1
+					doesItHave = true
 				}
+			}
+
+			if (doesItHave) {
+				html += `<li class="tab tabs-fixed-width tab-demo"><a data-num="${types[i].getAttribute('data-num')}" class="${index == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+				htmlItem += '</tbody></table>'
+				htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
+				doesItHave = false
+				htmlItem = defaultHtmlItem
 			}
 		}
 
-		htmlItem += '</tbody></table>'
-		htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
-		htmlItem = defaultHtmlItem
+		tabs.innerHTML = html
+		tabItems.innerHTML = htmlParent
+		M.Tabs.init(document.querySelectorAll('.tabs'))
+	} else {
+		tabs.innerHTML = html
+		tabItems.innerHTML = htmlParent
 	}
-
-	tabs.innerHTML = html
-	tabItems.innerHTML = htmlParent
-	M.Tabs.init(document.querySelectorAll('.tabs'))
 }
 
 const deleteItem = (item, index) => {
 	const allSaved = JSON.parse(localStorage.getItem('registeredItems')).items
 
 	allSaved.splice(item, 1)
-	localStorage.setItem('registeredItems', `{"items":${JSON.stringify(allSaved)}}`)
+	if (allSaved.length !== 0) {
+		localStorage.setItem('registeredItems', `{"items":${JSON.stringify(allSaved)}}`)
+	} else {
+		localStorage.removeItem('registeredItems')
+	}
+
 	renderSavedItems(index)
 }
 
@@ -392,16 +403,23 @@ window.addEventListener('DOMContentLoaded', () => {
 	renderSavedItems()
 
 	btnRank.onclick = () => {
-		types.forEach((item, index) => {
-			if (item.checked) {
-				M.Tabs.getInstance(tabs).$tabLinks[index].click()
+		const currentTab = M.Tabs.getInstance(tabs)
 
-				setTimeout(() => {
-					M.Tabs.getInstance(tabs).updateTabIndicator()
-					tabs.scrollLeft = M.Tabs.getInstance(tabs).$tabLinks[index].offsetLeft
-				}, 300)
+		if (currentTab) {
+			for (let i = 0; i < currentTab.$tabLinks.length; i++) {
+				const num = currentTab.$tabLinks[i].getAttribute('data-num')
+				if (types[num].checked) {
+					currentTab.$tabLinks[i].click()
+
+					setTimeout(() => {
+						currentTab.updateTabIndicator()
+						tabs.scrollLeft = currentTab.$tabLinks[i].offsetLeft
+					}, 300)
+
+					break
+				}
 			}
-		})
+		}
 	}
 
 	btnSave.onclick = () => {
