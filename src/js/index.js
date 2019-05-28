@@ -72,6 +72,14 @@ if (localStorage.getItem('lighttheme')) {
 	switcherTheme.checked = false
 }
 
+if (localStorage.getItem('registeredItem')) {
+	const items = JSON.parse(localStorage.getItem('registeredItem')).items
+
+	if (items.length === 0) {
+		localStorage.removeItem('registeredItem')
+	}
+}
+
 const render = () => {
 	let html = `<p id="time" style="margin:5px 0 0 0">${timeProgress(time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i></p><h6>${currentQuestion + 1}) ${questions[selectedType][currentQuestion]}</h6>`
 
