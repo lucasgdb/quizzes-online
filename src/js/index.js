@@ -72,11 +72,11 @@ if (localStorage.getItem('lighttheme')) {
 	switcherTheme.checked = false
 }
 
-if (localStorage.getItem('registeredItem')) {
-	const items = JSON.parse(localStorage.getItem('registeredItem')).items
+if (localStorage.getItem('registeredItems')) {
+	const items = JSON.parse(localStorage.getItem('registeredItems')).items
 
 	if (items.length === 0) {
-		localStorage.removeItem('registeredItem')
+		localStorage.removeItem('registeredItems')
 	}
 }
 
