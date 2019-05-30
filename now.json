@@ -4,27 +4,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "**/*.js",
-            "use": "@now/static"
-        },
-        {
-            "src": "**/*.html",
-            "use": "@now/static"
-        },
-        {
-            "src": "**/*.css",
-            "use": "@now/static"
-        },
-        {
-            "src": "images/**",
-            "use": "@now/static"
-        },
-        {
-            "src": "src/css/material-icons.woff2",
-            "use": "@now/static"
-        },
-        {
-            "src": "manifest.json",
+            "src": "**/*",
             "use": "@now/static"
         }
     ]
