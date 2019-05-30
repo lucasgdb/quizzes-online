@@ -48,6 +48,11 @@
 </head>
 
 <body data-theme="dark">
+	<noscript>
+		<link rel="stylesheet" href="src/css/error.css">
+		<p>Ative o JavaScript.</p>
+	</noscript>
+
 	<div id="preloader">
 		<div class="preloader-wrapper big active">
 			<div class="spinner-layer spinner-blue-only">
@@ -235,6 +240,11 @@
 	<script src="src/js/materialize.min.js"></script>
 	<script src="src/js/questions.js"></script>
 	<script src="src/js/index.js"></script>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/service-worker.js')
+		}
+	</script>
 </body>
 
 </html>
