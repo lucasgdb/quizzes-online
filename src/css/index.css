@@ -38,7 +38,7 @@ body[data-theme=dark] {
 	--colorradiocheckeddisabled: #a0a0a0
 }
 
-/* html,
+html,
 body,
 .card-panel,
 .modal,
@@ -48,14 +48,14 @@ nav,
 .lever,
 .lever:after,
 .btn {
-	transition: background-color .3s !important;
-	-webkit-transition: background-color .3s !important
+	transition: background-color .2s !important;
+	-webkit-transition: background-color .2s !important
 }
 
 .modal,
 .card-panel {
-	transition: color .3s !important
-} */
+	transition: color .2s !important
+}
 
 .bgcolor3 {
 	background-color: var(--bgcolor3) !important
@@ -217,7 +217,7 @@ i[data-disabled] {
 }
 
 #tabs::-webkit-scrollbar {
-	height: 10px;
+	height: 10px
 }
 
 #tabs::-webkit-scrollbar-thumb {

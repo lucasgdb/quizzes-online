@@ -2,7 +2,7 @@
 	font-family: 'Material Icons';
 	font-style: normal;
 	font-weight: 400;
-	src: url(material-icons.woff2) format('woff2');
+	src: url(material-icons.woff2) format('woff2')
 }
 
 .material-icons {
@@ -19,5 +19,9 @@
 	direction: ltr;
 	font-feature-settings: 'liga';
 	-webkit-font-feature-settings: 'liga';
-	-webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased
+}
+
+html, body {
+	overscroll-behavior-y: contain
 }

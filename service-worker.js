@@ -1,41 +1,8 @@
-// const CACHE_NAME = 'v1.0.0'
-// 
-
-// this.oninstall = (event) => {
-// 	event.waitUntil(
-// 		caches.open(CACHE_NAME)
-// 		.then((cache) => {
-// 			return cache.addAll(CACHE_FILES)
-// 		})
-// 		// caches.keys().then(cacheNames => {
-
-// 		// 	cacheNames.forEach(item => {
-// 		// 		caches.delete(item)
-// 		// 	})
-
-// 		// })
-// 	)
-// }
-
-// this.onfetch = event => {
-// 	event.respondWith(
-// 		caches.match(event.request)
-// 		.then(response => response || fetch(event.request))
-// 		.catch(() => caches.match('/offline.html'))
-// 	)
-// }
-
-const CACHE_VERSION = 1
+const CACHE_VERSION = 2
 let CURRENT_CACHES = {
 	offline: 'offline-v' + CACHE_VERSION
 }
 const OFFLINE_URL = '/offline/index.html'
-const CACHE_FILES = [
-	'/',
-	'/images/quizzes_dark.png',
-	'/manifest.json',
-	'/offline.html'
-]
 
 function createCacheBustedRequest(url) {
 	let request = new Request(url, {

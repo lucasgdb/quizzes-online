@@ -1,3 +1,5 @@
+"use strict";
+
 const
 	names = [
 		'Português',
@@ -226,7 +228,6 @@ const
 		],
 		[
 			['Falso'],
-			['Verdadeiro'],
 			['Verdadeiro'],
 			['Verdadeiro'],
 			['Falso'],
