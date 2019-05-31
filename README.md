@@ -4,7 +4,7 @@
 
 #### Linguagens e tecnologias usadas:
 - HTML
-- CSS
+- MaterializeCSS
 - JavaScript
 - PWA
 - Zeit.co (Hospedagem)
