@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="src/css/materialize.min.css">
 	<link rel="stylesheet" href="src/css/material-icons.css">
 	<link rel="stylesheet" href="src/css/index.css">
-	<link rel="icon" href="images/logo_dark.png">
+	<link rel="icon" href="images/logo_light.png">
 	<link rel="manifest" href="manifest.json">
 
 	<meta name="title" content="Quizzes Online">
@@ -19,8 +19,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="application-name" content="Quizzes Online">
 	<meta name="apple-mobile-web-app-title" content="Quizzes Online">
-	<meta name="theme-color" content="#2962ff">
-	<meta name="msapplication-navbutton-color" content="#2962ff">
+	<meta name="theme-color" content="#008174">
+	<meta name="msapplication-navbutton-color" content="#008174">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="msapplication-starturl" content="https://lucasnaja.github.io/quizzes/">
 	<!-- Open Graph / Facebook -->
@@ -47,7 +47,7 @@
 	<title>Quizzes Online - Início</title>
 </head>
 
-<body data-theme="dark">
+<body data-theme="light">
 	<noscript>
 		<link rel="stylesheet" href="src/css/error.css">
 		<p>Ative o JavaScript.</p>
@@ -90,7 +90,7 @@
 	</ul>
 
 	<section id="container" class="container hide">
-		<section id="selectQuiz" class="card-panel">
+		<section id="selectQuiz" class="card-panel" style="margin-top:15px">
 			<h5 style="margin:-15px 0 0 0" class="corTexto"><i class="material-icons" style="top:11px;font-size:37px">list</i>Escolha um Quiz</h5>
 
 			<div id="options"></div>
@@ -224,7 +224,7 @@
 
 			<div class="switch">
 				<label>
-					<input id="darktheme" type="checkbox" onchange="if (this.checked) darkTheme(); else lightTheme()" checked>
+					<input id="darktheme" type="checkbox" onchange="if (this.checked) darkTheme(); else lightTheme()">
 					<span class="lever"></span>
 					Tema Dark
 				</label>

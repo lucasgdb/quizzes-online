@@ -4,6 +4,7 @@ body {
 	background-color: var(--bgcolor);
 	display: flex;
 	min-height: 100vh;
+	min-width: 320px;
 	flex-direction: column
 }
 
@@ -19,7 +20,7 @@ body[data-theme=light] {
 	--bgcolor: #e9e9e9;
 	--bgcolor2: white;
 	--bgcolor3: #008174;
-	--bgcoloractive: #007267;
+	--bgcoloractive: #00524b;
 	--bgcolorscroll: #ededed;
 	--colortext: black;
 	--footerbg: #009688;
@@ -111,6 +112,10 @@ footer {
 p a {
 	font-weight: 600;
 	color: var(--bgcolor3) !important
+}
+
+.spinner-layer {
+	border-color: var(--bgcoloractive)
 }
 
 @media (min-width: 735px) {

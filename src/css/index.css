@@ -14,7 +14,7 @@ body[data-theme=light] {
 	--bgcolor: #e9e9e9;
 	--bgcolor2: white;
 	--bgcolor3: #008174;
-	--bgcoloractive: #007267;
+	--bgcoloractive: #00524b;
 	--bgcolorscroll: #ededed;
 	--colorswitcher: #9e9e9e;
 	--colorswitcherball: #f1f1f1;
@@ -70,6 +70,10 @@ a.btn-floating:focus,
 nav,
 .tap-target {
 	background-color: var(--bgcolor3)
+}
+
+a {
+	transition: 0 !important
 }
 
 .btn:hover,
@@ -252,6 +256,10 @@ i[data-disabled] {
 	background-color: transparent
 }
 
+.active {
+	transition: 0 !important
+}
+
 .tabs .indicator {
 	background-color: var(--bgcolor3)
 }
@@ -278,6 +286,10 @@ i[data-disabled] {
 
 .us-none {
 	-webkit-user-select: none
+}
+
+.spinner-layer {
+	border-color: var(--bgcoloractive)
 }
 
 @media (max-width: 447px) {

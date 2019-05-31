@@ -20,7 +20,6 @@ const btnNext = document.querySelector('#next'),
 	modal5 = document.querySelector('#modal5'),
 	switcherTheme = document.querySelector('#darktheme'),
 	quizTitle = document.querySelector('#quizTitle'),
-	root = document.querySelector(':root'),
 	metaThemeColor = document.querySelector('meta[name=theme-color]'),
 	metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
 	icon = document.querySelector('link[rel=icon]'),
@@ -53,7 +52,7 @@ options.innerHTML = radioButtons
 types = document.querySelectorAll('[name=selectQuiz]')
 
 const darkTheme = () => {
-	localStorage.removeItem('lighttheme')
+	localStorage.setItem('darktheme', 1)
 	metaThemeColor.setAttribute('content', '#2962ff')
 	metaMSThemeColor.setAttribute('content', '#2962ff')
 	icon.setAttribute('href', 'images/logo_dark.png')
@@ -61,16 +60,16 @@ const darkTheme = () => {
 }
 
 const lightTheme = () => {
-	localStorage.setItem('lighttheme', 1)
+	localStorage.removeItem('darktheme')
 	metaThemeColor.setAttribute('content', '#009688')
 	metaMSThemeColor.setAttribute('content', '#009688')
 	icon.setAttribute('href', 'images/logo_light.png')
 	document.body.setAttribute('data-theme', 'light')
 }
 
-if (localStorage.getItem('lighttheme')) {
-	lightTheme()
-	switcherTheme.checked = false
+if (localStorage.getItem('darktheme')) {
+	darkTheme()
+	switcherTheme.checked = true
 }
 
 if (localStorage.getItem('registeredItems')) {
