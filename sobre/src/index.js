@@ -6,8 +6,8 @@ const metaThemeColor = document.querySelector('meta[name=theme-color]'),
 	card = document.querySelector('#card')
 
 const darkTheme = () => {
-	metaThemeColor.setAttribute('content', '#008174')
-	metaMSThemeColor.setAttribute('content', '#008174')
+	metaThemeColor.setAttribute('content', '#f02727')
+	metaMSThemeColor.setAttribute('content', '#f02727')
 	icon.setAttribute('href', '../images/logo_dark.png')
 	document.body.setAttribute('data-theme', 'dark')
 }

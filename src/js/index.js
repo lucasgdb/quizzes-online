@@ -53,8 +53,8 @@ types = document.querySelectorAll('[name=selectQuiz]')
 
 const darkTheme = () => {
 	localStorage.setItem('darktheme', 1)
-	metaThemeColor.setAttribute('content', '#2962ff')
-	metaMSThemeColor.setAttribute('content', '#2962ff')
+	metaThemeColor.setAttribute('content', '#f02727')
+	metaMSThemeColor.setAttribute('content', '#f02727')
 	icon.setAttribute('href', 'images/logo_dark.png')
 	document.body.setAttribute('data-theme', 'dark')
 }
