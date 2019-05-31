@@ -44,7 +44,8 @@ for (let i = 0; i < names.length; i++) {
 				<input class="with-gap" name="selectQuiz" type="radio" data-num="${i}" data-text="${names[i]}" ${i == 0 ? 'checked' : ''} />
 				<span>${names[i]}</span>
 			</label>
-		</p>`
+		</p>
+		<div style="margin:-10px 0 -1px 0;background-color:#9e9e9e" class="divider"></div>`
 }
 
 options.innerHTML = radioButtons
@@ -81,7 +82,7 @@ if (localStorage.getItem('registeredItems')) {
 }
 
 const render = () => {
-	let html = `<p id="time" style="margin:5px 0 0 0">${timeProgress(time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i></p><h6>${currentQuestion + 1}) ${questions[selectedType][currentQuestion]}</h6>`
+	let html = `<p id="time" style="margin:2px 0 0 0;font-size:17px">${timeProgress(time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i></p><h5>${currentQuestion + 1}) ${questions[selectedType][currentQuestion]}</h5>`
 
 	const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
 		answersRandom = []
@@ -99,9 +100,10 @@ const render = () => {
 			`<p>
 				<label>
 					<input class="with-gap" name="question${currentQuestion}" data-text="${answersQuestion[rndNumber]}" type="radio" />
-					<span>${alphabet[i]}) ${answersQuestion[rndNumber]}</span>
+					<span style="font-size:16px">${alphabet[i]}) ${answersQuestion[rndNumber]}</span>
 				</label>
-			</p>`
+			</p>
+			<div style="margin:-10px 0 -1px 0;background-color:#9e9e9e" class="divider"></div>`
 	}
 
 	createPagination()
@@ -170,7 +172,7 @@ const start = () => {
 
 	render()
 	timeInterval = setInterval(() => {
-		document.querySelector('#time').innerHTML = `${timeProgress(++time)}<i class="material-icons right" style="top:-2px;margin-left:5px">access_time</i>`
+		document.querySelector('#time').innerHTML = `${timeProgress(++time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i>`
 	}, 1000)
 }
 
@@ -204,13 +206,13 @@ const next = () => {
 		if (!currentAnswers[i].checked) sumWithoutResponse++
 	}
 
-	if (sumWithoutResponse === currentAnswers.length)
+	if (sumWithoutResponse === currentAnswers.length) {
 		M.toast({
 			html: 'Você deve selecionar uma alternativa!',
 			classes: 'red accent-4',
 			displayLength: 2050
 		})
-	else {
+	} else {
 		for (let i = 0; i < currentAnswers.length; i++) {
 			if (currentAnswers[i].checked && currentAnswers[i].getAttribute('data-text') === answers[selectedType][currentQuestion]) {
 				matches.push(1)

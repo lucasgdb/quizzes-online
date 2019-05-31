@@ -11,34 +11,32 @@ body {
 }
 
 body[data-theme=light] {
-	--bgcolor: #f3f3f3;
+	--bgcolor: #e9e9e9;
 	--bgcolor2: white;
-	--bgcolor3: #009688;
+	--bgcolor3: #008174;
 	--bgcoloractive: #007267;
 	--bgcolorscroll: #ededed;
 	--colorswitcher: #9e9e9e;
 	--colorswitcherball: #f1f1f1;
 	--colortext: black;
-	--colorradio: #737373;
 	--colorradiodisabled: #a0a0a0;
 	--colorradiocheckeddisabled: #5a5a5a
 }
 
 body[data-theme=dark] {
-	--bgcolor: #242b38;
-	--bgcolor2: #2a3342;
-	--bgcolor3: #3666ec;
-	--bgcoloractive: #003bdd;
-	--bgcolorscroll: #2a3342;
-	--colorswitcher: #2962ff;
-	--colorswitcherball: #0b4cff;
+	--bgcolor: #181f29;
+	--bgcolor2: #2d3541;
+	--bgcolor3: #f02727;
+	--bgcoloractive: #dd0000;
+	--bgcolorscroll: #212731;
+	--colorswitcher: #ff2929;
+	--colorswitcherball: #ff0b0b;
 	--colortext: white;
-	--colorradio: #9a9e92;
 	--colorradiodisabled: #5a5a5a;
 	--colorradiocheckeddisabled: #a0a0a0
 }
 
-html,
+/* html,
 body,
 .card-panel,
 .modal,
@@ -55,7 +53,7 @@ nav,
 .modal,
 .card-panel {
 	transition: color .2s !important
-}
+} */
 
 .bgcolor3 {
 	background-color: var(--bgcolor3) !important
@@ -117,13 +115,12 @@ a.btn:hover {
 	box-shadow: 0 1px 0 0 var(--bgcolor3) !important
 }
 
-.input-field input[type=text],
-[type=radio]:checked+span {
+.input-field input[type=text] {
 	color: var(--colortext) !important
 }
 
 [type=radio]+span {
-	color: var(--colorradio)
+	color: var(--colortext)
 }
 
 [type=radio]:disabled+span {
