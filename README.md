@@ -9,9 +9,14 @@
 - PWA
 - Zeit.co (Hospedagem)
 
+#### Algumas características
+- Tema Dark/Light
+- Adicione quizzes automatizadamente
+- Salve seus resultados
+
 ### Screenshots
 <p align="center">
-	<img src="images/quizzes_dark.png" alt="Quizzes" title="Quizzes Online">
-  <img src="images/quizzes_light.png" alt="Quizzes" title="Quizzes Online">
+	<img src="images/dark_theme.png" alt="Quizzes" title="Quizzes Online">
+  <img src="images/light_theme.png" alt="Quizzes" title="Quizzes Online">
 </p>
 
