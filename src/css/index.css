@@ -96,6 +96,10 @@ a {
 	background-color: #dd0000 !important
 }
 
+a.btn:hover {
+	background-color: var(--bgcoloractive) !important
+}
+
 .card-panel,
 .sidenav,
 .modal,
