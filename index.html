@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="src/css/materialize.min.css">
 	<link rel="stylesheet" href="src/css/material-icons.css">
 	<link rel="stylesheet" href="src/css/index.css">
-	<link rel="icon" href="images/logo_light.png">
+	<link rel="icon" href="images/logo64x64.png">
 	<link rel="manifest" href="manifest.json">
 
 	<meta name="title" content="Quizzes Online">
@@ -19,8 +19,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="application-name" content="Quizzes Online">
 	<meta name="apple-mobile-web-app-title" content="Quizzes Online">
-	<meta name="theme-color" content="#008174">
-	<meta name="msapplication-navbutton-color" content="#008174">
+	<meta name="theme-color" content="#00897b">
+	<meta name="msapplication-navbutton-color" content="#00897b">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="msapplication-starturl" content="https://quizzesonline.now.sh">
 	<!-- Open Graph / Facebook -->
@@ -55,7 +55,7 @@
 
 	<div id="preloader">
 		<div class="preloader-wrapper big active">
-			<div class="spinner-layer spinner-blue-only">
+			<div class="spinner-layer">
 				<div class="circle-clipper left">
 					<div class="circle"></div>
 				</div>
@@ -90,7 +90,7 @@
 	</ul>
 
 	<section id="container" class="container hide">
-		<section id="selectQuiz" class="card-panel" style="margin-top:15px">
+		<section id="selectQuiz" class="card-panel" style="margin-top:14px">
 			<h5 style="margin:-15px 0 0 0" class="corTexto"><i class="material-icons" style="top:11px;font-size:37px">list</i>Escolha um Quiz</h5>
 
 			<div id="options"></div>
@@ -113,7 +113,7 @@
 			</section>
 		</section>
 
-		<section id="quiz" class="card-panel hoverable hide"></section>
+		<section id="quiz" class="card-panel hoverable hide" style="margin-top:14px"></section>
 
 		<button id="start" title="Iniciar Quiz" class="btn waves-effect waves-light" onclick="start()">Iniciar<i class="material-icons right">chevron_right</i></button>
 		<button id="rank" title="Ranking Local" class="btn waves-effect modal-trigger waves-light right" data-target="modal4"><i class="material-icons left">format_line_spacing</i>Ranking</button>

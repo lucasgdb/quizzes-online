@@ -1,19 +1,9 @@
 "use strict";
 
-const metaThemeColor = document.querySelector('meta[name=theme-color]'),
-	metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
-	icon = document.querySelector('link[rel=icon]'),
-	card = document.querySelector('#card')
-
-const darkTheme = () => {
-	metaThemeColor.setAttribute('content', '#f02727')
-	metaMSThemeColor.setAttribute('content', '#f02727')
-	icon.setAttribute('href', '../images/logo_dark.png')
-	document.body.setAttribute('data-theme', 'dark')
-}
+const card = document.querySelector('#card')
 
 if (localStorage.getItem('darktheme')) {
-	darkTheme()
+	document.body.setAttribute('data-theme', 'dark')
 }
 
 const tabletMedia = x => {

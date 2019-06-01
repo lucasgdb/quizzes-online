@@ -13,8 +13,6 @@ body {
 body[data-theme=light] {
 	--bgcolor: #e9e9e9;
 	--bgcolor2: white;
-	--bgcolor3: #008174;
-	--bgcoloractive: #00524b;
 	--bgcolorscroll: #ededed;
 	--colorswitcher: #9e9e9e;
 	--colorswitcherball: #f1f1f1;
@@ -27,35 +25,14 @@ body[data-theme=light] {
 body[data-theme=dark] {
 	--bgcolor: #181f29;
 	--bgcolor2: #2d3541;
-	--bgcolor3: #f02727;
-	--bgcoloractive: #dd0000;
 	--bgcolorscroll: #212731;
-	--colorswitcher: #ff2929;
-	--colorswitcherball: #ff0b0b;
+	--colorswitcher: #00796b;
+	--colorswitcherball: #00524b;
 	--colortext: white;
 	--colorradiodisabled: #5a5a5a;
 	--colorradiocheckeddisabled: #a0a0a0;
 	--colorcurrentquestion: #2d3541
 }
-
-/* html,
-body,
-.card-panel,
-.modal,
-.modal-content,
-.modal-footer,
-nav,
-.lever,
-.lever:after,
-.btn {
-	transition: background-color .2s !important;
-	-webkit-transition: background-color .2s !important
-}
-
-.modal,
-.card-panel {
-	transition: color .2s !important
-} */
 
 .bgcolor3 {
 	background-color: var(--colorcurrentquestion) !important
@@ -75,7 +52,7 @@ a.btn-floating:focus,
 .btn-floating,
 nav,
 .tap-target {
-	background-color: var(--bgcolor3)
+	background-color: #00897b
 }
 
 a {
@@ -85,7 +62,7 @@ a {
 .btn:hover,
 .btn-floating:hover,
 .bgcoloractive {
-	background-color: var(--bgcoloractive)
+	background-color: #00524b
 }
 
 .btn.green:hover {
@@ -97,7 +74,7 @@ a {
 }
 
 a.btn:hover {
-	background-color: var(--bgcoloractive) !important
+	background-color: #00524b !important
 }
 
 .card-panel,
@@ -116,12 +93,12 @@ a.btn:hover {
 }
 
 .input-field input[type=text]:focus+label {
-	color: var(--bgcolor3) !important
+	color: #00897b !important
 }
 
 .input-field input[type=text]:focus {
-	border-bottom: 1px solid var(--bgcolor3) !important;
-	box-shadow: 0 1px 0 0 var(--bgcolor3) !important
+	border-bottom: 1px solid #00897b !important;
+	box-shadow: 0 1px 0 0 #00897b !important
 }
 
 .input-field input[type=text] {
@@ -143,12 +120,12 @@ a.btn:hover {
 [type=radio]:checked+span:after,
 [type=radio].with-gap:checked+span:before,
 [type=radio].with-gap:checked+span:after {
-	border: 2px solid var(--bgcolor3)
+	border: 2px solid #00897b
 }
 
 [type=radio]:checked+span:after,
 [type=radio].with-gap:checked+span:after {
-	background-color: var(--bgcolor3)
+	background-color: #00897b
 }
 
 .tap-target-wave:before {
@@ -228,11 +205,11 @@ i[data-disabled] {
 
 #tabs::-webkit-scrollbar-thumb {
 	border-radius: 1.5px;
-	background-color: var(--bgcolor3)
+	background-color: #00897b
 }
 
 #tabs::-webkit-scrollbar-thumb:hover {
-	background-color: var(--bgcoloractive)
+	background-color: #00524b
 }
 
 #tabs::-webkit-scrollbar-track {
@@ -240,11 +217,11 @@ i[data-disabled] {
 }
 
 .tabs .tab a.active {
-	color: var(--bgcoloractive) !important
+	color: var(--colortext) !important
 }
 
 .tabs .tab a {
-	color: var(--bgcolor3);
+	color: #00897b;
 	-webkit-user-select: none
 }
 
@@ -253,11 +230,10 @@ i[data-disabled] {
 }
 
 .tabs .tab a:hover {
-	color: var(--bgcoloractive)
+	color: var(--colortext)
 }
 
 .tabs .tab a:focus.active {
-	color: var(--bgcolor3);
 	background-color: transparent
 }
 
@@ -266,7 +242,7 @@ i[data-disabled] {
 }
 
 .tabs .indicator {
-	background-color: var(--bgcolor3)
+	background-color: #00897b
 }
 
 .c-df {
@@ -294,7 +270,7 @@ i[data-disabled] {
 }
 
 .spinner-layer {
-	border-color: var(--bgcoloractive)
+	border-color: #00524b
 }
 
 @media (max-width: 447px) {
@@ -350,11 +326,11 @@ i[data-disabled] {
 
 	::-webkit-scrollbar-thumb {
 		border-radius: 1.5px;
-		background-color: var(--bgcolor3)
+		background-color: #00897b
 	}
 
 	::-webkit-scrollbar-thumb:hover {
-		background-color: var(--bgcoloractive)
+		background-color: #00524b
 	}
 
 	::-webkit-scrollbar-track {

@@ -20,9 +20,6 @@ const btnNext = document.querySelector('#next'),
 	modal5 = document.querySelector('#modal5'),
 	switcherTheme = document.querySelector('#darktheme'),
 	quizTitle = document.querySelector('#quizTitle'),
-	metaThemeColor = document.querySelector('meta[name=theme-color]'),
-	metaMSThemeColor = document.querySelector('meta[name=msapplication-navbutton-color]'),
-	icon = document.querySelector('link[rel=icon]'),
 	options = document.querySelector('#options'),
 	tabs = document.querySelector('#tabs'),
 	tabItems = document.querySelector('#tabItems')
@@ -53,17 +50,11 @@ types = document.querySelectorAll('[name=selectQuiz]')
 
 const darkTheme = () => {
 	localStorage.setItem('darktheme', 1)
-	metaThemeColor.setAttribute('content', '#f02727')
-	metaMSThemeColor.setAttribute('content', '#f02727')
-	icon.setAttribute('href', 'images/logo_dark.png')
 	document.body.setAttribute('data-theme', 'dark')
 }
 
 const lightTheme = () => {
 	localStorage.removeItem('darktheme')
-	metaThemeColor.setAttribute('content', '#009688')
-	metaMSThemeColor.setAttribute('content', '#009688')
-	icon.setAttribute('href', 'images/logo_light.png')
 	document.body.setAttribute('data-theme', 'light')
 }
 

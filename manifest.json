@@ -15,7 +15,7 @@
 			"type": "image/png"
 		},
 		{
-			"src": "images/logo_light.png",
+			"src": "images/logo64x64.png",
 			"sizes": "64x64",
 			"type": "image/png"
 		},
