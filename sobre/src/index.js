@@ -14,7 +14,7 @@ const tabletMedia = x => {
 	}
 }
 
-const x = window.matchMedia("(min-width: 735px)")
+const x = window.matchMedia("(min-width: 768px)")
 tabletMedia(x)
 x.addListener(tabletMedia)
 
