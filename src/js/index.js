@@ -219,7 +219,9 @@ const next = () => {
 			}
 		}
 
-		if (matches[currentQuestion] === undefined) matches.push(0)
+		if (matches[currentQuestion] === undefined) {
+			matches.push(0)
+		}
 
 		currentQuestion += 1
 
@@ -265,14 +267,15 @@ const arraySort = array => {
 		bestTime = 3600
 
 	while (array.length > 0) {
-		for (let i = 0; i < array.length; i++)
+		for (let i = 0; i < array.length; i++) {
 			if (array[i][2] > bestArray) {
 				indexBestArray = i
 				bestTime = reTimeProgress(array[i][4])
 				bestArray = array[i][2]
 			} else if (array[i][2] === bestArray && reTimeProgress(array[i][4]) < bestTime) {
-			indexBestArray = i
-			bestTime = reTimeProgress(array[i][4])
+				indexBestArray = i
+				bestTime = reTimeProgress(array[i][4])
+			}
 		}
 
 		bestArray = -1
@@ -289,9 +292,9 @@ const save = () => {
 	if (textName.value.trim() !== '' && textName.value.length > 2) {
 		const allSaved = localStorage.getItem('registeredItems')
 
-		if (allSaved === null)
+		if (allSaved === null) {
 			localStorage.setItem('registeredItems', `{"items":[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]}`)
-		else {
+		} else {
 			let newArray = JSON.parse(allSaved).items
 
 			newArray.push([types[selectedType].getAttribute('data-text'), textName.value, points, questions[selectedType].length, timeProgress(time)])

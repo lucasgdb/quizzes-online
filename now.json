@@ -1,11 +1,11 @@
 {
-    "name": "Quizzes Online",
-    "alias": "quizzesonline",
-    "version": 2,
-    "builds": [
-        {
-            "src": "**/*",
-            "use": "@now/static"
-        }
-    ]
+	"name": "Quizzes Online",
+	"alias": "quizzesonline",
+	"version": 2,
+	"builds": [
+		{
+			"src": "**/*",
+			"use": "@now/static"
+		}
+	]
 }
