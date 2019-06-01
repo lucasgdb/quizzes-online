@@ -1,4 +1,4 @@
-const CACHE_VERSION = 2
+const CACHE_VERSION = 3
 let CURRENT_CACHES = {
 	offline: 'offline-v' + CACHE_VERSION
 }
