@@ -7,7 +7,11 @@ body {
 }
 
 * {
-	outline: 0 !important
+	outline: 0 !important;
+	user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	-webkit-user-select: none !important
 }
 
 body[data-theme=light] {
@@ -263,10 +267,6 @@ i[data-disabled] {
 
 .d-block {
 	display: block
-}
-
-.us-none {
-	-webkit-user-select: none
 }
 
 .spinner-layer {
