@@ -33,7 +33,7 @@ let points = 0,
 	radioButtons = '',
 	types
 
-for (let i = 0; i < names.length; i++) {
+for (let i = 0; i < names.length; i += 1) {
 	radioButtons +=
 		`<p>
 			<label>
@@ -63,19 +63,13 @@ if (localStorage.getItem('darktheme')) {
 	switcherTheme.checked = true
 }
 
-if (localStorage.getItem('registeredItems')) {
-	const items = JSON.parse(localStorage.getItem('registeredItems'))
-
-	if (items.length === 0) localStorage.removeItem('registeredItems')
-}
-
 const render = () => {
 	let html = `<p id="time" style="margin:2px 0 0 0;font-size:17px">${timeProgress(time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i></p><h5>${currentQuestion + 1}) ${questions[selectedType][currentQuestion]}</h5>`
 
 	const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
 		answersRandom = []
 
-	for (let i = 0; i < answersQuestion.length; i++) {
+	for (let i = 0; i < answersQuestion.length; i += 1) {
 		let rndNumber = parseInt(Math.random() * answersQuestion.length)
 
 		while (answersRandom.indexOf(rndNumber) !== -1) {
@@ -111,7 +105,7 @@ const render = () => {
 const createPagination = () => {
 	let htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
-	for (let i = 0; i < questions[selectedType].length; i++) {
+	for (let i = 0; i < questions[selectedType].length; i += 1) {
 		htmlPagination +=
 			`<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgcolor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
 	}
@@ -154,7 +148,7 @@ const start = () => {
 	pagination.classList.remove('hide')
 	btnSave.removeAttribute('disabled')
 
-	for (let i = 0; i < types.length; i++) {
+	for (let i = 0; i < types.length; i += 1) {
 		if (types[i].checked) {
 			selectedType = i
 			document.title = `${types[i].getAttribute('data-text')} - Quizzes Online`
@@ -193,8 +187,8 @@ const next = () => {
 	const currentAnswers = document.querySelectorAll(`[name=question${currentQuestion}]`)
 	let sumWithoutResponse = 0
 
-	for (let i = 0; i < currentAnswers.length; i++) {
-		if (!currentAnswers[i].checked) sumWithoutResponse++
+	for (let i = 0; i < currentAnswers.length; i += 1) {
+		if (!currentAnswers[i].checked) sumWithoutResponse += 1
 	}
 
 	if (sumWithoutResponse === currentAnswers.length) {
@@ -204,22 +198,20 @@ const next = () => {
 			displayLength: 2050
 		})
 	} else {
-		for (let i = 0; i < currentAnswers.length; i++) {
+		for (let i = 0; i < currentAnswers.length; i += 1) {
 			if (currentAnswers[i].checked && currentAnswers[i].getAttribute('data-text') === answers[selectedType][currentQuestion]) {
 				matches.push(1)
-				points++
+				points += 1
 			}
 		}
 
-		if (matches[currentQuestion] === undefined) {
-			matches.push(0)
-		}
+		if (matches[currentQuestion] === undefined) matches.push(0)
 
-		currentQuestion++;
+		currentQuestion += 1
 
 		if (currentQuestion === answers[selectedType].length) {
 			clearInterval(timeInterval)
-			for (let i = 0; i < currentAnswers.length; i++) {
+			for (let i = 0; i < currentAnswers.length; i += 1) {
 				currentAnswers[i].disabled = true
 			}
 
@@ -230,7 +222,7 @@ const next = () => {
 			btnFinish.classList.remove('hide')
 
 			let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas corretas</h4>'
-			for (let i = 0; i < answers[selectedType].length; i++) {
+			for (let i = 0; i < answers[selectedType].length; i += 1) {
 				html +=
 					`<p style="margin:0">${i + 1}) ${questions[selectedType][i]}</p>
 					<p style="margin:0 0 10px 0">R: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
@@ -246,6 +238,7 @@ const next = () => {
 
 			star.className = `material-icons ${pointsPercentage < 50.0 ? 'red-text' : 'green-text'}`
 			M.Modal.getInstance(document.querySelector('#modal2')).open()
+
 			createPagination()
 		} else render()
 	}
@@ -258,7 +251,7 @@ const arraySort = array => {
 		bestTime = 3600
 
 	while (array.length > 0) {
-		for (let i = 0; i < array.length; i++) {
+		for (let i = 0; i < array.length; i += 1) {
 			if (array[i][2] > bestArray) {
 				indexBestArray = i
 				bestTime = reTimeProgress(array[i][4])
@@ -280,18 +273,19 @@ const arraySort = array => {
 }
 
 const save = () => {
-	if (textName.value.trim() !== '' && textName.value.length > 2) {
+	const text = textName.value.trim()
+	if (text && text.length > 2) {
 		const allSaved = localStorage.getItem('registeredItems')
 
-		if (allSaved === null) {
+		if (!allSaved) {
 			localStorage.setItem(
 				'registeredItems',
-				`[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]`
+				`[["${types[selectedType].getAttribute('data-text')}","${text}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]`
 			)
 		} else {
 			let newArray = JSON.parse(allSaved)
 
-			newArray.push([types[selectedType].getAttribute('data-text'), textName.value, points, questions[selectedType].length, timeProgress(time)])
+			newArray.push([types[selectedType].getAttribute('data-text'), text, points, questions[selectedType].length, timeProgress(time)])
 			newArray = arraySort(newArray)
 
 			localStorage.setItem('registeredItems', `${JSON.stringify(newArray)}`)
@@ -312,26 +306,24 @@ const save = () => {
 }
 
 const renderSavedItems = (index = 0) => {
-	if (M.Tabs.getInstance(tabs) !== undefined) {
-		M.Tabs.getInstance(tabs).destroy()
-	}
+	if (M.Tabs.getInstance(tabs)) M.Tabs.getInstance(tabs).destroy()
+
+	const items = localStorage.getItem('registeredItems'),
+		defaultHtmlItem = '<table class="responsive-table"><thead><tr><th>Posição</th><th class="center-align">Nome</th><th class="center-align">Acertos</th><th class="center-align">Tempo</th><th class="center-align">Remover</th></tr></thead><tbody>'
 
 	let html = '<p style="margin-left:10px">Não há nenhum jogo salvo! :(</p>',
 		htmlParent = '',
 		htmlItem, newItems
 
-	const items = localStorage.getItem('registeredItems'),
-		defaultHtmlItem = '<table class="responsive-table"><thead><tr><th>Posição</th><th class="center-align">Nome</th><th class="center-align">Acertos</th><th class="center-align">Tempo</th><th class="center-align">Remover</th></tr></thead><tbody>'
-
 	htmlItem = defaultHtmlItem
 
-	if (items !== null) {
+	if (items) {
 		html = ''
 		let doesItHave = false
 
-		for (let i = 0; i < types.length; i++) {
+		for (let i = 0; i < types.length; i += 1) {
 			newItems = JSON.parse(items)
-			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
+			for (let j = 0, num = 0, pos = 1; j < newItems.length; j += 1, num += 1) {
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
 					htmlItem +=
 						`<tr>
@@ -343,8 +335,8 @@ const renderSavedItems = (index = 0) => {
 						</tr>`
 
 					newItems.splice(j, 1)
-					pos++;
-					j--;
+					pos += 1
+					j -= 1
 					doesItHave = true
 				}
 			}
@@ -371,7 +363,7 @@ const deleteItem = (item, index) => {
 	const allSaved = JSON.parse(localStorage.getItem('registeredItems'))
 
 	allSaved.splice(item, 1)
-	if (allSaved.length !== 0) localStorage.setItem('registeredItems', `${JSON.stringify(allSaved)}`)
+	if (allSaved.length) localStorage.setItem('registeredItems', `${JSON.stringify(allSaved)}`)
 	else localStorage.removeItem('registeredItems')
 
 	renderSavedItems(index)
@@ -385,7 +377,9 @@ const clearSavedItems = () => {
 window.addEventListener('DOMContentLoaded', () => {
 	M.Sidenav.init(document.querySelectorAll('.sidenav'))
 	M.Modal.init(document.querySelectorAll('.modal'))
-	M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'))
+	M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), {
+		hoverEnabled: innerWidth < 1024 ? false : true
+	})
 
 	renderSavedItems()
 })
@@ -394,7 +388,7 @@ btnRank.onclick = () => {
 	const currentTab = M.Tabs.getInstance(tabs)
 
 	if (currentTab) {
-		for (let i = 0; i < currentTab.$tabLinks.length; i++) {
+		for (let i = 0; i < currentTab.$tabLinks.length; i += 1) {
 			const num = currentTab.$tabLinks[i].getAttribute('data-num')
 			if (types[num].checked) {
 				currentTab.$tabLinks[i].click()

@@ -207,8 +207,11 @@ i[data-disabled] {
 }
 
 .tabs .tab a {
-	color: #00897b;
-	-webkit-user-select: none
+	color: #00897b
+}
+
+.tabs .tab a:hover {
+	color: var(--colortext)
 }
 
 .tabs .tab a:focus {
@@ -299,10 +302,6 @@ i[data-disabled] {
 @media (min-width: 1024px) {
 	#tabs::-webkit-scrollbar-thumb:hover {
 		background-color: #00524b
-	}
-
-	.tabs .tab a:hover {
-		color: var(--colortext)
 	}
 
 	.btn:hover,
