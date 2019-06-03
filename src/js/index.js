@@ -388,20 +388,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		hoverEnabled: false
 	})
 
-	if (!localStorage.getItem('firstVisit')) {
-		localStorage.setItem('firstVisit', 0)
-		M.TapTarget.init(document.querySelectorAll('.tap-target'), {
-			onClose: () => {
-				M.FloatingActionButton.getInstance(document.querySelector('.fixed-action-btn')).open()
-			}
-		})
-
-		setTimeout(() => {
-			M.TapTarget.getInstance(document.querySelector('.tap-target')).open()
-			M.TapTarget.getInstance(document.querySelector('.tap-target'))._calculatePositioning()
-		}, 100)
-	}
-
 	renderSavedItems()
 
 	btnRank.onclick = () => {

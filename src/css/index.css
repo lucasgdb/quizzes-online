@@ -69,12 +69,12 @@ a {
 	background-color: #00524b
 }
 
-.btn.green:hover {
-	background-color: green !important
-}
-
 .red:hover {
 	background-color: #dd0000 !important
+}
+
+.green:hover {
+	background-color: green !important
 }
 
 a.btn:hover {
