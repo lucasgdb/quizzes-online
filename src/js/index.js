@@ -17,6 +17,7 @@ const btnNext = document.querySelector('#next'),
 	hitsSave = document.querySelector('#hitsSave'),
 	timeSave = document.querySelector('#timeSave'),
 	textName = document.querySelector('#name'),
+	logo = document.querySelector('#logo'),
 	modal5 = document.querySelector('#modal5'),
 	switcherTheme = document.querySelector('#darktheme'),
 	quizTitle = document.querySelector('#quizTitle'),
@@ -41,7 +42,7 @@ for (let i = 0; i < names.length; i += 1) {
 				<span>${names[i]}</span>
 			</label>
 		</p>
-		<div style="margin:-10px 0 -1px;background-color:#9e9e9e" class="divider"></div>`
+		<div style="margin:-5px 0 -5px;background-color:#9e9e9e" class="divider"></div>`
 }
 
 options.innerHTML = radioButtons
@@ -152,6 +153,7 @@ const start = () => {
 		if (types[i].checked) {
 			selectedType = i
 			document.title = `${types[i].getAttribute('data-text')} - Quizzes Online`
+			logo.innerHTML = `${types[i].getAttribute('data-text')} - Quizzes Online`
 		}
 	}
 
@@ -174,6 +176,7 @@ const stop = () => {
 	pagination.classList.add('hide')
 	btnSave.classList.add('hide')
 	document.title = 'Quizzes Online - Início'
+	logo.innerHTML = `Quizzes Online`
 
 	points = 0
 	currentQuestion = 0
