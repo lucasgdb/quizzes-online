@@ -63,24 +63,6 @@ a {
 	transition: 0 !important
 }
 
-.btn:hover,
-.btn-floating:hover,
-.bgcoloractive {
-	background-color: #00524b
-}
-
-.red:hover {
-	background-color: #dd0000 !important
-}
-
-.green:hover {
-	background-color: green !important
-}
-
-a.btn:hover {
-	background-color: #00524b !important
-}
-
 .card-panel,
 .sidenav,
 .modal,
@@ -148,6 +130,10 @@ a.btn:hover {
 	left: 15px
 }
 
+.bgcoloractive {
+	background-color: #00524b
+}
+
 #btnStart {
 	left: 50%;
 	transform: translateX(-50%)
@@ -212,10 +198,6 @@ i[data-disabled] {
 	background-color: #00897b
 }
 
-#tabs::-webkit-scrollbar-thumb:hover {
-	background-color: #00524b
-}
-
 #tabs::-webkit-scrollbar-track {
 	background-color: var(--bgcolorscroll)
 }
@@ -231,10 +213,6 @@ i[data-disabled] {
 
 .tabs .tab a:focus {
 	background-color: transparent
-}
-
-.tabs .tab a:hover {
-	color: var(--colortext)
 }
 
 .tabs .tab a:focus.active {
@@ -319,6 +297,31 @@ i[data-disabled] {
 }
 
 @media (min-width: 1024px) {
+	#tabs::-webkit-scrollbar-thumb:hover {
+		background-color: #00524b
+	}
+
+	.tabs .tab a:hover {
+		color: var(--colortext)
+	}
+
+	.btn:hover,
+	.btn-floating:hover {
+		background-color: #00524b
+	}
+
+	a.btn:hover {
+		background-color: #00524b !important
+	}
+
+	.red:hover {
+		background-color: #dd0000 !important
+	}
+
+	.green:hover {
+		background-color: green !important
+	}
+
 	::-webkit-scrollbar {
 		height: 8px;
 		width: 6px

@@ -103,6 +103,10 @@ footer {
 	font-size: 13.5pt
 }
 
+.btn-flat:focus {
+	background-color: unset
+}
+
 .btn-flat,
 .card-action a,
 p a {

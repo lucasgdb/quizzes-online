@@ -10,6 +10,18 @@ const
 		'Planeta Terra',
 		'Sistema Solar',
 		'Felinos'
+		// 'Português',
+		// 'Matemática',
+		// 'História',
+		// 'Inglês',
+		// 'Informática',
+		// 'Algoritmos',
+		// 'Hardware',
+		// 'Redes',
+		// 'Mitologia Grega',
+		// 'Sistema Solar',
+		// 'Signos',
+		// 'Animais'
 	],
 	questions = [
 		[

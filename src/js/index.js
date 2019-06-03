@@ -41,7 +41,7 @@ for (let i = 0; i < names.length; i++) {
 				<span>${names[i]}</span>
 			</label>
 		</p>
-		<div style="margin:-10px 0 -1px 0;background-color:#9e9e9e" class="divider"></div>`
+		<div style="margin:-10px 0 -1px;background-color:#9e9e9e" class="divider"></div>`
 }
 
 options.innerHTML = radioButtons
@@ -64,11 +64,9 @@ if (localStorage.getItem('darktheme')) {
 }
 
 if (localStorage.getItem('registeredItems')) {
-	const items = JSON.parse(localStorage.getItem('registeredItems')).items
+	const items = JSON.parse(localStorage.getItem('registeredItems'))
 
-	if (items.length === 0) {
-		localStorage.removeItem('registeredItems')
-	}
+	if (items.length === 0) localStorage.removeItem('registeredItems')
 }
 
 const render = () => {
@@ -80,8 +78,9 @@ const render = () => {
 	for (let i = 0; i < answersQuestion.length; i++) {
 		let rndNumber = parseInt(Math.random() * answersQuestion.length)
 
-		while (answersRandom.indexOf(rndNumber) !== -1)
+		while (answersRandom.indexOf(rndNumber) !== -1) {
 			rndNumber = parseInt(Math.random() * answersQuestion.length)
+		}
 
 		answersRandom[i] = rndNumber
 
@@ -112,8 +111,10 @@ const render = () => {
 const createPagination = () => {
 	let htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
-	for (let i = 0; i < questions[selectedType].length; i++)
-		htmlPagination += `<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgcolor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+	for (let i = 0; i < questions[selectedType].length; i++) {
+		htmlPagination +=
+			`<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgcolor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+	}
 
 	htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
 
@@ -156,13 +157,14 @@ const start = () => {
 	for (let i = 0; i < types.length; i++) {
 		if (types[i].checked) {
 			selectedType = i
-			document.title = `Quiz - ${types[i].getAttribute('data-text')}`
+			document.title = `${types[i].getAttribute('data-text')} - Quizzes Online`
 		}
 	}
 
 	render()
 	timeInterval = setInterval(() => {
-		document.querySelector('#time').innerHTML = `${timeProgress(++time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i>`
+		document.querySelector('#time').innerHTML =
+			`${timeProgress(++time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i>`
 	}, 1000)
 }
 
@@ -198,7 +200,7 @@ const next = () => {
 	if (sumWithoutResponse === currentAnswers.length) {
 		M.toast({
 			html: 'Você deve selecionar uma alternativa!',
-			classes: 'red accent-4',
+			classes: 'red',
 			displayLength: 2050
 		})
 	} else {
@@ -227,15 +229,14 @@ const next = () => {
 			btnSave.classList.remove('hide')
 			btnFinish.classList.remove('hide')
 
-			btnShowAnswers.onclick = () => {
-				let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas corretas</h4>'
-				for (let i = 0; i < answers[selectedType].length; i++)
-					html +=
+			let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas corretas</h4>'
+			for (let i = 0; i < answers[selectedType].length; i++) {
+				html +=
 					`<p style="margin:0">${i + 1}) ${questions[selectedType][i]}</p>
 					<p style="margin:0 0 10px 0">R: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
-
-				showAnswers.innerHTML = html
 			}
+
+			showAnswers.innerHTML = html
 
 			quisSave.innerHTML = types[selectedType].getAttribute('data-text')
 			timeSave.innerHTML = timeProgress(time)
@@ -243,7 +244,7 @@ const next = () => {
 			hitsSave.innerHTML = `${points} de ${questions[selectedType].length} (<span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>)`
 			winPoints.innerHTML = `${points} de ${questions[selectedType].length} e obteve um desempenho de <span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>`
 
-			star.className = `material-icons ${pointsPercentage < 50 ? 'red-text' : 'green-text'}`
+			star.className = `material-icons ${pointsPercentage < 50.0 ? 'red-text' : 'green-text'}`
 			M.Modal.getInstance(document.querySelector('#modal2')).open()
 			createPagination()
 		} else render()
@@ -283,14 +284,17 @@ const save = () => {
 		const allSaved = localStorage.getItem('registeredItems')
 
 		if (allSaved === null) {
-			localStorage.setItem('registeredItems', `{"items":[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]}`)
+			localStorage.setItem(
+				'registeredItems',
+				`[["${types[selectedType].getAttribute('data-text')}","${textName.value}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]`
+			)
 		} else {
-			let newArray = JSON.parse(allSaved).items
+			let newArray = JSON.parse(allSaved)
 
 			newArray.push([types[selectedType].getAttribute('data-text'), textName.value, points, questions[selectedType].length, timeProgress(time)])
 			newArray = arraySort(newArray)
 
-			localStorage.setItem('registeredItems', `{"items":${JSON.stringify(newArray)}}`)
+			localStorage.setItem('registeredItems', `${JSON.stringify(newArray)}`)
 		}
 
 		M.Modal.getInstance(modal5).close()
@@ -326,7 +330,7 @@ const renderSavedItems = (index = 0) => {
 		let doesItHave = false
 
 		for (let i = 0; i < types.length; i++) {
-			newItems = JSON.parse(items).items
+			newItems = JSON.parse(items)
 			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
 					htmlItem +=
@@ -364,14 +368,11 @@ const renderSavedItems = (index = 0) => {
 }
 
 const deleteItem = (item, index) => {
-	const allSaved = JSON.parse(localStorage.getItem('registeredItems')).items
+	const allSaved = JSON.parse(localStorage.getItem('registeredItems'))
 
 	allSaved.splice(item, 1)
-	if (allSaved.length !== 0) {
-		localStorage.setItem('registeredItems', `{"items":${JSON.stringify(allSaved)}}`)
-	} else {
-		localStorage.removeItem('registeredItems')
-	}
+	if (allSaved.length !== 0) localStorage.setItem('registeredItems', `${JSON.stringify(allSaved)}`)
+	else localStorage.removeItem('registeredItems')
 
 	renderSavedItems(index)
 }
@@ -384,38 +385,36 @@ const clearSavedItems = () => {
 window.addEventListener('DOMContentLoaded', () => {
 	M.Sidenav.init(document.querySelectorAll('.sidenav'))
 	M.Modal.init(document.querySelectorAll('.modal'))
-	M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), {
-		hoverEnabled: false
-	})
+	M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'))
 
 	renderSavedItems()
+})
 
-	btnRank.onclick = () => {
-		const currentTab = M.Tabs.getInstance(tabs)
+btnRank.onclick = () => {
+	const currentTab = M.Tabs.getInstance(tabs)
 
-		if (currentTab) {
-			for (let i = 0; i < currentTab.$tabLinks.length; i++) {
-				const num = currentTab.$tabLinks[i].getAttribute('data-num')
-				if (types[num].checked) {
-					currentTab.$tabLinks[i].click()
+	if (currentTab) {
+		for (let i = 0; i < currentTab.$tabLinks.length; i++) {
+			const num = currentTab.$tabLinks[i].getAttribute('data-num')
+			if (types[num].checked) {
+				currentTab.$tabLinks[i].click()
 
-					setTimeout(() => {
-						currentTab.updateTabIndicator()
-						tabs.scrollLeft = currentTab.$tabLinks[i].offsetLeft
-					}, 300)
+				setTimeout(() => {
+					currentTab.updateTabIndicator()
+					tabs.scrollLeft = currentTab.$tabLinks[i].offsetLeft
+				}, 300)
 
-					break
-				}
+				break
 			}
 		}
 	}
+}
 
-	btnSave.onclick = () => {
-		setTimeout(() => {
-			textName.select()
-		}, 50)
-	}
-})
+btnSave.onclick = () => {
+	setTimeout(() => {
+		textName.select()
+	}, 50)
+}
 
 modal5.onkeydown = e => {
 	if (e.which === 13) {
