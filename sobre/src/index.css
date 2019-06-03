@@ -114,7 +114,7 @@ p a {
 	border-color: #00524b
 }
 
-@media (min-width: 735px) {
+@media (min-width: 768px) {
 	.card-image {
 		width: 250px
 	}
