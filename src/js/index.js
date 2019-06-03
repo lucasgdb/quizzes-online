@@ -189,7 +189,6 @@ const stop = () => {
 
 const next = () => {
 	const currentAnswers = document.querySelectorAll(`[name=question${currentQuestion}]`)
-
 	let sumWithoutResponse = 0
 
 	for (let i = 0; i < currentAnswers.length; i++) {
@@ -206,7 +205,7 @@ const next = () => {
 		for (let i = 0; i < currentAnswers.length; i++) {
 			if (currentAnswers[i].checked && currentAnswers[i].getAttribute('data-text') === answers[selectedType][currentQuestion]) {
 				matches.push(1)
-				points += 1
+				points++
 			}
 		}
 
@@ -214,7 +213,7 @@ const next = () => {
 			matches.push(0)
 		}
 
-		currentQuestion += 1
+		currentQuestion++;
 
 		if (currentQuestion === answers[selectedType].length) {
 			clearInterval(timeInterval)
@@ -340,8 +339,8 @@ const renderSavedItems = (index = 0) => {
 						</tr>`
 
 					newItems.splice(j, 1)
-					pos += 1
-					j -= 1
+					pos++;
+					j--;
 					doesItHave = true
 				}
 			}

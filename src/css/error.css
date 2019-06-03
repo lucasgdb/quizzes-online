@@ -10,5 +10,5 @@ p {
 }
 
 #preloader {
-	visibility: hidden
+	display: none
 }
