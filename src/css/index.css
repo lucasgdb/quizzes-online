@@ -267,6 +267,10 @@ i[data-disabled] {
 }
 
 @media (max-width: 767px) {
+	#modal4 .modal-content {
+		padding: 0 !important
+	}
+
 	.modal {
 		width: 100%
 	}

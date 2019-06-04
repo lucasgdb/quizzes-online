@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 const btnNext = document.querySelector('#next'),
 	btnStart = document.querySelector('#start'),
@@ -23,6 +23,7 @@ const btnNext = document.querySelector('#next'),
 	quizTitle = document.querySelector('#quizTitle'),
 	options = document.querySelector('#options'),
 	tabs = document.querySelector('#tabs'),
+	allTabs = document.querySelector('.tabs'),
 	tabItems = document.querySelector('#tabItems')
 
 let points = 0,
@@ -34,7 +35,7 @@ let points = 0,
 	radioButtons = '',
 	types
 
-for (let i = 0; i < names.length; i += 1) {
+for (let i = 0; i < names.length; i++) {
 	radioButtons +=
 		`<p>
 			<label>
@@ -70,10 +71,10 @@ const render = () => {
 	const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
 		answersRandom = []
 
-	for (let i = 0; i < answersQuestion.length; i += 1) {
+	for (let i = 0; i < answersQuestion.length; i++) {
 		let rndNumber = parseInt(Math.random() * answersQuestion.length)
 
-		while (answersRandom.indexOf(rndNumber) !== -1) {
+		while (answersRandom.indexOf(rndNumber) > -1) {
 			rndNumber = parseInt(Math.random() * answersQuestion.length)
 		}
 
@@ -87,7 +88,7 @@ const render = () => {
 					<span style="font-size:16px">${alphabet[i]}) ${answersQuestion[rndNumber]}</span>
 				</label>
 			</p>
-			<div style="margin:-10px 0 -1px 0;background-color:#9e9e9e" class="divider"></div>`
+			<div style="margin:-6px 0 -5px 0;background-color:#9e9e9e" class="divider"></div>`
 	}
 
 	createPagination()
@@ -106,9 +107,9 @@ const render = () => {
 const createPagination = () => {
 	let htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
-	for (let i = 0; i < questions[selectedType].length; i += 1) {
+	for (let i = 0; i < questions[selectedType].length; i++) {
 		htmlPagination +=
-			`<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgcolor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] === 1 ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+			`<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgcolor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
 	}
 
 	htmlPagination += '<li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>'
@@ -149,7 +150,7 @@ const start = () => {
 	pagination.classList.remove('hide')
 	btnSave.removeAttribute('disabled')
 
-	for (let i = 0; i < types.length; i += 1) {
+	for (let i = 0; i < types.length; i++) {
 		if (types[i].checked) {
 			selectedType = i
 			document.title = `${types[i].getAttribute('data-text')} - Quizzes Online`
@@ -190,7 +191,7 @@ const next = () => {
 	const currentAnswers = document.querySelectorAll(`[name=question${currentQuestion}]`)
 	let sumWithoutResponse = 0
 
-	for (let i = 0; i < currentAnswers.length; i += 1) {
+	for (let i = 0; i < currentAnswers.length; i++) {
 		if (!currentAnswers[i].checked) sumWithoutResponse += 1
 	}
 
@@ -201,7 +202,7 @@ const next = () => {
 			displayLength: 2050
 		})
 	} else {
-		for (let i = 0; i < currentAnswers.length; i += 1) {
+		for (let i = 0; i < currentAnswers.length; i++) {
 			if (currentAnswers[i].checked && currentAnswers[i].getAttribute('data-text') === answers[selectedType][currentQuestion]) {
 				matches.push(1)
 				points += 1
@@ -214,7 +215,7 @@ const next = () => {
 
 		if (currentQuestion === answers[selectedType].length) {
 			clearInterval(timeInterval)
-			for (let i = 0; i < currentAnswers.length; i += 1) {
+			for (let i = 0; i < currentAnswers.length; i++) {
 				currentAnswers[i].disabled = true
 			}
 
@@ -225,10 +226,10 @@ const next = () => {
 			btnFinish.classList.remove('hide')
 
 			let html = '<h4><i class="material-icons" style="top:2px">question_answer</i> Respostas corretas</h4>'
-			for (let i = 0; i < answers[selectedType].length; i += 1) {
+			for (let i = 0; i < answers[selectedType].length; i++) {
 				html +=
 					`<p style="margin:0">${i + 1}) ${questions[selectedType][i]}</p>
-					<p style="margin:0 0 10px 0">R: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
+					<p style="margin:0 0 10px">R: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
 			}
 
 			showAnswers.innerHTML = html
@@ -254,7 +255,7 @@ const arraySort = array => {
 		bestTime = 3600
 
 	while (array.length > 0) {
-		for (let i = 0; i < array.length; i += 1) {
+		for (let i = 0; i < array.length; i++) {
 			if (array[i][2] > bestArray) {
 				indexBestArray = i
 				bestTime = reTimeProgress(array[i][4])
@@ -314,7 +315,7 @@ const renderSavedItems = (index = 0) => {
 	const items = localStorage.getItem('registeredItems'),
 		defaultHtmlItem = '<table class="responsive-table"><thead><tr><th>Posição</th><th class="center-align">Nome</th><th class="center-align">Acertos</th><th class="center-align">Tempo</th><th class="center-align">Remover</th></tr></thead><tbody>'
 
-	let html = '<p style="margin-left:10px">Não há nenhum jogo salvo! :(</p>',
+	let html = '<li style="margin-left:10px"><p style="text-align: center;font-size: 20px;margin-top: 10px">Não há nenhum jogo salvo! :(</p></li>',
 		htmlParent = '',
 		htmlItem, newItems
 
@@ -324,9 +325,9 @@ const renderSavedItems = (index = 0) => {
 		html = ''
 		let doesItHave = false
 
-		for (let i = 0; i < types.length; i += 1) {
+		for (let i = 0; i < types.length; i++) {
 			newItems = JSON.parse(items)
-			for (let j = 0, num = 0, pos = 1; j < newItems.length; j += 1, num += 1) {
+			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
 				if (types[i].getAttribute('data-text') === newItems[j][0]) {
 					htmlItem +=
 						`<tr>
@@ -355,7 +356,7 @@ const renderSavedItems = (index = 0) => {
 
 		tabs.innerHTML = html
 		tabItems.innerHTML = htmlParent
-		M.Tabs.init(document.querySelectorAll('.tabs'))
+		M.Tabs.init(allTabs)
 	} else {
 		tabs.innerHTML = html
 		tabItems.innerHTML = htmlParent
@@ -391,7 +392,7 @@ btnRank.onclick = () => {
 	const currentTab = M.Tabs.getInstance(tabs)
 
 	if (currentTab) {
-		for (let i = 0; i < currentTab.$tabLinks.length; i += 1) {
+		for (let i = 0; i < currentTab.$tabLinks.length; i++) {
 			const num = currentTab.$tabLinks[i].getAttribute('data-num')
 			if (types[num].checked) {
 				currentTab.$tabLinks[i].click()

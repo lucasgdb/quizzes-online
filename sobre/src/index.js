@@ -1,17 +1,12 @@
-"use strict";
+"use strict"
 
 const card = document.querySelector('#card')
 
-if (localStorage.getItem('darktheme')) {
-	document.body.setAttribute('data-theme', 'dark')
-}
+if (localStorage.getItem('darktheme')) document.body.setAttribute('data-theme', 'dark')
 
 const tabletMedia = x => {
-	if (x.matches) {
-		card.classList.add('horizontal')
-	} else {
-		card.classList.remove('horizontal')
-	}
+	if (x.matches) card.classList.add('horizontal')
+	else card.classList.remove('horizontal')
 }
 
 const x = window.matchMedia("(min-width: 768px)")
