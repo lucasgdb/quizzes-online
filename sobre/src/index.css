@@ -55,6 +55,7 @@ body[data-theme=dark] {
 	-webkit-user-select: none
 }
 
+.user-view,
 .card-action {
 	background-color: var(--bgcolor) !important
 }
@@ -91,6 +92,11 @@ footer {
 
 .footer-copyright {
 	background-color: var(--footercopyright) !important
+}
+
+.name,
+.email {
+	color: var(--colortext)
 }
 
 .description {

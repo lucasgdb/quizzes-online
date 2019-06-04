@@ -87,12 +87,11 @@ a {
 	box-shadow: 0 1px 0 0 #00897b !important
 }
 
+.name,
+.email,
+[type=radio]+span,
 .input-field input[type=text] {
 	color: var(--colortext) !important
-}
-
-[type=radio]+span {
-	color: var(--colortext)
 }
 
 [type=radio]:disabled+span {
@@ -114,6 +113,7 @@ a {
 	background-color: #00897b
 }
 
+.user-view,
 .tap-target-wave:before {
 	background-color: var(--bgcolor)
 }
@@ -254,6 +254,10 @@ i[data-disabled] {
 	border-color: #00524b
 }
 
+.fixed-action-btn {
+	display: none;
+}
+
 @media (max-width: 447px) {
 	#save {
 		float: right
@@ -304,6 +308,10 @@ i[data-disabled] {
 }
 
 @media (min-width: 1024px) {
+	.fixed-action-btn {
+		display: block
+	}
+
 	#tabs::-webkit-scrollbar-thumb:hover {
 		background-color: #00524b
 	}

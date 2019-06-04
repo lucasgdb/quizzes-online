@@ -24,7 +24,9 @@ const btnNext = document.querySelector('#next'),
 	options = document.querySelector('#options'),
 	tabs = document.querySelector('#tabs'),
 	allTabs = document.querySelector('.tabs'),
-	tabItems = document.querySelector('#tabItems')
+	tabItems = document.querySelector('#tabItems'),
+	actionButtons = document.querySelectorAll('.fixed-action-btn'),
+	actionButton = document.querySelector('#actionButton')
 
 let points = 0,
 	currentQuestion = 0,
@@ -88,7 +90,7 @@ const render = () => {
 					<span style="font-size:16px">${alphabet[i]}) ${answersQuestion[rndNumber]}</span>
 				</label>
 			</p>
-			<div style="margin:-6px 0 -5px 0;background-color:#9e9e9e" class="divider"></div>`
+			<div style="margin:-5px 0 -5px 0;background-color:#9e9e9e" class="divider"></div>`
 	}
 
 	createPagination()
@@ -378,12 +380,19 @@ const clearSavedItems = () => {
 	renderSavedItems()
 }
 
+const tabletMedia = x => {
+	const getActionButton = M.FloatingActionButton.getInstance(actionButton)
+	if (x.matches) M.FloatingActionButton.init(actionButtons)
+	else if (getActionButton) getActionButton.destroy()
+}
+
+const x = window.matchMedia("(min-width: 1024px)")
+tabletMedia(x)
+x.addListener(tabletMedia)
+
 window.addEventListener('DOMContentLoaded', () => {
 	M.Sidenav.init(document.querySelectorAll('.sidenav'))
 	M.Modal.init(document.querySelectorAll('.modal'))
-	M.FloatingActionButton.init(document.querySelectorAll('.fixed-action-btn'), {
-		hoverEnabled: innerWidth < 1024 ? false : true
-	})
 
 	renderSavedItems()
 })
