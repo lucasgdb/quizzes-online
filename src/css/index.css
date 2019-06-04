@@ -297,13 +297,13 @@ a.btn:hover {
 		float: unset !important
 	}
 
-	#next,
+	#giveUp,
 	#finish,
 	#start {
 		margin-left: 10px !important
 	}
 
-	#giveUp,
+	#next,
 	#save,
 	#showAnswers {
 		margin-right: 10px

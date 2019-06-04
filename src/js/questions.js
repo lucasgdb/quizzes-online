@@ -28,9 +28,7 @@ const
 			'Complete: Sueline está ___, pois dormiu ___ durante a noite.',
 			'Qual conjunto de palavras está correto?',
 			'Na ordem da conversa, qual a colocação correta? João: ___ é separado? Bia: ____ não é junto! João: Mas ___? Bia: O ____ eu não sei.',
-			'"Engodar" é o sinônimo de:',
 			'Complete: Siga ___ e ___ seus medos.',
-			'Qual destas palavras não é sinônimo de "Rubicundo".',
 			'Qual o plural correto de couve-flor, girassol, pudim, giz e lápis?',
 			'Complete corretamente a oração: ___ noiva chegou ___ atrasada, o casamento começou ___ quinze minutos e vai terminar meio-dia e ___.'
 		],
@@ -111,9 +109,7 @@ const
 			'Mal-humorada, mal',
 			'Jejum, jeito, gesto, jenipapo',
 			'Por que, porque, por quê e porquê',
-			'Iludir',
 			'Em frente e enfrente',
-			'Brilhante',
 			'Couve-flores, girassóis, pudins, gizes e lápis',
 			'A, meio, há e meia'
 		],
@@ -210,21 +206,10 @@ const
 				'Porquê, por que, por quê e porque'
 			],
 			[
-				'Encostar',
-				'Inverter',
-				'Engordar',
-				'Respirar'
-			],
-			[
 				'Enfrente e enfrente',
 				'Em frente e em frenta',
 				'Enfrente e em frenta',
 				'Em frente e em frente'
-			],
-			[
-				'Corado',
-				'Avermelhado',
-				'Grená'
 			],
 			[
 				'Couves-flor, girassóis, pudim, giz e lápises',

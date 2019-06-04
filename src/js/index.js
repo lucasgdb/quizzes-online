@@ -99,7 +99,7 @@ const render = () => {
 		btnNext.setAttribute('title', 'Próxima Pergunta')
 		btnNext.innerHTML = 'Próximo<i class="material-icons right">chevron_right</i>'
 	} else {
-		btnNext.setAttribute('title', 'Finalizar')
+		btnNext.setAttribute('title', 'Finalizar Quiz')
 		btnNext.innerHTML = 'Finalizar<i class="material-icons right">chevron_right</i>'
 	}
 
