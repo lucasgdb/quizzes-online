@@ -258,6 +258,15 @@ i[data-disabled] {
 	display: none;
 }
 
+.btn:hover,
+.btn-floating:hover {
+	background-color: #00524b
+}
+
+a.btn:hover {
+	background-color: #00524b !important
+}
+
 @media (max-width: 447px) {
 	#save {
 		float: right
@@ -314,15 +323,6 @@ i[data-disabled] {
 
 	#tabs::-webkit-scrollbar-thumb:hover {
 		background-color: #00524b
-	}
-
-	.btn:hover,
-	.btn-floating:hover {
-		background-color: #00524b
-	}
-
-	a.btn:hover {
-		background-color: #00524b !important
 	}
 
 	.red:hover {
