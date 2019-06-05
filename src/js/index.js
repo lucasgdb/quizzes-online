@@ -393,6 +393,7 @@ x.addListener(tabletMedia)
 window.addEventListener('DOMContentLoaded', () => {
 	M.Sidenav.init(document.querySelectorAll('.sidenav'))
 	M.Modal.init(document.querySelectorAll('.modal'))
+	M.Collapsible.init(document.querySelectorAll('.collapsible'));
 
 	renderSavedItems()
 })

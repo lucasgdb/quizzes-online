@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 const
 	names = [
@@ -9,19 +9,14 @@ const
 		'Mitologia Grega',
 		'Planeta Terra',
 		'Sistema Solar',
-		'Felinos'
-		// 'Português',
-		// 'Matemática',
+		'Felinos',
 		// 'História',
 		// 'Inglês',
-		// 'Informática',
-		// 'Algoritmos',
 		// 'Hardware',
 		// 'Redes',
-		// 'Mitologia Grega',
-		// 'Sistema Solar',
-		// 'Signos',
-		// 'Animais'
+		// 'Animais',
+		// League of Legends,
+		// Free fire,
 	],
 	questions = [
 		[

@@ -94,9 +94,10 @@ footer {
 	background-color: var(--footercopyright) !important
 }
 
+.text,
 .name,
 .email {
-	color: var(--colortext)
+	color: var(--colortext) !important
 }
 
 .description {
