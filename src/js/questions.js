@@ -4,19 +4,19 @@ const
 	names = [
 		'Português',
 		'Matemática',
+		// 'História',
+		'Inglês',
 		'Informática',
 		'Algoritmos',
+		// 'Hardware',
+		// 'Redes',
 		'Mitologia Grega',
 		'Planeta Terra',
 		'Sistema Solar',
 		'Felinos',
-		// 'História',
-		// 'Inglês',
-		// 'Hardware',
-		// 'Redes',
 		// 'Animais',
 		// League of Legends,
-		// Free fire,
+		// Free fire		
 	],
 	questions = [
 		[
@@ -39,6 +39,15 @@ const
 			'Não há número 0 em numeral romano.',
 			'1, 2 e 3 são os únicos números naturais cuja resposta é a mesma se adicionados ou multiplicados entre si.',
 			'É possível que você não marque um número inteiro neste quiz.'
+		],
+		[
+			'Quando perguntam "Can I take a picture with you?", significa:',
+			'A palavra TREE é o mesmo que:',
+			'Quando alguém diz "I am in love with you", significa:',
+			'Complete: Did you ___ well last night?',
+			'Na frase, "I\'m angry because the bus is late.", a palavra ANGRY significa:',
+			'Na frase, ¨What is wrong with being confident?¨, a tradução da palavra CONFIDENT seria:',
+			'Na frase, "I\'m feeling weird", a palavra WEIRD significa o quê?'
 		],
 		[
 			'Dentre as alternativas a seguir, qual não faz parte de um item de hardware?',
@@ -120,6 +129,15 @@ const
 			'Verdadeiro',
 			'Verdadeiro',
 			'Falso'
+		],
+		[
+			'Eu posso tirar uma foto com você?',
+			'Árvore',
+			'Eu estou apaixonado(a) por você',
+			'Sleep',
+			'Nervoso',
+			'Confiante',
+			'Estranho'
 		],
 		[
 			'Debian',
@@ -230,6 +248,51 @@ const
 			['Falso'],
 			['Falso'],
 			['Verdadeiro']
+		],
+		[
+			[
+				'Eu posso falar com você?',
+				'Eu posso tirar uma foto sua?',
+				'Eu posso dançar com você?',
+				'Eu posso te abraçar?'
+			],
+			[
+				'Três',
+				'Torre',
+				'Terça-feira',
+				'Terceiro'
+			],
+			[
+				'Eu te amo muito',
+				'Eu te quero',
+				'Eu amo estar com você',
+				'Eu amo quando saímos juntos'
+			],
+			[
+				'Slep',
+				'Slept',
+				'Slop',
+				'Slopt'
+			],
+			[
+				'Feliz',
+				'Ansioso',
+				'Tranquilo',
+				'Atrasado',
+				'Com fome'
+			],
+			[
+				'Confidente',
+				'Confuso',
+				'Carinhoso',
+				'Contente'
+			],
+			[
+				'Doente',
+				'Cansado',
+				'Assustado',
+				'Arrasado'
+			]
 		],
 		[
 			[

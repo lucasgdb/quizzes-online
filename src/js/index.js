@@ -413,6 +413,13 @@ btnRank.onclick = () => {
 				}, 300)
 
 				break
+			} else if (i === currentTab.$tabLinks.length - 1) {
+				currentTab.$tabLinks[0].click()
+
+				setTimeout(() => {
+					currentTab.updateTabIndicator()
+					tabs.scrollLeft = currentTab.$tabLinks[i].offsetLeft
+				}, 300)
 			}
 		}
 	}
