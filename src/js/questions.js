@@ -9,7 +9,7 @@ const
 		'Informática',
 		'Algoritmos',
 		// 'Hardware',
-		// 'Redes',
+		'Redes',
 		'Mitologia Grega',
 		'Planeta Terra',
 		'Sistema Solar',
@@ -65,6 +65,15 @@ const
 			'A palavra "Pseudocódigo" significa:',
 			'A = 10; B = 20; C = A + B; D = C; Dado o Algoritmo, podemos afirmar que:',
 			'A instrução: se ... então  ... fimse é necessária para?'
+		],
+		[
+			'Em quantas camadas se divide o modelo de referência OSI?',
+			'O que é uma rede de computadores?',
+			'Quanto à dispersão geográfica como são classificadas as redes de computadores?',
+			'Quanto á topologia física, como são denominadas as redes?',
+			'Dos equipamentos de rede abaixo, qual tem a função de escolher o melhor caminho para o envio da informação?',
+			'Quais são os principais protocolos da camada de Transporte?',
+			'Como é denominado o protocolo de configuração dinâmica de IP?'
 		],
 		[
 			'Qual o nome do deus do vinho na Mitologia Grega?',
@@ -155,6 +164,15 @@ const
 			'Falso código',
 			'B equivale a A + 10, sendo B + D igual a 50',
 			'Tomar uma decisão no sentido de apresentar ou executar uma instrução mediante o teste de uma condição que pode ser Verdadeira ou Falsa'
+		],
+		[
+			'7 camadas',
+			'Conjunto de computadores interligados entre si, compartilhando recursos.',
+			'LAN, MAN, WAN',
+			'Barramento, Anel, Estrela, Híbrida',
+			'Roteador',
+			'TCP e UDP',
+			'DHCP'
 		],
 		[
 			'Dionísio',
@@ -368,6 +386,44 @@ const
 				'Tomar uma decisão verdadeira e apresentar ou executar uma instrução falsa se o teste for do tipo inteiro',
 				'Tomar um caminho diferente e apresentar ou executar uma instrução mediante um fluxograma de Chapin',
 				'Tomar uma decisão se e somente se a condição então não fizer parte da relação de variáveis declaradas no escopo do fluxograma'
+			]
+		],
+		[
+			[
+				'12 camadas',
+				'5 camadas',
+				'3 camadas',
+				'6 camadas'
+			],
+			[
+				'Conjunto de periféricos integrados.',
+				'União de equipamentos com a única finalidade de compartilhar internet.',
+				'Vários computadores que fazem parte dos setores de uma organização.'
+			],
+			[
+				'MAN, NAN, LAN',
+				'LAN, NAN, WAN',
+				'LAN, MAN, TAN'
+			],
+			[
+				'Barra, Anular, Estrela e Token',
+				'Anel, híbrida, Estelar e Camada',
+				'Segmento, Híbrida, Estrela e Token'
+			],
+			[
+				'Switch',
+				'Access Point',
+				'Patch Panel'
+			],
+			[
+				'IP e TCP',
+				'HTTP e SMTP',
+				'UDP e POP'
+			],
+			[
+				'HTTP',
+				'FTP',
+				'DNS'
 			]
 		],
 		[
