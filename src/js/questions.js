@@ -10,6 +10,7 @@ const
 		'Algoritmos',
 		// 'Hardware',
 		'Redes',
+		// 'Linux',
 		'Mitologia Grega',
 		'Planeta Terra',
 		'Sistema Solar',
