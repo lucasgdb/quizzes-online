@@ -146,7 +146,7 @@
 	<section id="modal1" class="modal">
 		<div class="modal-content">
 			<h4><i class="material-icons red-text" style="top:1px">sentiment_very_dissatisfied</i> Desistir</h4>
-			<p>Você tem certeza que deseja desistir?</p>
+			<p style="font-size:16px;margin:0">Você tem certeza que deseja desistir?</p>
 		</div>
 
 		<div class="divider"></div>
@@ -159,7 +159,7 @@
 	<section id="modal2" class="modal">
 		<div class="modal-content">
 			<h4><i class="material-icons" id="star">star</i> Quiz finalizado</h4>
-			<p>Você acertou <span id="points"></span></p>
+			<p style="font-size:16px;margin:0">Você acertou <span id="points"></span></p>
 		</div>
 
 		<div class="divider"></div>
@@ -212,7 +212,7 @@
 	<section id="modal6" class="modal">
 		<div class="modal-content">
 			<h4><i class="material-icons red-text" style="top:1px">sentiment_dissatisfied</i> Você perdeu!</h4>
-			<p>Você chegou no limite de tempo, tente novamente!</p>
+			<p style="font-size:16px;margin:0">Você chegou no limite de tempo, tente novamente!</p>
 		</div>
 
 		<div class="divider"></div>
@@ -225,7 +225,7 @@
 		<div class="modal-content">
 			<h4><i class="material-icons left red-text" style="top:6px;margin:0 5px 0 0">clear</i>Limpar Ranking</h4>
 
-			<p>Você tem certeza que deseja limpar o Ranking?</p>
+			<p style="font-size:16px;margin:0">Você tem certeza que deseja limpar o Ranking?</p>
 		</div>
 
 		<div class="divider"></div>
@@ -243,9 +243,24 @@
 				<label>
 					<input id="darktheme" type="checkbox" onchange="if (this.checked) darkTheme(); else lightTheme()">
 					<span class="lever"></span>
-					Tema Dark
+					<span class="text">Tema Dark</span>
 				</label>
 			</div>
+		</div>
+
+		<div class="divider"></div>
+		<div class="modal-footer">
+			<button title="Fechar" class="modal-close waves-effect waves-light btn"><i class="material-icons left">close</i>Fechar</button>
+		</div>
+	</section>
+
+	<section id="modal9" class="modal">
+		<div class="modal-content">
+			<h4><i class="material-icons left teal-text" style="top:7px;margin:0 5px 0 0">help</i><span id="quizName"></span></h4>
+
+			<p id="quizInformation" style="font-size:16px;margin:0"></p>
+			<!-- <p style="font-size:16px;margin:0">Quantidade de vezes jogadas: 1.000</p> -->
+			<!-- <p style="font-size:16px;margin:0">Quantidade de jogos salvos: 1.200</p> -->
 		</div>
 
 		<div class="divider"></div>

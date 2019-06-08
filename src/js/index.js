@@ -28,7 +28,9 @@ const btnNext = document.querySelector('#next'),
 	actionButtons = document.querySelectorAll('.fixed-action-btn'),
 	actionButton = document.querySelector('#actionButton'),
 	navButtons = document.querySelector('#nav-mobile'),
-	navMenu = document.querySelector('#navMenu')
+	navMenu = document.querySelector('#navMenu'),
+	quizName = document.querySelector('#quizName'),
+	quizInformation = document.querySelector('#quizInformation')
 
 let points = 0,
 	currentQuestion = 0,
@@ -42,7 +44,8 @@ let points = 0,
 for (let i = 0; i < names.length; i++) {
 	radioButtons +=
 		`<div class="col s12 m6">
-			<p>
+			<p style="position:relative">
+				<i title="Informações" class="material-icons modal-trigger teal-text" data-target="modal9" style="position:absolute;right:10px;cursor:pointer" onclick="changeInformation(${i})">help</i>
 				<label>
 					<input class="with-gap" name="selectQuiz" type="radio" data-num="${i}" ${i == 0 ? 'checked' : ''} />
 					<span>${names[i]}</span>
@@ -386,6 +389,11 @@ const deleteItem = (item, index) => {
 const clearSavedItems = () => {
 	localStorage.removeItem('registeredItems')
 	renderSavedItems()
+}
+
+const changeInformation = quiz => {
+	quizName.innerHTML = names[quiz]
+	quizInformation.innerHTML = `Quantidade de perguntas: ${questions[quiz].length}`
 }
 
 const tabletMedia = x => {
