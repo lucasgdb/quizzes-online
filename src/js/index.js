@@ -26,7 +26,9 @@ const btnNext = document.querySelector('#next'),
 	allTabs = document.querySelector('.tabs'),
 	tabItems = document.querySelector('#tabItems'),
 	actionButtons = document.querySelectorAll('.fixed-action-btn'),
-	actionButton = document.querySelector('#actionButton')
+	actionButton = document.querySelector('#actionButton'),
+	navButtons = document.querySelector('#nav-mobile'),
+	navMenu = document.querySelector('#navMenu')
 
 let points = 0,
 	currentQuestion = 0,
@@ -39,13 +41,15 @@ let points = 0,
 
 for (let i = 0; i < names.length; i++) {
 	radioButtons +=
-		`<p>
-			<label>
-				<input class="with-gap" name="selectQuiz" type="radio" data-num="${i}" data-text="${names[i]}" ${i == 0 ? 'checked' : ''} />
-				<span>${names[i]}</span>
-			</label>
-		</p>
-		<div style="margin:-5px 0 -5px;background-color:#9e9e9e" class="divider"></div>`
+		`<div class="col s12 m6">
+			<p>
+				<label>
+					<input class="with-gap" name="selectQuiz" type="radio" data-num="${i}" ${i == 0 ? 'checked' : ''} />
+					<span>${names[i]}</span>
+				</label>
+			</p>
+			<div style="margin:-5px 0 -5px;background-color:#9e9e9e" class="divider"></div>
+		</div>`
 }
 
 options.innerHTML = radioButtons
@@ -143,6 +147,8 @@ const reTimeProgress = time => {
 }
 
 const start = () => {
+	navMenu.classList.add('hide')
+	navButtons.classList.add('hide')
 	selectQuiz.classList.add('hide')
 	btnStart.classList.add('hide')
 	btnRank.classList.add('hide')
@@ -155,8 +161,8 @@ const start = () => {
 	for (let i = 0; i < types.length; i++) {
 		if (types[i].checked) {
 			selectedType = i
-			document.title = `${types[i].getAttribute('data-text')} - Quizzes Online`
-			logo.innerHTML = `${types[i].getAttribute('data-text')} - Quizzes Online`
+			document.title = `${names[i]} - Quizzes Online`
+			logo.innerHTML = `${names[i]} - Quizzes Online`
 		}
 	}
 
@@ -168,6 +174,8 @@ const start = () => {
 }
 
 const stop = () => {
+	navMenu.classList.remove('hide')
+	navButtons.classList.remove('hide')
 	selectQuiz.classList.remove('hide')
 	btnStart.classList.remove('hide')
 	btnRank.classList.remove('hide')
@@ -231,12 +239,12 @@ const next = () => {
 			for (let i = 0; i < answers[selectedType].length; i++) {
 				html +=
 					`<p style="margin:0">${i + 1}) ${questions[selectedType][i]}</p>
-					<p style="margin:0 0 10px">R: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
+					<p style="margin:0 0 10px">Resposta: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
 			}
 
 			showAnswers.innerHTML = html
 
-			quisSave.innerHTML = types[selectedType].getAttribute('data-text')
+			quisSave.innerHTML = names[selectedType]
 			timeSave.innerHTML = timeProgress(time)
 			const pointsPercentage = points / answers[selectedType].length * 100
 			hitsSave.innerHTML = `${points} de ${questions[selectedType].length} (<span class="${pointsPercentage < 50 ? 'red-text' : 'green-text'}">${pointsPercentage.toFixed(1)}%</span>)`
@@ -286,12 +294,12 @@ const save = () => {
 		if (!allSaved) {
 			localStorage.setItem(
 				'registeredItems',
-				`[["${types[selectedType].getAttribute('data-text')}","${text}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]`
+				`[["${names[selectedType]}","${text}",${points},${questions[selectedType].length},"${timeProgress(time)}"]]`
 			)
 		} else {
 			let newArray = JSON.parse(allSaved)
 
-			newArray.push([types[selectedType].getAttribute('data-text'), text, points, questions[selectedType].length, timeProgress(time)])
+			newArray.push([names[selectedType], text, points, questions[selectedType].length, timeProgress(time)])
 			newArray = arraySort(newArray)
 
 			localStorage.setItem('registeredItems', `${JSON.stringify(newArray)}`)
@@ -330,7 +338,7 @@ const renderSavedItems = (index = 0) => {
 		for (let i = 0; i < types.length; i++) {
 			newItems = JSON.parse(items)
 			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
-				if (types[i].getAttribute('data-text') === newItems[j][0]) {
+				if (names[i] === newItems[j][0]) {
 					htmlItem +=
 						`<tr>
 							<td>${pos}°</td>
@@ -348,7 +356,7 @@ const renderSavedItems = (index = 0) => {
 			}
 
 			if (doesItHave) {
-				html += `<li class="tab tabs-fixed-width tab-demo"><a data-num="${types[i].getAttribute('data-num')}" class="${index == i ? 'active' : ''}" href="#quiz${i}">${types[i].getAttribute('data-text')}</a></li>`
+				html += `<li class="tab tabs-fixed-width tab-demo"><a data-num="${types[i].getAttribute('data-num')}" class="${index == i ? 'active' : ''}" href="#quiz${i}">${names[i]}</a></li>`
 				htmlItem += '</tbody></table>'
 				htmlParent += `<div id="quiz${i}">${htmlItem}</div>`
 				doesItHave = false
@@ -440,6 +448,18 @@ modal5.onkeydown = e => {
 
 window.onload = () => {
 	const preLoader = document.querySelector('#preloader')
+
+	if (location.search.includes('?quiz=')) {
+		const name = decodeURIComponent(location.search.split('=')[1])
+
+		for (let i = 0; i < names.length; i++) {
+			if (names[i] === name) {
+				types[i].checked = true
+				start()
+				break
+			}
+		}
+	}
 
 	document.querySelector('#nav').classList.remove('hide')
 	document.querySelector('#container').classList.remove('hide')

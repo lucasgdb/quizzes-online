@@ -10,14 +10,16 @@ const
 		'Algoritmos',
 		// 'Hardware',
 		'Redes',
-		// 'Linux',
+		'Linux',
 		'Mitologia Grega',
 		'Planeta Terra',
 		'Sistema Solar',
 		'Felinos',
 		// 'Animais',
-		// League of Legends,
-		// Free fire		
+		// 'League of Legends',
+		// 'Free fire',
+		// 'Lúcifer',
+		// 'The Flash'
 	],
 	questions = [
 		[
@@ -75,6 +77,17 @@ const
 			'Dos equipamentos de rede abaixo, qual tem a função de escolher o melhor caminho para o envio da informação?',
 			'Quais são os principais protocolos da camada de Transporte?',
 			'Como é denominado o protocolo de configuração dinâmica de IP?'
+		],
+		[
+			'O Linux é:',
+			'Quem desenvolveu o Linux?',
+			'O que é ROOT?',
+			'O Gnome é?',
+			'Qual é o navegador padrão da maioria das distribuições Linux?',
+			'Quais são os dois modos de Visualização do ambiente gráfico Linux?',
+			'Qual é o nome do aplicativo de linhas de comando?',
+			'O Kernel é:'
+
 		],
 		[
 			'Qual o nome do deus do vinho na Mitologia Grega?',
@@ -168,12 +181,22 @@ const
 		],
 		[
 			'7 camadas',
-			'Conjunto de computadores interligados entre si, compartilhando recursos.',
+			'Conjunto de computadores interligados entre si, compartilhando recursos',
 			'LAN, MAN, WAN',
 			'Barramento, Anel, Estrela, Híbrida',
 			'Roteador',
 			'TCP e UDP',
 			'DHCP'
+		],
+		[
+			'Um Kernel',
+			'Linus Torvalds',
+			'Super Usuário',
+			'Ambiente Gráfico',
+			'Mozilla Firefox',
+			'Modo Gráfico e Modo de Console',
+			'Terminal',
+			'O núcleo do Sistema Operacional'
 		],
 		[
 			'Dionísio',
@@ -397,9 +420,9 @@ const
 				'6 camadas'
 			],
 			[
-				'Conjunto de periféricos integrados.',
-				'União de equipamentos com a única finalidade de compartilhar internet.',
-				'Vários computadores que fazem parte dos setores de uma organização.'
+				'Conjunto de periféricos integrados',
+				'União de equipamentos com a única finalidade de compartilhar internet',
+				'Vários computadores que fazem parte dos setores de uma organização'
 			],
 			[
 				'MAN, NAN, LAN',
@@ -425,6 +448,52 @@ const
 				'HTTP',
 				'FTP',
 				'DNS'
+			]
+		],
+		[
+			[
+				'Um Sistema de Banco de Dados',
+				'Um Hardware',
+				'Um Sistema Operacional'
+			],
+			[
+				'Bill Gates',
+				'Unix',
+				'Microsoft',
+				'Google',
+				'Ubuntu'
+			],
+			[
+				'Super Computador',
+				'Super Máquina',
+				'Super Convidado'
+			],
+			[
+				'Ambiente do Office',
+				'Ambiente do Windows',
+				'Sistema Operacional'
+			],
+			[
+				'Google Chrome',
+				'Opera',
+				'Internet Explorer',
+				'Safari'
+			],
+			[
+				'Modo Gráfico e Modo de Controle',
+				'Modo Ambiente e Modo de Console',
+				'Modo de Console e Modo de Controle'
+			],
+			[
+				'Acessório',
+				'DOS',
+				'CMD',
+				'Prompt de Comando'
+			],
+			[
+				'O núcleo da Intenet',
+				'O núcleo do Firefox',
+				'O núcleo do Sistema de Banco de Dados'
 			]
 		],
 		[
