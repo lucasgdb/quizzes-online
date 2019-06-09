@@ -15,7 +15,7 @@ const
 		'Planeta Terra',
 		'Sistema Solar',
 		'Felinos',
-		// 'Animais',
+		'Animais',
 		// 'League of Legends',
 		// 'Free fire',
 		// 'Lúcifer',
@@ -129,6 +129,19 @@ const
 			'Qual dos felinos á seguir possui melhor habilidade de escalar árvores?',
 			'Qual dos felinos á seguir tem maior o costume e habilidade para caçar pássaros?',
 			'Quantas raças de gatos domésticos existem aproximadamente?'
+		],
+		[
+			'Qual é a maior espécie de urso da América do Norte?',
+			'O gato doméstico é famoso por caçar qual animal?',
+			'Qual dos predadores abaixo caça em bandos?',
+			'Qual dos répteis abaixo é o mais pesado?',
+			'Qual dos predadores abaixo é o mais rápido?',
+			'Qual é o maior tubarão que existe?',
+			'Ratos sentem cócegas. Essa afirmação é:',
+			'Qual animal pode correr mais rápido que um cavalo?',
+			'O menor mamífero do mundo é o:',
+			'O animal mais inteligente, depois dos humanos, é o(a):',
+			'Qual é o peixe mais rápido do mundo?'
 		]
 	],
 	answers = [
@@ -238,6 +251,19 @@ const
 			'Leopardo',
 			'Caracal',
 			'80'
+		],
+		[
+			'Urso polar',
+			'Rato',
+			'Leão',
+			'Crocodilo Marinho',
+			'Guepardo',
+			'Tubarão Branco',
+			'Verdadeira',
+			'Urso',
+			'Morcego-nariz-de-porco',
+			'Chimpanzé',
+			'Agulhão-vela'
 		]
 	],
 	fakeAnswers = [
@@ -680,6 +706,69 @@ const
 				'46',
 				'60',
 				'100'
+			]
+		],
+		[
+			[
+				'Urso Cinzento',
+				'Urso Pardo',
+				'Urso Negro'
+			],
+			[
+				'Galinha',
+				'Cachorro',
+				'Gafanhoto'
+			],
+			[
+				'Onça',
+				'Urso Polar',
+				'Tubarão Branco',
+				'Cascavel'
+			],
+			[
+				'Cascavél',
+				'Sucuri',
+				'Jacaré',
+				'Jiboia'
+			],
+			[
+				'Leopardo',
+				'Jacaré',
+				'Hiena',
+				'Lobo'
+			],
+			[
+				'Tubarão-duende',
+				'Tubarão-anão',
+				'Tubarão-baleia',
+				'Tubarão Cobra'
+			],
+			[
+				'Falsa'
+			],
+			[
+				'Gato',
+				'Cachorro',
+				'Barata',
+				'Leão'
+			],
+			[
+				'Musaranho',
+				'Sagui',
+				'Coala',
+				'Equidna'
+			],
+			[
+				'Baleia',
+				'Hamster',
+				'Golfinho',
+				'Gorila'
+			],
+			[
+				'Carpa',
+				'Dânio Tigre',
+				'Perca Sol',
+				'Notrópis'
 			]
 		]
 	]

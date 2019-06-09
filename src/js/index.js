@@ -18,6 +18,7 @@ const btnNext = document.querySelector('#next'),
 	timeSave = document.querySelector('#timeSave'),
 	textName = document.querySelector('#name'),
 	logo = document.querySelector('#logo'),
+	logoMobile = document.querySelector('#logoMobile'),
 	modal5 = document.querySelector('#modal5'),
 	switcherTheme = document.querySelector('#darktheme'),
 	quizTitle = document.querySelector('#quizTitle'),
@@ -165,7 +166,8 @@ const start = () => {
 		if (types[i].checked) {
 			selectedType = i
 			document.title = `${names[i]} - Quizzes Online`
-			logo.innerHTML = `${names[i]} - Quizzes Online`
+			logo.innerHTML = `${names[i]} - Quiz`
+			logoMobile.innerHTML = `${names[i]} - Quiz`
 		}
 	}
 
@@ -191,6 +193,7 @@ const stop = () => {
 	btnSave.classList.add('hide')
 	document.title = 'Quizzes Online - Início'
 	logo.innerHTML = `Quizzes Online`
+	logoMobile.innerHTML = `Quizzes Online`
 
 	points = 0
 	currentQuestion = 0

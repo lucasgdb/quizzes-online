@@ -287,10 +287,11 @@ a.btn:hover {
 		padding: 0 !important
 	}
 
-	.modal {
-		width: 100%
+	.modal-95 {
+		width: 95%
 	}
 
+	.modal-100,
 	.container {
 		width: 100%
 	}
