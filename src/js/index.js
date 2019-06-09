@@ -51,7 +51,7 @@ for (let i = 0; i < names.length; i++) {
 					<span>${names[i]}</span>
 				</label>
 			</p>
-			<div style="margin:-5px 0 -5px;background-color:#9e9e9e" class="divider"></div>
+			<div style="margin:-5px 0;background-color:#9e9e9e" class="divider"></div>
 		</div>`
 }
 
@@ -75,7 +75,7 @@ if (localStorage.getItem('darktheme')) {
 }
 
 const render = () => {
-	let html = `<p id="time" style="margin:2px 0 0 0;font-size:17px">${timeProgress(time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i></p><h5>${currentQuestion + 1}) ${questions[selectedType][currentQuestion]}</h5>`
+	let html = `<h5 style="margin-top:4px">${currentQuestion + 1}) ${questions[selectedType][currentQuestion]}</h5><p id="time" style="margin:2px 0 0;font-size:17px">${timeProgress(time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i></p>`
 
 	const answersQuestion = [answers[selectedType][currentQuestion], ...fakeAnswers[selectedType][currentQuestion]],
 		answersRandom = []
@@ -97,7 +97,7 @@ const render = () => {
 					<span style="font-size:16px">${alphabet[i]}) ${answersQuestion[rndNumber]}</span>
 				</label>
 			</p>
-			<div style="margin:-5px 0 -5px 0;background-color:#9e9e9e" class="divider"></div>`
+			<div style="margin:-5px 0;background-color:#9e9e9e" class="divider"></div>`
 	}
 
 	createPagination()
@@ -242,7 +242,7 @@ const next = () => {
 			for (let i = 0; i < answers[selectedType].length; i++) {
 				html +=
 					`<p style="margin:0">${i + 1}) ${questions[selectedType][i]}</p>
-					<p style="margin:0 0 10px">Resposta: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
+					<p style="margin:0 0 10px">Resposta: ${answers[selectedType][i]} <i class="material-icons ${matches[i] === 0 ? 'red-text' : 'green-text'}" style="top:${matches[i] === 0 ? '7' : '5'}px;margin:-7px 0 0">${matches[i] === 0 ? 'clear' : 'done'}</i></p>`
 			}
 
 			showAnswers.innerHTML = html
@@ -393,7 +393,7 @@ const clearSavedItems = () => {
 
 const changeInformation = quiz => {
 	quizName.innerHTML = names[quiz]
-	quizInformation.innerHTML = `Quantidade de perguntas: ${questions[quiz].length}`
+	quizInformation.innerHTML = `Quantidade de Perguntas: ${questions[quiz].length}`
 }
 
 const tabletMedia = x => {
