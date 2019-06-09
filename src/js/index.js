@@ -121,7 +121,7 @@ const createPagination = () => {
 			`<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgcolor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
 	}
 
-	htmlPagination += `<li class="disabled" style="margin-left:-${currentQuestion >= questions[selectedType].length - 1 ? 0 : 7}px"><a><i class="material-icons">chevron_right</i></a></li>`
+	htmlPagination += `<li class="disabled" style="margin-left:-${currentQuestion >= questions[selectedType].length - 1 ? 0 : 10}px"><a><i class="material-icons">chevron_right</i></a></li>`
 
 	pagination.innerHTML = htmlPagination
 	pagination.scrollLeft = pagination.querySelectorAll('li')[currentQuestion < parseInt(questions[selectedType].length / 2 + 1) ? 0 : parseInt(questions[selectedType].length / 2) + 1].offsetLeft
