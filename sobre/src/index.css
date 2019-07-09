@@ -22,7 +22,7 @@ body[data-theme=light] {
 	--bgcolorscroll: #ededed;
 	--colortext: black;
 	--footerbg: #00897b;
-	--footercopyright: #007267;
+	--footercopyright: #005850;
 	--footerlink: white
 }
 
@@ -32,7 +32,7 @@ body[data-theme=dark] {
 	--bgcolorscroll: #212731;
 	--colortext: white;
 	--footerbg: #2a3342;
-	--footercopyright: #242b38;
+	--footercopyright: #181f29;
 	--footerlink: #0697bc
 }
 
