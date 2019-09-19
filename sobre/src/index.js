@@ -25,5 +25,10 @@ window.onload = () => {
 	document.querySelector('#container').classList.remove('hide')
 	document.querySelector('footer').classList.remove('hide')
 	preLoader.classList.add('hide')
-	preLoader.remove()
+
+	try {
+		preLoader.remove()
+	} catch (err) {
+		preLoader.style.display = 'none'
+	}
 }

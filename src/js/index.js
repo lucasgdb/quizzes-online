@@ -46,7 +46,7 @@ for (let i = 0; i < names.length; i++) {
 	radioButtons +=
 		`<div class="col s12 m6">
 			<p style="position:relative">
-				<i title="Informações" class="material-icons modal-trigger teal-text" data-target="modal9" style="position:absolute;right:10px;cursor:pointer" onclick="changeInformation(${i})">help</i>
+				<i title="Informações" class="material-icons modal-trigger teal-text" data-target="modal9" style="position:absolute;right:10px;cursor:pointer;font-size:25px" onclick="changeInformation(${i})">help</i>
 				<label>
 					<input class="with-gap" name="selectQuiz" type="radio" data-num="${i}" ${i == 0 ? 'checked' : ''} />
 					<span>${names[i]}</span>
@@ -91,7 +91,7 @@ const render = () => {
 		answersRandom[i] = rndNumber
 
 		const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W', 'Y', 'Z']
-		html +=
+		html += (
 			`<p>
 				<label>
 					<input class="with-gap" name="question${currentQuestion}" data-text="${answersQuestion[rndNumber]}" type="radio" />
@@ -99,6 +99,7 @@ const render = () => {
 				</label>
 			</p>
 			<div style="margin:-5px 0;background-color:#9e9e9e" class="divider"></div>`
+		)
 	}
 
 	createPagination()
@@ -118,8 +119,9 @@ const createPagination = () => {
 	let htmlPagination = '<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>'
 
 	for (let i = 0; i < questions[selectedType].length; i++) {
-		htmlPagination +=
+		htmlPagination += (
 			`<li class="${matches[i] === undefined ? '' : 'waves-effect waves-light'} ${currentQuestion === i ? 'active bgcolor3 c-df no-border waves-effect waves-light' : `${matches[i] === undefined ? 'disabled' : matches[i] ? `active green c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}` : `active red c-df no-border ${i === questions[selectedType].length - 1 ? '' : 'brw'}`}`}"><a>${i + 1}</a></li>`
+		)
 	}
 
 	htmlPagination += `<li class="disabled" style="margin-left:-${currentQuestion >= questions[selectedType].length - 1 ? 0 : 10}px"><a><i class="material-icons">chevron_right</i></a></li>`
@@ -173,8 +175,9 @@ const start = () => {
 
 	render()
 	timeInterval = setInterval(() => {
-		document.querySelector('#time').innerHTML =
+		document.querySelector('#time').innerHTML = (
 			`${timeProgress(++time)}<i class="material-icons right" style="margin-left:5px;font-size:25px">access_time</i>`
+		)
 	}, 1000)
 }
 
@@ -343,16 +346,17 @@ const renderSavedItems = (index = 0) => {
 
 		for (let i = 0; i < types.length; i++) {
 			newItems = JSON.parse(items)
-			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++, num++) {
+			for (let j = 0, num = 0, pos = 1; j < newItems.length; j++ , num++) {
 				if (names[i] === newItems[j][0]) {
-					htmlItem +=
+					htmlItem += (
 						`<tr>
 							<td>${pos}°</td>
 							<td class="center-align">${newItems[j][1]}</td>
 							<td class="center-align">${newItems[j][2]}/${newItems[j][3]}</td>
 							<td class="center-align">${newItems[j][4]}</td>
-							<td class="center-align"><i class="material-icons red-text" style="cursor:pointer" onclick="deleteItem(${num}, ${parseInt(types[i].getAttribute('data-num'), 10)})">close</i></td>
+							<td class="center-align"><i title="Remover" class="material-icons red-text" style="cursor:pointer" onclick="deleteItem(${num}, ${parseInt(types[i].getAttribute('data-num'), 10)})">close</i></td>
 						</tr>`
+					)
 
 					newItems.splice(j, 1)
 					pos += 1
@@ -475,5 +479,10 @@ window.onload = () => {
 	document.querySelector('#nav').classList.remove('hide')
 	document.querySelector('#container').classList.remove('hide')
 	preLoader.classList.add('hide')
-	preLoader.remove()
+
+	try {
+		preLoader.remove()
+	} catch (err) {
+		preLoader.style.display = 'none'
+	}
 }
